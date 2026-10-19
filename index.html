@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Dental materials delivered across Egypt. Composites, endo, burs, impression materials and student kits. Cash on delivery. خامات الأسنان توصلك لحد عيادتك أو كليتك.">
+<meta property="og:title" content="Miswak Dental Supply · مسواك لمستلزمات الأسنان">
+<meta property="og:description" content="Dental materials delivered across Egypt. Cash on delivery. خامات الأسنان بالدفع عند الاستلام.">
+<meta name="theme-color" content="#2C5C3C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M4%2020.5L13.6%2010.9%22%20stroke%3D%22%238A5F35%22%20stroke-width%3D%223.4%22/%3E%3Cpath%20d%3D%22M14.3%2010.2l.6-4.6M14.3%2010.2l2.3-3.9M14.3%2010.2l3.6-2.6M14.3%2010.2l4.4-1.1M14.3%2010.2l4.5.5%22%20stroke%3D%22%232C5C3C%22%20stroke-width%3D%221.6%22/%3E%3C/svg%3E">
+<title>Miswak Dental Supply</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@600&family=Schibsted+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style id="css">
+/* Layout: supply catalogue — sticky header with search, scrollable category rail, dense 2-up product grid; the cart opens as a side sheet; products come from a Google Sheet */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --sunk:#E5ECE8; --ink:#16201D; --muted:#55645E; --line:#D3DCD7;
+  --accent:#2C5C3C; --accent-hover:#224A30; --accent-ink:#FFFFFF; --accent-soft:#E1EDE3; --wood:#8A5F35;
+  --ok:#2B7A4C; --warn:#94590A; --danger:#B3261E; --scrim:rgba(12,20,18,.5);
+  --wa:#1E8C4C; --wa-ink:#FFFFFF;
+  --c-resto:#A3264B; --c-endo:#1D6A86; --c-bur:#4E54A6; --c-imp:#257564; --c-disp:#80611A; --c-kit:#72388D;
+  /* physical colours: product photo ground, shade tabs, ISO file handles, bur grit rings (same in both themes) */
+  --photo-bg:#FFFFFF;
+  --sh-A1:#F3E8D3; --sh-A2:#EEDDBE; --sh-A3:#E6D0A6; --sh-A35:#DCC292; --sh-A4:#CEAF7C;
+  --sh-B1:#F6EEDC; --sh-B2:#ECDFBF; --sh-B3:#E1CD9E; --sh-C1:#E4DBC6; --sh-C2:#D8CCB0; --sh-D2:#E2D6BF;
+  --tab-edge:rgba(70,52,28,.28); --tab-shade:rgba(120,88,40,.2);
+  --iso-15:#FFFFFF; --iso-20:#F2C230; --iso-25:#D2332E; --iso-30:#2457B8; --iso-35:#2E8B4A; --iso-40:#1C1C1C;
+  --grit-c:#2E8B4A; --grit-m:#2457B8; --grit-f:#D2332E;
+  --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-arabic:"Reem Kufi","Noto Kufi Arabic","Geeza Pro",Tahoma,sans-serif;
+  --f-arabic-text:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;
+  --f-label:var(--f-mono);
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1513; --surface:#162120; --sunk:#1D2A27; --ink:#E5ECE8; --muted:#97A7A0; --line:#2A3834;
+    --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#1C3324; --wood:#D4A877;
+    --ok:#6DC491; --warn:#E3A94B; --danger:#F08A80; --scrim:rgba(0,0,0,.62);
+    --wa:#3DC27A; --wa-ink:#06200F;
+    --c-resto:#EE7799; --c-endo:#6CC0DE; --c-bur:#A3A8F0; --c-imp:#6DCBB5; --c-disp:#DDB75E; --c-kit:#C99BE0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1513; --surface:#162120; --sunk:#1D2A27; --ink:#E5ECE8; --muted:#97A7A0; --line:#2A3834;
+  --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#1C3324; --wood:#D4A877;
+  --ok:#6DC491; --warn:#E3A94B; --danger:#F08A80; --scrim:rgba(0,0,0,.62);
+  --wa:#3DC27A; --wa-ink:#06200F;
+  --c-resto:#EE7799; --c-endo:#6CC0DE; --c-bur:#A3A8F0; --c-imp:#6DCBB5; --c-disp:#DDB75E; --c-kit:#C99BE0;
+  color-scheme:dark;
+}
+:root[lang="ar"]{--f-display:var(--f-arabic-text);--f-body:var(--f-arabic-text);--f-label:var(--f-arabic-text)}
+:root[lang="ar"] body *{letter-spacing:normal!important}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:120px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:45;background:var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ico{display:block;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+[dir="rtl"] .flip{transform:scaleX(-1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+/* sample notice */
+.notice{background:var(--accent-soft);font-size:13.5px}
+.notice .wrap{padding-block:8px}
+.notice b{font-weight:700}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;flex:none;margin-inline-end:auto}
+.brand .ico{width:30px;height:30px;color:var(--accent)}
+.mark .stick{stroke:var(--wood)}
+.brand .wm{font:800 20px/1 var(--f-display);letter-spacing:-.02em}
+.brand .alt{font:600 15px/1 var(--f-arabic);color:var(--wood);margin-inline-start:7px}
+:root[lang="ar"] .brand .wm{font:600 23px/1 var(--f-arabic)}
+:root[lang="ar"] .brand .alt{font:700 13px/1 "Schibsted Grotesk",Arial,sans-serif}
+.brand small{display:block;font:500 10px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+:root[lang="ar"] .brand small{font-size:11.5px;margin-top:5px}
+.search{flex:1 1 240px;min-width:0;position:relative}
+.search input{width:100%;height:42px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding-inline:38px 14px;font-size:15px}
+.search input::placeholder{color:var(--muted)}
+.search .ico{position:absolute;inset-inline-start:13px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+.hbtn{flex:none;height:42px;padding:0 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.hbtn .ico{width:18px;height:18px}
+.lang-btn[lang="ar"]{font-family:var(--f-arabic-text);font-size:15px}
+.lang-btn[lang="en"]{font-family:"Source Sans 3",Arial,sans-serif}
+.cart-btn{border:0;background:var(--ink);color:var(--bg);padding:0 11px 0 13px}
+.cart-btn .count{min-width:22px;height:22px;border-radius:11px;background:var(--accent);color:var(--accent-ink);font:600 12px/22px var(--f-mono);text-align:center;padding:0 6px}
+.cart-btn.bump .count{animation:bump .35s ease}
+@keyframes bump{40%{transform:scale(1.3)}}
+@media (max-width:640px){.search{order:5;flex-basis:100%}}
+@media (max-width:440px){.brand small,.hbtn .lbl{display:none}.hbtn{padding:0 11px}}
+@media (max-width:360px){.brand .alt{display:none}}
+
+/* hero */
+.hero .wrap{display:grid;gap:22px;padding-block:26px 6px}
+.hero h1{font:800 clamp(30px,7vw,52px)/1.06 var(--f-display);letter-spacing:-.03em;margin:0;max-width:16ch;text-wrap:balance}
+:root[lang="ar"] .hero h1{font-weight:700;line-height:1.3;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin:12px 0 0;color:var(--muted);font-size:17px;max-width:52ch}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:16px 0 0;font:500 12px var(--f-label);letter-spacing:.04em;text-transform:uppercase}
+:root[lang="ar"] .facts{font-size:14px;font-weight:600}
+.facts li{display:flex;align-items:center;gap:7px}
+.facts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.guide-box{align-self:end}
+.guide{display:flex;gap:5px;align-items:flex-start;direction:ltr}
+.gt{flex:1 1 0;max-width:38px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.gt i{display:block;width:100%;aspect-ratio:3/5;border-radius:5px 5px 45% 45%/5px 5px 30% 30%;background:var(--c);box-shadow:inset 0 -7px 10px var(--tab-shade),inset 0 0 0 1px var(--tab-edge)}
+.gt b{font:500 10.5px var(--f-mono);color:var(--muted)}
+.gt.off i{opacity:.32}
+.gt.off b{opacity:.55}
+.guide-cap{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
+.guide-cap strong{color:var(--ink);font-weight:600}
+@media (min-width:820px){.hero .wrap{grid-template-columns:1.25fr 1fr;align-items:end;padding-block:44px 10px}}
+
+/* categories */
+.cats{display:flex;gap:8px;overflow-x:auto;padding-block:18px 14px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip small{font:500 11.5px var(--f-mono);color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.7}
+.list-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.list-head h2{font:700 20px var(--f-display);letter-spacing:-.01em;margin:0;min-width:0}
+.list-head span{font:500 12px var(--f-label);color:var(--muted);flex:none}
+:root[lang="ar"] .list-head span{font-size:13.5px}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(156px,1fr));gap:12px;padding-bottom:36px}
+@media (min-width:760px){.grid{grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.tile{position:relative;display:grid;place-items:center;aspect-ratio:4/3;width:100%;max-width:100%;border:0;background:var(--sunk);cursor:pointer;color:var(--cat);padding:0;overflow:hidden}
+.tile.photo{background:var(--photo-bg)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:100%;z-index:1;background:var(--photo-bg)}
+.tile .ico{width:46px;height:46px;stroke-width:1.3}
+.tile .sku,.tile .tag{z-index:2}
+.tile .sku{position:absolute;inset-inline-start:8px;top:7px;font:500 10.5px var(--f-mono);letter-spacing:.04em;color:var(--muted);direction:ltr}
+.tile.photo .sku{background:var(--surface);border-radius:6px;padding:1px 6px}
+.tile .tag{position:absolute;inset-inline-end:8px;top:7px;font-weight:700;font-size:11.5px;background:var(--surface);color:var(--cat);border-radius:999px;padding:1px 8px;box-shadow:0 0 0 1px var(--line)}
+.vis{position:absolute;left:8px;right:8px;bottom:9px;display:flex;gap:4px;justify-content:center;align-items:flex-end;direction:ltr}
+.mt{width:11px;height:17px;border-radius:2px 2px 6px 6px;background:var(--c);box-shadow:inset 0 0 0 1px var(--tab-edge)}
+.iso{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 0 1px var(--line)}
+.grit{width:16px;height:6px;border-radius:3px;background:var(--c)}
+.card-body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.pname{font:700 15px/1.3 var(--f-display);margin:0;letter-spacing:-.005em}
+.spec{font-size:13.5px;line-height:1.4;color:var(--muted);margin:0}
+.stock{font-weight:700;font-size:12.5px;margin-top:3px}
+.stock.in{color:var(--ok)}
+.stock.low{color:var(--warn)}
+.stock.out{color:var(--danger)}
+.buy{margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.price{font:700 17px var(--f-display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.price small{font:500 11px var(--f-label);color:var(--muted);margin-inline-start:3px}
+.add{height:34px;padding:0 14px;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:14px;cursor:pointer}
+.add:hover{background:var(--accent-hover)}
+.add.alt{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.add.alt:hover{background:var(--accent-soft)}
+.add:disabled{background:var(--sunk);color:var(--muted);box-shadow:none;cursor:not-allowed}
+.empty-list{grid-column:1/-1;padding:40px 0;text-align:center;color:var(--muted)}
+
+/* how it works */
+.how{border-top:1px solid var(--line)}
+.how .wrap{padding-block:30px}
+.how h2{font:700 20px var(--f-display);margin:0 0 16px}
+.how ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;list-style:none;padding:0;margin:0;counter-reset:s}
+.how li{counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
+.how li::before{content:counter(s);font:800 26px/1 var(--f-display);color:var(--accent);grid-row:span 2}
+.how b{font-weight:700}
+.how li span{color:var(--muted);font-size:15px;grid-column:2}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{padding-block:22px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+footer .story{flex-basis:100%;margin:0 0 8px;color:var(--ink);font-size:15.5px;max-width:62ch}
+footer .story .ar{font:600 20px/1 var(--f-arabic);color:var(--wood);margin-inline-end:10px}
+footer .contact{flex-basis:100%;margin:0 0 6px;color:var(--ink);font-size:15px}
+footer .contact a{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;text-underline-offset:3px}
+
+/* dialogs */
+dialog{border:0;padding:0;background:var(--surface);color:var(--ink);max-width:none;max-height:none}
+dialog::backdrop{background:var(--scrim)}
+.x{width:38px;height:38px;border-radius:50%;border:0;background:var(--sunk);display:grid;place-items:center;cursor:pointer;flex:none}
+.x .ico{width:18px;height:18px}
+#productSheet{width:100%;max-width:560px;margin:auto auto 0;border-radius:20px 20px 0 0;max-height:92vh;max-height:92dvh;overflow:auto}
+@media (min-width:700px){#productSheet{margin:auto;border-radius:20px}}
+.sheet{padding:18px max(20px,env(safe-area-inset-right,0px)) max(22px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:grid;gap:16px}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sheet-top .sku{font:500 12px var(--f-label);color:var(--muted);letter-spacing:.04em}
+.sheet .tile{border-radius:14px;aspect-ratio:16/10;cursor:default}
+.sheet .tile .ico{width:64px;height:64px}
+.sheet h3{font:800 24px/1.2 var(--f-display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+:root[lang="ar"] .sheet h3{font-weight:700;line-height:1.4}
+.sheet .spec{font-size:15px;margin-top:4px}
+.sheet .desc{margin:0;font-size:15.5px;max-width:60ch}
+.opt-label{font-weight:700;font-size:14px;margin:0 0 8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.shade-opt{display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;padding:6px;border-radius:10px;cursor:pointer}
+.shade-opt i{display:block;width:30px;height:48px;border-radius:5px 5px 45% 45%/5px 5px 30% 30%;background:var(--c);box-shadow:inset 0 -7px 10px var(--tab-shade),inset 0 0 0 1px var(--tab-edge)}
+.shade-opt b{font:500 12px var(--f-mono)}
+.shade-opt[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent)}
+.chip .sw{width:14px;height:6px;border-radius:3px;background:var(--c)}
+.sheet-buy{display:flex;gap:12px;align-items:center}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;height:44px;flex:none;direction:ltr}
+.qty button{width:40px;height:100%;border:0;background:none;font-weight:700;font-size:19px;cursor:pointer;border-radius:999px}
+.qty button:disabled{color:var(--muted);opacity:.5;cursor:not-allowed}
+.qty output{min-width:26px;text-align:center;font:600 15px var(--f-mono)}
+.qty.sm{height:34px}
+.qty.sm button{width:32px;font-size:16px}
+.btn{height:48px;flex:1;width:100%;border-radius:999px;border:0;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;padding:0 18px}
+.btn:hover{background:var(--accent-hover)}
+.btn:disabled{background:var(--sunk);color:var(--muted);cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:var(--sunk)}
+.btn.wa{background:var(--wa);color:var(--wa-ink)}
+.btn.sm{height:40px;font-size:14.5px;flex:none;width:auto;padding:0 16px}
+.btn .ico{width:20px;height:20px}
+.note{font-size:13.5px;margin:0}
+.note.warn{color:var(--warn);font-weight:600}
+
+.side{margin:0;margin-inline-start:auto;width:min(440px,100%);height:100%;max-height:100%;border-radius:0}
+.side[open]{display:flex;flex-direction:column}
+.cart-head{display:flex;align-items:center;gap:10px;padding:max(14px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 14px max(18px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+.cart-head h2{font:800 20px var(--f-display);letter-spacing:-.01em;margin:0;flex:1;min-width:0}
+.cart-body{flex:1;overflow:auto;padding:16px max(18px,env(safe-area-inset-right,0px)) 18px max(18px,env(safe-area-inset-left,0px));display:grid;gap:16px;align-content:start}
+.cart-foot{border-top:1px solid var(--line);padding:14px max(18px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:grid;gap:10px;background:var(--surface)}
+.cart-foot:empty{display:none}
+.line{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.line:last-child{border-bottom:0}
+.line h4{margin:0;font:700 15px/1.3 var(--f-display)}
+.line .meta{font-size:13.5px;color:var(--muted)}
+.line .lt{font:700 15px var(--f-display);font-variant-numeric:tabular-nums;text-align:end;white-space:nowrap}
+.line .ctl{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between}
+.link{border:0;background:none;color:var(--muted);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
+.totals{display:grid;gap:5px;font-variant-numeric:tabular-nums;font-size:15px}
+.totals .row{display:flex;justify-content:space-between;gap:12px}
+.totals .row span:first-child{color:var(--muted)}
+.totals .total{font:800 19px var(--f-display);padding-top:7px;border-top:1px solid var(--line);margin-top:3px}
+.totals .total span:first-child{color:var(--ink)}
+.hint{font-size:13.5px;color:var(--muted);margin:0}
+.empty{text-align:center;padding:40px 8px;display:grid;gap:12px;justify-items:center;color:var(--muted)}
+.empty .ico{width:44px;height:44px;color:var(--line)}
+.empty b{color:var(--ink);font:700 17px var(--f-display)}
+
+form{display:grid;gap:14px}
+.field{display:grid;gap:5px;min-width:0}
+.field label,.legend{font-weight:700;font-size:14px}
+.opt-txt{font-weight:400;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:0 12px;font-size:16px}
+.field textarea{height:auto;min-height:72px;padding:10px 12px;resize:vertical}
+.field [aria-invalid="true"]{border-color:var(--danger)}
+.err{color:var(--danger);font-size:13px;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:380px){.two{grid-template-columns:1fr}}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.pick{position:relative}
+.pick input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pick span{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-weight:600;font-size:14.5px}
+.pick input:checked + span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pick input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.summary{background:var(--bg);border-radius:12px;padding:14px}
+
+.done-mark{width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wa-ink);display:grid;place-items:center}
+.done-mark .ico{width:30px;height:30px;stroke-width:2}
+.done{display:grid;gap:12px}
+.done h3{font:800 22px/1.25 var(--f-display);margin:0;letter-spacing:-.01em}
+.done p{margin:0}
+.order-no{font:600 15px var(--f-mono);color:var(--accent)}
+#orderText{width:100%;min-height:220px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px;font:400 13.5px/1.55 var(--f-body);resize:vertical}
+
+/* loading, load error, live check */
+.skel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;animation:pulse 1.4s ease-in-out infinite}
+.skel i{display:block;aspect-ratio:4/3;background:var(--sunk)}
+.skel b{display:block;height:12px;margin:12px 12px 0;border-radius:6px;background:var(--sunk)}
+.skel b + b{width:55%;margin-bottom:14px}
+@keyframes pulse{50%{opacity:.55}}
+.load-err{grid-column:1/-1;padding:28px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);display:grid;gap:12px;justify-items:center;text-align:center}
+.load-err b{font:700 17px var(--f-display)}
+.load-err .btn{width:auto;flex:none}
+.check-bar{background:var(--ink);color:var(--bg);font-size:13.5px}
+.check-bar.bad{background:var(--danger);color:var(--surface)}
+.check-bar .wrap{padding-block:9px}
+
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);border:0;padding:11px 18px;border-radius:999px;font-weight:700;font-size:14.5px;z-index:60;box-shadow:0 8px 24px var(--scrim);cursor:pointer;max-width:calc(100% - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toast u{text-underline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div id="app"></div>
+<script type="application/json" id="data">{"v":1,"settings":{"whatsapp":"201007805147","instapay":"","fees":[60,75,95],"notice":true},"products":[{"id":"kit-op","sku":"KIT-601","cat":"kit","price":1650,"stock":14,"name":{"en":"Preclinical operative kit","ar":"كيت التحفظي (بريكلينيكال)"},"spec":{"en":"Composite, GI, bond, etch, 10 burs","ar":"كومبوزيت، جلاس أيونومر، بوند، إتشنج، 10 بيرز"},"desc":{"en":"Everything for an operative preclinical course in one box: nanohybrid composite in A2, glass ionomer restorative, universal bonding agent, 37% etching gel and an assorted diamond bur set.","ar":"كل ما تحتاجه لكورس التحفظي العملي في علبة واحدة: كومبوزيت نانوهايبرد درجة A2، جلاس أيونومر للحشو، بوند يونيفرسال، جل إتشنج 37%، ومجموعة بيرز دايموند متنوعة."},"tag":{"en":"Save 25%","ar":"وفّر 25%"},"opt":null,"img":""},{"id":"kit-endo","sku":"KIT-610","cat":"kit","price":520,"stock":22,"name":{"en":"Endo starter kit","ar":"كيت إندو للمبتدئين"},"spec":{"en":"Files, GP, paper points, CaOH, syringes","ar":"فايلات، جوتا، أقماع ورقية، هيدروكسيد كالسيوم، سرنجات"},"desc":{"en":"Hand K-files 15–40, gutta-percha and paper points, calcium hydroxide paste and 10 irrigation syringes. Covers a full preclinical endo block.","ar":"فايلات K مقاس 15–40، أقماع جوتا بيركا وأقماع ورقية، معجون هيدروكسيد الكالسيوم و10 سرنجات غسيل. يغطي بلوك الإندو العملي بالكامل."},"tag":{"en":"For students","ar":"للطلبة"},"opt":null,"img":""},{"id":"cmp4","sku":"RST-101","cat":"resto","price":650,"stock":40,"name":{"en":"Nanohybrid composite syringe","ar":"كومبوزيت نانوهايبرد – سرنجة"},"spec":{"en":"4 g · light-cure","ar":"4 جم · ضوئي"},"desc":{"en":"Universal nanohybrid composite for anterior and posterior restorations. Polishes to a high gloss and doesn't stick to the instrument.","ar":"كومبوزيت نانوهايبرد يونيفرسال للحشوات الأمامية والخلفية. يُلمَّع لدرجة لمعان عالية ولا يلتصق بالأداة."},"tag":{"en":"Best seller","ar":"الأكثر مبيعًا"},"opt":{"label":{"en":"Shade","ar":"الدرجة"},"values":["A1","A2","A3","A3.5","B1"],"values_ar":[],"def":1,"style":"shade"},"img":""},{"id":"bond","sku":"RST-114","cat":"resto","price":780,"stock":9,"name":{"en":"Universal bonding agent","ar":"بوند يونيفرسال"},"spec":{"en":"5 ml bottle","ar":"زجاجة 5 مل"},"desc":{"en":"Single-bottle adhesive for total-etch, self-etch or selective-etch technique. One coat, 10 seconds light cure.","ar":"لاصق بزجاجة واحدة لتقنيات total-etch و self-etch و selective-etch. طبقة واحدة وتصليب ضوئي 10 ثوانٍ."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"gic","sku":"RST-120","cat":"resto","price":520,"stock":3,"name":{"en":"Glass ionomer restorative","ar":"جلاس أيونومر للحشو"},"spec":{"en":"15 g powder + 10 ml liquid","ar":"بودرة 15 جم + سائل 10 مل"},"desc":{"en":"Self-curing glass ionomer with fluoride release. Suited to class V cavities, deciduous teeth and bases.","ar":"جلاس أيونومر ذاتي التصلب يطلق الفلورايد. مناسب لحشوات Class V والأسنان اللبنية والقواعد."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"etch","sku":"RST-131","cat":"resto","price":90,"stock":60,"name":{"en":"Etching gel 37%","ar":"جل إتشنج 37%"},"spec":{"en":"2 × 3 ml syringes + tips","ar":"2 سرنجة × 3 مل + سنون"},"desc":{"en":"Blue phosphoric acid gel that stays where you place it and rinses off cleanly. Disposable tips included.","ar":"جل حمض فوسفوريك أزرق يثبت مكانه ويُشطف بسهولة. السنون الاستعمال الواحد مرفقة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"kfile","sku":"END-201","cat":"endo","price":120,"stock":35,"name":{"en":"Hand K-files","ar":"فايلات K يدوية"},"spec":{"en":"ISO 15–40 assorted · 6 pcs","ar":"مقاسات ISO من 15 إلى 40 · 6 قطع"},"desc":{"en":"Stainless steel K-files for canal negotiation and shaping. Handles follow the ISO colour code from white (15) to black (40).","ar":"فايلات ستانلس ستيل لاستكشاف القنوات وتشكيلها. ألوان المقابض حسب كود ISO من الأبيض (15) إلى الأسود (40)."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Length","ar":"الطول"},"values":["21 mm","25 mm"],"values_ar":["21 مم","25 مم"],"def":1,"style":"chip"},"img":"","iso":true},{"id":"gp","sku":"END-210","cat":"endo","price":95,"stock":50,"name":{"en":"Gutta-percha points","ar":"أقماع جوتا بيركا"},"spec":{"en":"ISO 15–40 assorted · 120 pcs","ar":"مقاسات ISO من 15 إلى 40 · 120 قطعة"},"desc":{"en":"Radiopaque gutta-percha points, colour-coded by size, for lateral condensation.","ar":"أقماع جوتا بيركا ظاهرة في الأشعة وملوّنة حسب المقاس، للحشو بالتكثيف الجانبي."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"pp","sku":"END-212","cat":"endo","price":70,"stock":45,"name":{"en":"Absorbent paper points","ar":"أقماع ورقية ماصّة"},"spec":{"en":"ISO 15–40 assorted · 200 pcs","ar":"مقاسات ISO من 15 إلى 40 · 200 قطعة"},"desc":{"en":"Highly absorbent points for drying canals before obturation.","ar":"أقماع عالية الامتصاص لتجفيف القنوات قبل الحشو."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"caoh","sku":"END-230","cat":"endo","price":160,"stock":18,"name":{"en":"Calcium hydroxide paste","ar":"معجون هيدروكسيد الكالسيوم"},"spec":{"en":"2.2 g syringe + tips","ar":"سرنجة 2.2 جم + سنون"},"desc":{"en":"Radiopaque intracanal medicament, ready to inject straight into the canal.","ar":"دواء داخل القناة ظاهر في الأشعة، جاهز للحقن مباشرة في القناة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"dbur","sku":"BUR-301","cat":"bur","price":180,"stock":30,"name":{"en":"Diamond burs, FG assorted","ar":"بيرز دايموند FG متنوعة"},"spec":{"en":"10 pcs · round, flat-end, flame","ar":"10 قطع · راوند، فلات إند، فليم"},"desc":{"en":"Friction-grip diamond burs for high-speed handpieces. The ring on the shank shows the grit: green coarse, blue medium, red fine.","ar":"بيرز دايموند friction-grip للتوربينة. الحلقة الملوّنة على الساق توضّح الخشونة: أخضر خشن، أزرق متوسط، أحمر ناعم."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Grit","ar":"الخشونة"},"values":["Coarse","Medium","Fine"],"values_ar":["خشن","متوسط","ناعم"],"def":1,"style":"chip","swatch":{"Coarse":"--grit-c","Medium":"--grit-m","Fine":"--grit-f"}},"img":"","grit":true},{"id":"cbur","sku":"BUR-315","cat":"bur","price":150,"stock":25,"name":{"en":"Carbide round burs, FG","ar":"بيرز كاربايد راوند FG"},"spec":{"en":"5 pcs per pack","ar":"5 قطع في العبوة"},"desc":{"en":"Tungsten carbide burs for caries removal and access cavities.","ar":"بيرز تنجستن كاربايد لإزالة التسوس وفتح الكافيتي."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["#2","#4","#6"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"alg","sku":"IMP-401","cat":"imp","price":210,"stock":20,"name":{"en":"Alginate, dust-free","ar":"ألجينات بدون غبار"},"spec":{"en":"450 g bag · fast set","ar":"كيس 450 جم · سريع التصلب"},"desc":{"en":"Colour-changing alginate that shows mixing, loading and setting stages.","ar":"ألجينات يتغيّر لونه ليوضّح مراحل الخلط والتحميل والتصلب."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"pvs","sku":"IMP-420","cat":"imp","price":1450,"stock":0,"name":{"en":"Addition silicone kit","ar":"كيت سيليكون إضافي (أديشن)"},"spec":{"en":"Putty 2 × 300 g + light body 2 × 50 ml","ar":"بوتي 2 × 300 جم + لايت بودي 2 × 50 مل"},"desc":{"en":"A-silicone for crown and bridge impressions with the putty-wash technique.","ar":"سيليكون إضافي لطبعات التيجان والجسور بتقنية البوتي والواش."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"tray","sku":"IMP-440","cat":"imp","price":260,"stock":8,"name":{"en":"Perforated impression trays","ar":"ترايات طبعة مثقّبة"},"spec":{"en":"Set of 10 · upper and lower","ar":"طقم 10 · علوي وسفلي"},"desc":{"en":"Stainless steel trays in five sizes per arch. Autoclavable.","ar":"ترايات ستانلس ستيل بخمسة مقاسات لكل فك. تتحمل الأوتوكلاف."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"glove","sku":"DSP-501","cat":"disp","price":230,"stock":80,"name":{"en":"Nitrile examination gloves","ar":"جوانتي نيتريل للفحص"},"spec":{"en":"Box of 100 · powder-free","ar":"علبة 100 · بدون بودرة"},"desc":{"en":"Textured fingertips for grip on instruments. Latex-free.","ar":"أطراف أصابع محبّبة لثبات أفضل على الأدوات. خالٍ من اللاتكس."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["S","M","L"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"mask","sku":"DSP-510","cat":"disp","price":60,"stock":120,"name":{"en":"3-ply face masks","ar":"ماسكات 3 طبقات"},"spec":{"en":"Box of 50 · ear loop","ar":"علبة 50 · بأستك للأذن"},"desc":{"en":"Fluid-resistant outer layer with a bendable nose wire.","ar":"طبقة خارجية مقاومة للسوائل وسلك أنف قابل للتشكيل."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"se","sku":"DSP-520","cat":"disp","price":85,"stock":70,"name":{"en":"Saliva ejectors","ar":"شفاطات لعاب"},"spec":{"en":"Bag of 100","ar":"كيس 100"},"desc":{"en":"Flexible ejectors with fixed tips. Hold their shape once bent.","ar":"شفاطات مرنة بأطراف ثابتة. تحتفظ بشكلها بعد ثنيها."},"tag":{"en":"","ar":""},"opt":null,"img":""}]}</script>
+<script id="main">
+(function(){
+"use strict";
+/* ===== The product list lives in this Google Sheet (tabs "Products" and "Settings").
+   The sheet must be shared as "Anyone with the link: Viewer". ===== */
+var SHEET_ID = "18ioKcsE_zwM8K_82h5MrY56C-DlbXbr79dLRVSfVSfs";
+
+/* Sample catalogue: shown only in the Claude preview, where the page can't reach Google. */
+var SAMPLE;
+try { SAMPLE = JSON.parse(document.getElementById("data").textContent); } catch(e){ SAMPLE = null; }
+var PREVIEW = !SHEET_ID || !!window.claude || /(^|\.)(claudeusercontent\.com|claude\.ai)$/.test(location.hostname);
+var DEFAULT_SETTINGS = {whatsapp:"", instapay:"", fees:[60,75,95], notice:false};
+var DATA = {settings: Object.assign({}, DEFAULT_SETTINGS), products: []};
+var LOAD = "loading", LOAD_INFO = "";
+var CHECK = (location.hash || "") === "#check";
+
+/* ---------- fixed reference data ---------- */
+var CATS = [
+  {id:"all", en:"All products", ar:"كل المنتجات"},
+  {id:"kit", en:"Student kits", ar:"كيتات الطلبة"},
+  {id:"resto", en:"Restorative", ar:"الحشو والترميم"},
+  {id:"endo", en:"Endodontics", ar:"علاج الجذور"},
+  {id:"bur", en:"Burs", ar:"البيرز"},
+  {id:"imp", en:"Impression", ar:"الطبعات"},
+  {id:"disp", en:"Disposables", ar:"المستهلكات"}
+];
+var ZONES = [
+  {en:"Greater Cairo", ar:"القاهرة الكبرى", govs:["Cairo","Giza","Qalyubia"]},
+  {en:"Alexandria, Delta & Canal", ar:"الإسكندرية والدلتا والقناة", govs:["Alexandria","Beheira","Dakahlia","Damietta","Gharbia","Ismailia","Kafr El Sheikh","Monufia","Port Said","Sharqia","Suez"]},
+  {en:"Upper Egypt, Red Sea & Sinai", ar:"الصعيد والبحر الأحمر وسيناء", govs:["Aswan","Asyut","Beni Suef","Faiyum","Luxor","Matrouh","Minya","New Valley","North Sinai","Qena","Red Sea","Sohag","South Sinai"]}
+];
+var GOV_AR = {"Cairo":"القاهرة","Giza":"الجيزة","Qalyubia":"القليوبية","Alexandria":"الإسكندرية","Beheira":"البحيرة","Dakahlia":"الدقهلية","Damietta":"دمياط","Gharbia":"الغربية","Ismailia":"الإسماعيلية","Kafr El Sheikh":"كفر الشيخ","Monufia":"المنوفية","Port Said":"بورسعيد","Sharqia":"الشرقية","Suez":"السويس","Aswan":"أسوان","Asyut":"أسيوط","Beni Suef":"بني سويف","Faiyum":"الفيوم","Luxor":"الأقصر","Matrouh":"مطروح","Minya":"المنيا","New Valley":"الوادي الجديد","North Sinai":"شمال سيناء","Qena":"قنا","Red Sea":"البحر الأحمر","Sohag":"سوهاج","South Sinai":"جنوب سيناء"};
+var SHADE_VAR = {"A1":"--sh-A1","A2":"--sh-A2","A3":"--sh-A3","A3.5":"--sh-A35","A4":"--sh-A4","B1":"--sh-B1","B2":"--sh-B2","B3":"--sh-B3","C1":"--sh-C1","C2":"--sh-C2","D2":"--sh-D2"};
+var GUIDE = ["A1","A2","A3","A3.5","A4","B1","B2","B3","C1","C2","D2"];
+var ISO = ["15","20","25","30","35","40"];
+var LOW = 5;
+
+var T = {
+ en:{
+  notice:"<b>Preview store.</b> Products and prices are samples. Swap in your real catalogue before launch.",
+  brandAria:"Miswak Dental Supply, home", brandSmall:"Dental Supply",
+  searchLabel:"Search products", searchPh:"Search composite, files, gloves…",
+  langAria:"Switch to Arabic", cart:"Cart", cartAria:"Open cart, {n} items",
+  heroTitle:"Dental materials, delivered to your <em>clinic</em> or your <em>college</em>.",
+  heroText:"Composites, endo, burs, impression materials and ready-made student kits. Order in a minute and pay cash on delivery, anywhere in Egypt.",
+  facts:["Cash on delivery","All 27 governorates","Orders confirmed on WhatsApp"],
+  shadesCap:"Composite shades in stock:",
+  catsAria:"Product categories", resultsFor:"Results for “{q}”", count:"{n} products", count1:"1 product",
+  noMatch:"No products match “{q}”. Try a shorter word, like “file” or “bur”.",
+  view:"View {name}", add:"Add", choose:"Choose", soldOut:"Sold out",
+  stockN:"{n} in stock", stockLow:"Only {n} left", stockOut:"Out of stock",
+  howTitle:"How ordering works",
+  steps:[["Fill your cart","Pick products, shades and sizes. Your cart stays saved on this device."],["Add delivery details","Name, mobile number and address. The delivery fee depends on your governorate."],["Send it on WhatsApp","We confirm stock and the delivery date, then you pay on delivery or by InstaPay."]],
+  story:"We're named after the miswak, the arak twig people across our region have cleaned their teeth with for centuries.",
+  contact:"Questions or bulk orders? WhatsApp", copyright:"© 2026 Miswak Dental Supply · Egypt", pricesIn:"Prices in Egyptian pounds (EGP)",
+  cur:"EGP", close:"Close", dec:"Decrease quantity", inc:"Increase quantity",
+  addToCart:"Add to cart · {t}", allInCart:"All {n} in stock are already in your cart.",
+  added:"Added {name}", viewCart:"View cart", maxStock:"Only {n} available",
+  yourCart:"Your cart", emptyTitle:"Your cart is empty", emptyText:"Add a composite, a set of files or a student kit to get started.", browse:"Browse products",
+  each:"{p} each", remove:"Remove", subtotal:"Subtotal", deliveryNext:"The delivery fee is added at the next step, based on your governorate.",
+  toDetails:"Continue to delivery details", backCart:"Back to cart",
+  details:"Delivery details", fName:"Full name", fPhone:"Mobile number", phoneHint:"We call this number to confirm your order.",
+  iam:"I am a", types:["Dentist / clinic","Student / intern","Dental lab"], fGov:"Governorate", chooseOpt:"Choose…", fArea:"City / area",
+  fAddress:"Street, building, floor, apartment", fPay:"Payment", pays:["Cash on delivery","InstaPay","Mobile wallet"],
+  fNotes:"Notes", optional:"(optional)", notesPh:"Best time to call, a landmark, etc.",
+  subItems:"Subtotal · {n} items", subItems1:"Subtotal · 1 item", delivery:"Delivery", chooseGov:"Choose governorate", total:"Total", place:"Place order · {t}",
+  errName:"Enter your name.", errPhone:"Enter an 11-digit Egyptian mobile number starting with 010, 011, 012 or 015.", errGov:"Choose your governorate.", errArea:"Enter your city or area.", errAddr:"Enter your street and building.",
+  doneTitle:"Order ready", doneHead:"One last step: send your order on WhatsApp", doneBody:"Tap the button below to send it to us. We reply to confirm stock and your delivery date.",
+  payCod:"Pay the courier {t} on delivery.", payInsta:"Pay {t} to {a} once we confirm.", payInstaLater:"We'll send InstaPay details when we confirm.", payWallet:"We'll send the wallet number when we confirm.",
+  yourOrder:"Your order", sendWa:"Send order on WhatsApp", copy:"Copy order text", copied:"Copied. Paste it into a WhatsApp message to us.", copyFallback:"Text selected. Copy it and paste it into a message to us.", keepShopping:"Continue shopping",
+  mNew:"New order {no}", mName:"Name", mPhone:"Phone", mCust:"Customer", mAddr:"Address", mItems:"Items", mPay:"Payment", mNotes:"Notes",
+  loading:"Loading products…", loadErrTitle:"Products couldn't load", loadErrText:"Check your internet connection and try again.", retry:"Try again"
+ },
+ ar:{
+  notice:"<b>متجر تجريبي.</b> المنتجات والأسعار للعرض فقط. ضع منتجاتك الحقيقية قبل الإطلاق.",
+  brandAria:"مسواك لمستلزمات الأسنان، الرئيسية", brandSmall:"لمستلزمات الأسنان",
+  searchLabel:"ابحث في المنتجات", searchPh:"ابحث: كومبوزيت، فايلات، جوانتي…",
+  langAria:"التبديل إلى الإنجليزية", cart:"السلة", cartAria:"فتح السلة، {n} قطعة",
+  heroTitle:"خامات الأسنان توصلك لحد <em>عيادتك</em> أو <em>كليتك</em>.",
+  heroText:"كومبوزيت، إندو، بيرز، خامات طبعات، وكيتات جاهزة للطلبة. اطلب في دقيقة وادفع عند الاستلام في أي مكان في مصر.",
+  facts:["الدفع عند الاستلام","التوصيل لكل المحافظات","تأكيد الطلب على واتساب"],
+  shadesCap:"درجات الكومبوزيت المتوفرة:",
+  catsAria:"أقسام المنتجات", resultsFor:"نتائج البحث عن “{q}”", count:"{n} منتج", count1:"منتج واحد",
+  noMatch:"لا توجد منتجات تطابق “{q}”. جرّب كلمة أقصر مثل “فايل” أو “بيرز”.",
+  view:"عرض {name}", add:"أضف", choose:"اختر", soldOut:"نفدت",
+  stockN:"متوفر {n}", stockLow:"متبقي {n} فقط", stockOut:"غير متوفر حاليًا",
+  howTitle:"طريقة الطلب",
+  steps:[["املأ السلة","اختر المنتجات والدرجات والمقاسات. تبقى سلتك محفوظة على جهازك."],["أضف بيانات التوصيل","الاسم ورقم الموبايل والعنوان. مصاريف الشحن حسب محافظتك."],["أرسل الطلب على واتساب","نؤكد التوفر وموعد التوصيل، ثم تدفع عند الاستلام أو بإنستاباي."]],
+  story:"سُمّينا على اسم المسواك، عود الأراك الذي نظّف به أهل منطقتنا أسنانهم لقرون.",
+  contact:"أسئلة أو طلبات بالجملة؟ واتساب", copyright:"© 2026 مسواك لمستلزمات الأسنان · مصر", pricesIn:"الأسعار بالجنيه المصري",
+  cur:"ج.م", close:"إغلاق", dec:"تقليل الكمية", inc:"زيادة الكمية",
+  addToCart:"أضف للسلة · {t}", allInCart:"كل الكمية المتوفرة ({n}) موجودة في سلتك بالفعل.",
+  added:"تمت إضافة {name}", viewCart:"عرض السلة", maxStock:"المتوفر {n} فقط",
+  yourCart:"سلتك", emptyTitle:"سلتك فارغة", emptyText:"أضف كومبوزيت أو فايلات أو كيت للطلبة لتبدأ.", browse:"تصفّح المنتجات",
+  each:"{p} للقطعة", remove:"حذف", subtotal:"المجموع", deliveryNext:"مصاريف الشحن تُضاف في الخطوة التالية حسب محافظتك.",
+  toDetails:"متابعة لبيانات التوصيل", backCart:"رجوع للسلة",
+  details:"بيانات التوصيل", fName:"الاسم بالكامل", fPhone:"رقم الموبايل", phoneHint:"سنتصل بهذا الرقم لتأكيد طلبك.",
+  iam:"أنا", types:["طبيب / عيادة","طالب / امتياز","معمل أسنان"], fGov:"المحافظة", chooseOpt:"اختر…", fArea:"المدينة / المنطقة",
+  fAddress:"الشارع، العمارة، الدور، الشقة", fPay:"طريقة الدفع", pays:["الدفع عند الاستلام","إنستاباي","محفظة إلكترونية"],
+  fNotes:"ملاحظات", optional:"(اختياري)", notesPh:"أنسب وقت للاتصال، علامة مميزة، إلخ.",
+  subItems:"المجموع · {n} قطعة", subItems1:"المجموع · قطعة واحدة", delivery:"الشحن", chooseGov:"اختر المحافظة", total:"الإجمالي", place:"تأكيد الطلب · {t}",
+  errName:"اكتب اسمك.", errPhone:"اكتب رقم موبايل مصري من 11 رقمًا يبدأ بـ 010 أو 011 أو 012 أو 015.", errGov:"اختر محافظتك.", errArea:"اكتب المدينة أو المنطقة.", errAddr:"اكتب الشارع ورقم العمارة.",
+  doneTitle:"الطلب جاهز", doneHead:"خطوة أخيرة: أرسل طلبك على واتساب", doneBody:"اضغط الزر بالأسفل لإرساله لنا. سنرد لتأكيد التوفر وموعد التوصيل.",
+  payCod:"ادفع {t} للمندوب عند الاستلام.", payInsta:"حوّل {t} على {a} بعد التأكيد.", payInstaLater:"سنرسل بيانات إنستاباي عند التأكيد.", payWallet:"سنرسل رقم المحفظة عند التأكيد.",
+  yourOrder:"طلبك", sendWa:"أرسل الطلب على واتساب", copy:"انسخ نص الطلب", copied:"تم النسخ. الصقه في رسالة واتساب لنا.", copyFallback:"تم تحديد النص. انسخه والصقه في رسالة لنا.", keepShopping:"متابعة التسوق",
+  mNew:"طلب جديد {no}", mName:"الاسم", mPhone:"الموبايل", mCust:"العميل", mAddr:"العنوان", mItems:"المنتجات", mPay:"الدفع", mNotes:"ملاحظات",
+  loading:"جارٍ تحميل المنتجات…", loadErrTitle:"تعذّر تحميل المنتجات", loadErrText:"تأكد من اتصالك بالإنترنت وحاول مرة أخرى.", retry:"حاول مرة أخرى"
+ }
+};
+
+/* ---------- icons ---------- */
+var ICONS = {
+  resto:'<path d="M16.5 3.5l4 4"/><path d="M18.5 5.5l-2 2"/><path d="M15 6l3 3-8.5 8.5-3.5 1 1-3.5z"/><path d="M12 9l1.5 1.5M10 11l1.5 1.5"/><path d="M6 18l-2.5 2.5"/>',
+  endo:'<rect x="9.5" y="2.5" width="5" height="5" rx="1"/><path d="M12 7.5V9l2 1.5-4 1.5 4 1.5-4 1.5 4 1.5-4 1.5 2 1.5V22"/>',
+  bur:'<path d="M12 22V10.5"/><path d="M10.3 13.5h3.4"/><circle cx="12" cy="6.5" r="3.5"/><path d="M10.4 5.2l.5.5M13.2 4.7l.5.5M11.2 8l.5.5M13.6 7.4l.4.4"/>',
+  imp:'<path d="M4.5 8c0 6.5 3.4 10 7.5 10s7.5-3.5 7.5-10"/><path d="M8 8c0 4.2 1.8 6.5 4 6.5s4-2.3 4-6.5"/><path d="M4.5 8H8M16 8h3.5"/><path d="M12 18v4"/>',
+  disp:'<rect x="3" y="9.5" width="18" height="10.5" rx="1.5"/><path d="M8 13c2.5 1.5 5.5 1.5 8 0"/><path d="M10 10c-.5-2 0-4 1-5.5M12 10c0-2 .3-3.8 1.2-5M14 10c.3-1.5.8-3 1.8-4"/>',
+  kit:'<rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M9 7.5v-2A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5v2"/><path d="M3 12.5h18"/><path d="M10.5 11h3v3h-3z"/>'
+};
+var I_CLOSE = '<path d="M6 6l12 12M18 6L6 18"/>';
+var I_BACK = '<path d="M15 5l-7 7 7 7"/>';
+var I_CART = '<path d="M3 4h2l2.2 10.5a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/>';
+var I_SEARCH = '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/>';
+var I_CHECK = '<path d="M5 12.5l4.5 4.5L19 7.5"/>';
+var I_WA = '<path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/>';
+var MARK = '<svg class="ico mark" viewBox="0 0 24 24" aria-hidden="true"><path class="stick" d="M4 20.5L13.6 10.9" stroke-width="3.4"/><path d="M6.6 17.9l.9.9" stroke-width="3.4"/><path d="M14.3 10.2l.6-4.6M14.3 10.2l2.3-3.9M14.3 10.2l3.6-2.6M14.3 10.2l4.4-1.1M14.3 10.2l4.5.5" stroke-width="1.4"/></svg>';
+
+/* ---------- helpers ---------- */
+function $(s, r){ return (r || document).querySelector(s); }
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function icon(path, cls){ return '<svg class="ico' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" aria-hidden="true">' + path + "</svg>"; }
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
+function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+
+var lang = pickLang();
+function pickLang(){
+  var h = (location.hash || "").slice(1);
+  if (h === "ar" || h === "en") return h;
+  try { var s = localStorage.getItem("miswak-lang"); if (s === "ar" || s === "en") return s; } catch(e){}
+  return (navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en";
+}
+function t(k, vars){
+  var s = T[lang][k]; if (s == null) s = T.en[k]; if (s == null) s = k;
+  if (vars) for (var v in vars) s = s.split("{" + v + "}").join(vars[v]);
+  return s;
+}
+function L(o){ return o ? (o[lang] || o.en || o.ar || "") : ""; }
+function money(n){ return Number(n || 0).toLocaleString("en-US") + " " + t("cur"); }
+function byId(id){ for (var i = 0; i < DATA.products.length; i++) if (DATA.products[i].id === id) return DATA.products[i]; return null; }
+function catOf(id){ for (var i = 0; i < CATS.length; i++) if (CATS[i].id === id) return CATS[i]; return CATS[0]; }
+function catColor(c){ return "var(--c-" + (ICONS[c] ? c : "kit") + ")"; }
+function optText(p, v){
+  if (!p.opt) return v;
+  var i = p.opt.values.indexOf(v);
+  return (lang === "ar" && p.opt.values_ar && p.opt.values_ar[i]) || v;
+}
+function govName(g){ return lang === "ar" ? (GOV_AR[g] || g) : g; }
+function zoneIndex(g){ for (var i = 0; i < ZONES.length; i++) if (ZONES[i].govs.indexOf(g) > -1) return i; return -1; }
+function fmtPhone(n){ n = String(n || ""); return /^20\d{10}$/.test(n) ? "+20 " + n.slice(2,5) + " " + n.slice(5,8) + " " + n.slice(8) : (n ? "+" + n : ""); }
+
+/* ---------- storefront state ---------- */
+var cat = "all", query = "";
+var cart = loadJSON("miswak-cart", []);
+var cust = loadJSON("miswak-details", {});
+var view = "cart", lastOrder = null;
+
+function cartQty(id, exceptKey){ var n = 0; cart.forEach(function(i){ if (i.id === id && i.key !== exceptKey) n += i.qty; }); return n; }
+function cleanCart(){
+  cart = (Array.isArray(cart) ? cart : []).filter(function(i){ return i && byId(i.id) && i.qty > 0; });
+  cart.forEach(function(i){ var p = byId(i.id); var room = Math.max(0, p.stock - cartQty(i.id, i.key)); i.qty = Math.min(i.qty, room); });
+  cart = cart.filter(function(i){ return i.qty > 0; });
+  saveJSON("miswak-cart", cart);
+}
+
+/* ---------- shell ---------- */
+function renderShell(){
+  var root = document.documentElement;
+  root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
+  ["productSheet","cartSheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
+  var s = DATA.settings;
+  var steps = T[lang].steps.map(function(st){ return "<li><b>" + st[0] + "</b><span>" + st[1] + "</span></li>"; }).join("");
+  var facts = T[lang].facts.map(function(f){ return "<li>" + f + "</li>"; }).join("");
+  $("#app").innerHTML =
+    (CHECK ? checkBar() : "") +
+    (s.notice ? '<div class="notice"><div class="wrap">' + t("notice") + "</div></div>" : "") +
+    '<header class="top"><div class="wrap">' +
+      '<a class="brand" href="#shop" aria-label="' + esc(t("brandAria")) + '">' + MARK +
+        '<div><span class="wm">' + (lang === "ar" ? "مسواك" : "Miswak") + '</span><span class="alt"' + (lang === "ar" ? ' lang="en"' : ' lang="ar"') + ">" + (lang === "ar" ? "Miswak" : "مسواك") + "</span><small>" + t("brandSmall") + "</small></div></a>" +
+      '<div class="search">' + icon(I_SEARCH) + '<label for="q" class="sr">' + t("searchLabel") + '</label><input id="q" type="search" placeholder="' + esc(t("searchPh")) + '" autocomplete="off" value="' + esc(query) + '"></div>' +
+      '<button class="hbtn lang-btn" type="button" data-act="lang" lang="' + (lang === "ar" ? "en" : "ar") + '" aria-label="' + esc(t("langAria")) + '">' + (lang === "ar" ? "English" : "عربي") + "</button>" +
+      '<button class="hbtn cart-btn" id="cartBtn" type="button" data-act="cart">' + icon(I_CART) + '<span class="lbl">' + t("cart") + '</span><span class="count" id="cartCount" aria-live="polite">0</span></button>' +
+    "</div></header>" +
+    '<main id="shop">' +
+      '<section class="hero"><div class="wrap"><div><h1>' + t("heroTitle") + "</h1><p>" + t("heroText") + '</p><ul class="facts">' + facts + "</ul></div>" +
+        '<div class="guide-box" id="guideBox"></div></div></section>' +
+      '<div class="wrap"><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
+        '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div></div>' +
+      '<section class="how" aria-labelledby="howTitle"><div class="wrap"><h2 id="howTitle">' + t("howTitle") + "</h2><ol>" + steps + "</ol></div></section>" +
+    "</main>" +
+    '<footer><div class="wrap"><p class="story"><span class="ar" lang="ar">مسواك</span>' + t("story") + "</p>" +
+      (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
+      "<span>" + t("copyright") + "</span><span>" + t("pricesIn") + "</span></div></footer>" +
+    '<dialog id="productSheet" aria-labelledby="pTitle"><div class="sheet" id="productBody"></div></dialog>' +
+    '<dialog id="cartSheet" class="side" aria-labelledby="cartTitle">' +
+      '<div class="cart-head"><button class="x" id="cartBack" type="button" data-act="backcart" aria-label="' + esc(t("backCart")) + '" hidden>' + icon(I_BACK, "flip") + '</button><h2 id="cartTitle"></h2><button class="x" type="button" data-act="closecart" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
+      '<div class="cart-body" id="cartBody"></div><div class="cart-foot" id="cartFoot"></div></dialog>' +
+    '<button class="toast" id="toast" type="button" data-act="toast" hidden></button>';
+
+  $("#q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); renderGrid(); });
+  var cs = $("#cartSheet");
+  cs.addEventListener("click", onCartClick);
+  cs.addEventListener("input", onDetailsInput);
+  cs.addEventListener("change", onDetailsInput);
+  cs.addEventListener("submit", function(e){ e.preventDefault(); placeOrder(); });
+  var ps = $("#productSheet");
+  ps.addEventListener("click", function(e){ if (e.target === ps) ps.close(); });
+  renderGuide(); renderCats(); renderGrid(); updateCount(false);
+}
+
+function renderGuide(){
+  var stocked = {};
+  DATA.products.forEach(function(p){ if (p.opt && p.opt.style === "shade" && p.stock > 0) p.opt.values.forEach(function(v){ stocked[v] = true; }); });
+  var list = GUIDE.filter(function(s){ return stocked[s]; });
+  $("#guideBox").innerHTML = '<div class="guide" aria-hidden="true">' + GUIDE.map(function(s){
+      return '<div class="gt' + (stocked[s] ? "" : " off") + '" style="--c:var(' + SHADE_VAR[s] + ')"><i></i><b>' + s + "</b></div>";
+    }).join("") + "</div>" +
+    (list.length ? '<p class="guide-cap">' + t("shadesCap") + ' <strong class="ltr">' + list.join(", ") + "</strong></p>" : "");
+}
+
+/* ---------- catalogue ---------- */
+function visual(p){
+  if (p.opt && p.opt.style === "shade") return '<span class="vis">' + p.opt.values.filter(function(v){ return SHADE_VAR[v]; }).map(function(v){ return '<span class="mt" style="--c:var(' + SHADE_VAR[v] + ')"></span>'; }).join("") + "</span>";
+  if (p.iso) return '<span class="vis">' + ISO.map(function(s){ return '<span class="iso" style="--c:var(--iso-' + s + ')"></span>'; }).join("") + "</span>";
+  if (p.grit) return '<span class="vis"><span class="grit" style="--c:var(--grit-c)"></span><span class="grit" style="--c:var(--grit-m)"></span><span class="grit" style="--c:var(--grit-f)"></span></span>';
+  return "";
+}
+function tileInner(p){
+  var tag = L(p.tag);
+  return '<span class="sku">' + esc(p.sku) + "</span>" + (tag ? '<span class="tag">' + esc(tag) + "</span>" : "") +
+    icon(ICONS[p.cat] || ICONS.kit) + visual(p) +
+    (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove(\'photo\');this.remove()">' : "");
+}
+function stockHtml(p, long){
+  if (p.stock <= 0) return '<span class="stock out">' + t("stockOut") + "</span>";
+  if (p.stock <= LOW) return '<span class="stock low">' + t("stockLow", {n: p.stock}) + "</span>";
+  return '<span class="stock in">' + t("stockN", {n: p.stock}) + "</span>";
+}
+function matches(p){
+  if (cat !== "all" && p.cat !== cat) return false;
+  if (!query) return true;
+  var c = catOf(p.cat);
+  var hay = [p.name.en, p.name.ar, p.spec.en, p.spec.ar, p.sku, p.desc.en, p.desc.ar, c.en, c.ar].join(" ").toLowerCase();
+  return query.split(/\s+/).every(function(w){ return hay.indexOf(w) > -1; });
+}
+function renderCats(){
+  $("#cats").innerHTML = CATS.map(function(c){
+    var n = c.id === "all" ? DATA.products.length : DATA.products.filter(function(p){ return p.cat === c.id; }).length;
+    if (c.id !== "all" && !n) return "";
+    return '<button class="chip" type="button" data-cat="' + c.id + '" aria-pressed="' + (c.id === cat) + '">' + L(c) + " <small>" + n + "</small></button>";
+  }).join("");
+}
+function card(p){
+  var out = p.stock <= 0, choose = !!(p.opt && p.opt.values && p.opt.values.length);
+  return '<article class="card" style="--cat:' + catColor(p.cat) + '">' +
+    '<button class="tile' + (p.img ? " photo" : "") + '" type="button" data-open="' + p.id + '" aria-label="' + esc(t("view", {name: L(p.name)})) + '">' + tileInner(p) + "</button>" +
+    '<div class="card-body"><h3 class="pname">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) +
+      '<div class="buy"><span class="price">' + Number(p.price).toLocaleString("en-US") + "<small>" + t("cur") + "</small></span>" +
+      '<button class="add' + (choose ? " alt" : "") + '" type="button" data-' + (choose ? "open" : "add") + '="' + p.id + '"' + (out ? " disabled" : "") + ">" +
+      (out ? t("soldOut") : choose ? t("choose") : t("add")) + "</button></div></div></article>";
+}
+function renderGrid(){
+  if (LOAD !== "ready"){
+    $("#listTitle").textContent = L(catOf("all"));
+    $("#listCount").textContent = "";
+    $("#grid").innerHTML = LOAD === "loading"
+      ? new Array(6).join(".").split(".").map(function(){ return '<div class="skel" aria-hidden="true"><i></i><b></b><b></b></div>'; }).join("") + '<span class="sr" role="status">' + esc(t("loading")) + "</span>"
+      : '<div class="load-err" role="alert"><b>' + esc(t("loadErrTitle")) + "</b><span>" + esc(t("loadErrText")) + '</span><button class="btn sm" type="button" data-act="retry">' + esc(t("retry")) + "</button></div>";
+    return;
+  }
+  var list = DATA.products.filter(matches);
+  $("#listTitle").textContent = query ? t("resultsFor", {q: query}) : L(catOf(cat));
+  $("#listCount").textContent = list.length === 1 ? t("count1") : t("count", {n: list.length});
+  $("#grid").innerHTML = list.length ? list.map(card).join("") : '<p class="empty-list">' + esc(t("noMatch", {q: query})) + "</p>";
+}
+
+/* ---------- cart ---------- */
+function count(){ return cart.reduce(function(n, i){ return n + i.qty; }, 0); }
+function subtotal(){ return cart.reduce(function(n, i){ return n + byId(i.id).price * i.qty; }, 0); }
+function updateCount(bump){
+  var n = count(), b = $("#cartBtn");
+  $("#cartCount").textContent = n;
+  b.setAttribute("aria-label", t("cartAria", {n: n}));
+  if (bump){ b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
+}
+function saveCart(){ saveJSON("miswak-cart", cart); }
+function addToCart(id, opt, qty){
+  var p = byId(id); if (!p) return;
+  var room = Math.max(0, p.stock - cartQty(id));
+  if (room <= 0){ toast(t("maxStock", {n: p.stock}), true); return; }
+  var n = Math.min(qty, room), key = id + "|" + (opt || "");
+  var hit = cart.filter(function(i){ return i.key === key; })[0];
+  if (hit) hit.qty += n; else cart.push({key: key, id: id, opt: opt || "", qty: n});
+  saveCart(); updateCount(true);
+  toast(n < qty ? t("maxStock", {n: p.stock}) : t("added", {name: L(p.name) + (opt ? ", " + optText(p, opt) : "")}), true);
+}
+var toastTimer;
+function toast(msg, withCart){
+  var el = $("#toast");
+  el.innerHTML = esc(msg) + (withCart ? " · <u>" + esc(t("viewCart")) + "</u>" : "");
+  el.dataset.cart = withCart ? "1" : "";
+  el.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.hidden = true; }, 3200);
+}
+
+/* ---------- product sheet ---------- */
+function openProduct(id){
+  var p = byId(id); if (!p) return;
+  var sheet = $("#productSheet"), body = $("#productBody");
+  var hasOpt = !!(p.opt && p.opt.values && p.opt.values.length);
+  var sel = hasOpt ? p.opt.values[Math.min(p.opt.def || 0, p.opt.values.length - 1)] : "";
+  var qty = 1;
+  function room(){ return Math.max(0, p.stock - cartQty(p.id)); }
+  function optHtml(){
+    if (!hasOpt) return "";
+    var shade = p.opt.style === "shade";
+    var btns = p.opt.values.map(function(v){
+      var on = v === sel;
+      if (shade && SHADE_VAR[v]) return '<button type="button" class="shade-opt" data-v="' + esc(v) + '" aria-pressed="' + on + '" style="--c:var(' + SHADE_VAR[v] + ')"><i></i><b>' + esc(v) + "</b></button>";
+      var sw = p.opt.swatch && p.opt.swatch[v] ? '<span class="sw" style="--c:var(' + p.opt.swatch[v] + ')"></span>' : "";
+      return '<button type="button" class="chip" data-v="' + esc(v) + '" aria-pressed="' + on + '">' + sw + esc(optText(p, v)) + "</button>";
+    }).join("");
+    return '<div><p class="opt-label">' + esc(L(p.opt.label)) + ": " + esc(optText(p, sel)) + '</p><div class="opts" role="group" aria-label="' + esc(L(p.opt.label)) + '">' + btns + "</div></div>";
+  }
+  function render(){
+    var r = room(), out = p.stock <= 0;
+    if (qty > r) qty = Math.max(1, r);
+    var blocked = out || r <= 0;
+    body.innerHTML =
+      '<div class="sheet-top"><span class="sku"><bdi class="ltr">' + esc(p.sku) + "</bdi> · " + esc(L(catOf(p.cat))) + '</span><button class="x" type="button" data-close aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
+      '<div class="tile' + (p.img ? " photo" : "") + '" style="--cat:' + catColor(p.cat) + '">' + tileInner(p) + "</div>" +
+      '<div><h3 id="pTitle">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) + "</div>" +
+      (L(p.desc) ? '<p class="desc">' + esc(L(p.desc)) + "</p>" : "") + optHtml() +
+      (!out && r <= 0 ? '<p class="note warn">' + esc(t("allInCart", {n: p.stock})) + "</p>" : "") +
+      '<div class="sheet-buy"><div class="qty"><button type="button" data-q="-1" aria-label="' + esc(t("dec")) + '"' + (qty <= 1 || blocked ? " disabled" : "") + ">−</button><output aria-live=\"polite\">" + qty + '</output><button type="button" data-q="1" aria-label="' + esc(t("inc")) + '"' + (qty >= r || blocked ? " disabled" : "") + ">+</button></div>" +
+      '<button class="btn" type="button" data-buy' + (blocked ? " disabled" : "") + ">" + (out ? t("soldOut") : t("addToCart", {t: money(p.price * qty)})) + "</button></div>";
+  }
+  render();
+  body.onclick = function(e){
+    var v = e.target.closest("[data-v]");
+    if (v){ sel = v.dataset.v; render(); return; }
+    var q = e.target.closest("[data-q]");
+    if (q){ qty = Math.max(1, Math.min(room(), qty + Number(q.dataset.q))); render(); return; }
+    if (e.target.closest("[data-buy]")){ sheet.close(); addToCart(p.id, sel, qty); return; }
+    if (e.target.closest("[data-close]")) sheet.close();
+  };
+  if (!sheet.open) sheet.showModal();
+  sheet.scrollTop = 0;
+}
+
+/* ---------- cart sheet: cart → details → done ---------- */
+function openCart(v){
+  view = v || (lastOrder && !cart.length ? "done" : "cart");
+  renderSheet();
+  var d = $("#cartSheet"); if (!d.open) d.showModal();
+}
+function renderSheet(){
+  $("#cartBack").hidden = view !== "details";
+  if (view === "cart") renderCartView(); else if (view === "details") renderDetails(); else renderDone();
+  $("#cartBody").scrollTop = 0;
+}
+function renderCartView(){
+  $("#cartTitle").textContent = t("yourCart");
+  if (!cart.length){
+    $("#cartBody").innerHTML = '<div class="empty">' + icon(I_CART) + "<b>" + t("emptyTitle") + "</b><span>" + t("emptyText") + "</span></div>";
+    $("#cartFoot").innerHTML = '<button class="btn ghost" type="button" data-act="closecart">' + t("browse") + "</button>";
+    return;
+  }
+  $("#cartBody").innerHTML = cart.map(function(i, idx){
+    var p = byId(i.id), full = cartQty(i.id) >= p.stock;
+    return '<div class="line"><div><h4>' + esc(L(p.name)) + '</h4><div class="meta">' + (i.opt ? esc(L(p.opt.label) + ": " + optText(p, i.opt)) + " · " : "") + esc(t("each", {p: money(p.price)})) + "</div></div>" +
+      '<div class="lt">' + money(p.price * i.qty) + "</div>" +
+      '<div class="ctl"><div class="qty sm"><button type="button" data-line="' + idx + '" data-d="-1" aria-label="' + esc(t("dec")) + '">−</button><output>' + i.qty + '</output><button type="button" data-line="' + idx + '" data-d="1" aria-label="' + esc(t("inc")) + '"' + (full ? " disabled" : "") + ">+</button></div>" +
+      '<button class="link" type="button" data-remove="' + idx + '">' + t("remove") + "</button></div></div>";
+  }).join("");
+  $("#cartFoot").innerHTML = '<div class="totals"><div class="row total"><span>' + t("subtotal") + "</span><span>" + money(subtotal()) + "</span></div></div>" +
+    '<p class="hint">' + t("deliveryNext") + "</p>" +
+    '<button class="btn" type="button" data-act="details">' + t("toDetails") + "</button>";
+}
+function field(id, label, control, hint){
+  return '<div class="field"><label for="' + id + '">' + label + "</label>" + control + (hint ? '<p class="hint">' + hint + "</p>" : "") + '<p class="err" id="' + id + '-err" hidden></p></div>';
+}
+function seg(name, labels, cur){
+  return '<div class="seg">' + labels.map(function(l, i){ return '<label class="pick"><input type="radio" name="' + name + '" value="' + i + '"' + (String(cur) === String(i) ? " checked" : "") + "><span>" + l + "</span></label>"; }).join("") + "</div>";
+}
+function renderDetails(){
+  $("#cartTitle").textContent = t("details");
+  var d = cust, govs = ZONES.reduce(function(a, z){ return a.concat(z.govs); }, []).sort(function(a, b){ return govName(a).localeCompare(govName(b), lang); });
+  $("#cartBody").innerHTML =
+    '<form id="orderForm" novalidate>' +
+    field("name", t("fName"), '<input id="name" name="name" autocomplete="name" value="' + esc(d.name || "") + '">') +
+    field("phone", t("fPhone"), '<input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="01X XXXX XXXX" value="' + esc(d.phone || "") + '">', t("phoneHint")) +
+    '<fieldset><legend class="legend">' + t("iam") + "</legend>" + seg("type", T[lang].types, d.type == null ? 0 : d.type) + "</fieldset>" +
+    '<div class="two">' +
+      field("gov", t("fGov"), '<select id="gov" name="gov"><option value="">' + t("chooseOpt") + "</option>" + govs.map(function(g){ return '<option value="' + g + '"' + (d.gov === g ? " selected" : "") + ">" + govName(g) + "</option>"; }).join("") + "</select>") +
+      field("area", t("fArea"), '<input id="area" name="area" autocomplete="address-level2" value="' + esc(d.area || "") + '">') +
+    "</div>" +
+    field("address", t("fAddress"), '<textarea id="address" name="address" autocomplete="street-address" rows="2">' + esc(d.address || "") + "</textarea>") +
+    '<fieldset><legend class="legend">' + t("fPay") + "</legend>" + seg("pay", T[lang].pays, d.pay == null ? 0 : d.pay) + "</fieldset>" +
+    field("notes", t("fNotes") + ' <span class="opt-txt">' + t("optional") + "</span>", '<textarea id="notes" name="notes" rows="2" placeholder="' + esc(t("notesPh")) + '">' + esc(d.notes || "") + "</textarea>") +
+    '<div class="summary totals" id="sumBox"></div></form>';
+  $("#cartFoot").innerHTML = '<button class="btn" type="submit" form="orderForm" id="placeBtn"></button>';
+  updateSummary();
+}
+function readForm(){
+  var f = $("#orderForm"); if (!f) return cust;
+  var o = {}; new FormData(f).forEach(function(v, k){ o[k] = String(v).trim(); });
+  return o;
+}
+function onDetailsInput(e){
+  if (!e.target.closest || !e.target.closest("#orderForm")) return;
+  cust = readForm(); saveJSON("miswak-details", cust); updateSummary();
+}
+function totals(gov){
+  var sub = subtotal(), z = zoneIndex(gov), fee = z > -1 ? Number(DATA.settings.fees[z] || 0) : 0;
+  return {sub: sub, z: z, fee: fee, total: sub + fee};
+}
+function updateSummary(){
+  var tt = totals(cust.gov), n = count();
+  $("#sumBox").innerHTML =
+    '<div class="row"><span>' + (n === 1 ? t("subItems1") : t("subItems", {n: n})) + "</span><span>" + money(tt.sub) + "</span></div>" +
+    '<div class="row"><span>' + t("delivery") + (tt.z > -1 ? " · " + L(ZONES[tt.z]) : "") + "</span><span>" + (tt.z > -1 ? money(tt.fee) : t("chooseGov")) + "</span></div>" +
+    '<div class="row total"><span>' + t("total") + "</span><span>" + money(tt.total) + "</span></div>";
+  $("#placeBtn").textContent = t("place", {t: money(tt.total)});
+}
+function setErr(id, msg){
+  var el = document.getElementById(id), er = document.getElementById(id + "-err");
+  if (!el || !er) return;
+  el.setAttribute("aria-invalid", msg ? "true" : "false");
+  er.textContent = msg || ""; er.hidden = !msg;
+}
+function placeOrder(){
+  var d = readForm();
+  var phone = (d.phone || "").replace(/[\s-]/g, "").replace(/^\+?20(?=1)/, "0");
+  var errs = {
+    name: d.name ? "" : t("errName"),
+    phone: /^01[0125]\d{8}$/.test(phone) ? "" : t("errPhone"),
+    gov: d.gov ? "" : t("errGov"),
+    area: d.area ? "" : t("errArea"),
+    address: d.address ? "" : t("errAddr")
+  };
+  var first = null;
+  Object.keys(errs).forEach(function(k){ setErr(k, errs[k]); if (errs[k] && !first) first = k; });
+  if (first){ document.getElementById(first).focus(); return; }
+  var tt = totals(d.gov), now = new Date();
+  var no = "MSW-" + String(now.getMonth() + 1).padStart(2, "0") + String(now.getDate()).padStart(2, "0") + "-" + Math.floor(100 + Math.random() * 900);
+  var payIdx = Number(d.pay || 0), typeIdx = Number(d.type || 0);
+  var lines = cart.map(function(i){ var p = byId(i.id); return "• " + i.qty + " × " + L(p.name) + (i.opt ? ", " + optText(p, i.opt) : "") + " (" + p.sku + ") — " + money(p.price * i.qty); });
+  var text = [
+    t("mNew", {no: no}), (lang === "ar" ? "مسواك لمستلزمات الأسنان" : "Miswak Dental Supply"), "",
+    t("mName") + ": " + d.name, t("mPhone") + ": " + phone, t("mCust") + ": " + T[lang].types[typeIdx],
+    t("mAddr") + ": " + d.address + "، ".replace("، ", lang === "ar" ? "، " : ", ") + d.area + (lang === "ar" ? "، " : ", ") + govName(d.gov), "",
+    t("mItems") + ":"
+  ].concat(lines, ["",
+    t("subtotal") + ": " + money(tt.sub),
+    t("delivery") + " (" + L(ZONES[tt.z]) + "): " + money(tt.fee),
+    t("total") + ": " + money(tt.total),
+    t("mPay") + ": " + T[lang].pays[payIdx]
+  ]);
+  if (d.notes) text.push(t("mNotes") + ": " + d.notes);
+  lastOrder = {no: no, text: text.join("\n"), pay: payIdx, total: tt.total, lang: lang};
+  cart = []; saveCart(); updateCount(false);
+  view = "done"; renderSheet();
+}
+function renderDone(){
+  var o = lastOrder, s = DATA.settings;
+  $("#cartTitle").textContent = t("doneTitle");
+  var wa = "https://wa.me/" + (s.whatsapp || "") + "?text=" + encodeURIComponent(o.text);
+  var payNote = o.pay === 1 ? (s.instapay ? t("payInsta", {t: money(o.total), a: '<bdi class="ltr">' + esc(s.instapay) + "</bdi>"}) : t("payInstaLater")) : o.pay === 2 ? t("payWallet") : t("payCod", {t: money(o.total)});
+  $("#cartBody").innerHTML = '<div class="done"><div class="done-mark">' + icon(I_CHECK) + "</div><h3>" + t("doneHead") + '</h3><p class="order-no ltr">' + o.no + "</p><p>" + t("doneBody") + " " + payNote + "</p>" +
+    '<label class="legend" for="orderText">' + t("yourOrder") + '</label><textarea id="orderText" readonly dir="auto">' + esc(o.text) + '</textarea><p class="hint" id="copyNote" aria-live="polite"></p></div>';
+  $("#cartFoot").innerHTML = '<a class="btn wa" href="' + wa + '" target="_blank" rel="noopener">' + icon(I_WA) + t("sendWa") + "</a>" +
+    '<button class="btn ghost" type="button" data-act="copy">' + t("copy") + "</button>" +
+    '<button class="link" type="button" data-act="closecart" style="justify-self:center">' + t("keepShopping") + "</button>";
+}
+function copyOrder(){
+  var ta = $("#orderText"), note = $("#copyNote");
+  function fallback(){ ta.focus(); ta.select(); note.textContent = t("copyFallback"); }
+  try { navigator.clipboard.writeText(lastOrder.text).then(function(){ note.textContent = t("copied"); }, fallback); } catch(e){ fallback(); }
+}
+function onCartClick(e){
+  var cs = $("#cartSheet");
+  if (e.target === cs){ cs.close(); return; }
+  var line = e.target.closest("[data-line]");
+  if (line){
+    var idx = Number(line.dataset.line), i = cart[idx], p = byId(i.id), d = Number(line.dataset.d);
+    if (d > 0 && cartQty(i.id) >= p.stock) return;
+    i.qty += d; if (i.qty < 1) cart.splice(idx, 1);
+    saveCart(); updateCount(false); renderCartView(); return;
+  }
+  var rm = e.target.closest("[data-remove]");
+  if (rm){ cart.splice(Number(rm.dataset.remove), 1); saveCart(); updateCount(false); renderCartView(); return; }
+}
+
+/* ---------- global clicks ---------- */
+document.addEventListener("click", function(e){
+  var a = e.target.closest("[data-act]");
+  if (a){
+    var act = a.dataset.act;
+    if (act === "lang"){ lang = lang === "ar" ? "en" : "ar"; try { localStorage.setItem("miswak-lang", lang); } catch(err){} renderShell(); return; }
+    if (act === "cart"){ openCart(); return; }
+    if (act === "toast"){ a.hidden = true; if (a.dataset.cart) openCart("cart"); return; }
+    if (act === "retry"){ load(); return; }
+    if (act === "closecart"){ $("#cartSheet").close(); return; }
+    if (act === "backcart"){ view = "cart"; renderSheet(); return; }
+    if (act === "details"){ view = "details"; renderSheet(); return; }
+    if (act === "copy"){ copyOrder(); return; }
+  }
+  var c = e.target.closest("[data-cat]");
+  if (c){ cat = c.dataset.cat; renderCats(); renderGrid(); return; }
+  var o = e.target.closest("[data-open]");
+  if (o && !o.closest("dialog")){ openProduct(o.dataset.open); return; }
+  var ad = e.target.closest("[data-add]");
+  if (ad){ addToCart(ad.dataset.add, "", 1); }
+});
+
+/* =================== LOADING THE CATALOGUE FROM GOOGLE SHEETS =================== */
+var CAT_KEYS = {studentkits:"kit", kits:"kit", kit:"kit", restorative:"resto", resto:"resto", endodontics:"endo", endo:"endo", burs:"bur", bur:"bur", impression:"imp", imp:"imp", disposables:"disp", disp:"disp"};
+var GRIT = {coarse:"--grit-c", medium:"--grit-m", fine:"--grit-f"};
+function norm(s){ return String(s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+function parseCSV(text){
+  var rows = [], row = [], f = "", q = false;
+  for (var i = 0; i < text.length; i++){
+    var c = text.charAt(i);
+    if (q){
+      if (c === '"'){ if (text.charAt(i + 1) === '"'){ f += '"'; i++; } else q = false; }
+      else f += c;
+    } else if (c === '"') q = true;
+    else if (c === ","){ row.push(f); f = ""; }
+    else if (c === "\n"){ row.push(f); rows.push(row); row = []; f = ""; }
+    else if (c !== "\r") f += c;
+  }
+  if (f !== "" || row.length){ row.push(f); rows.push(row); }
+  return rows;
+}
+function table(text){
+  var rows = parseCSV(text);
+  if (!rows.length) return [];
+  var head = rows[0].map(norm);
+  return rows.slice(1).map(function(r){ var o = {}; head.forEach(function(h, i){ if (h) o[h] = (r[i] || "").trim(); }); return o; });
+}
+function pick(o, keys){ for (var i = 0; i < keys.length; i++){ var v = o[keys[i]]; if (v != null && v !== "") return v; } return ""; }
+function num(v){ var n = parseFloat(String(v || "").replace(/[^0-9.\-]/g, "")); return isNaN(n) ? 0 : n; }
+function yes(v){ return /^(true|yes|y|1|x|نعم)$/i.test(String(v || "").trim()); }
+function split(s){ return String(s || "").split(/[,،]/).map(function(x){ return x.trim(); }).filter(Boolean); }
+function photoUrl(s){
+  s = String(s || "").trim(); if (!s) return "";
+  if (/drive\.google\.com|docs\.google\.com/.test(s)){
+    var m = s.match(/\/d\/([\w-]{20,})/) || s.match(/[?&]id=([\w-]{20,})/);
+    return m ? "https://lh3.googleusercontent.com/d/" + m[1] + "=w900" : "";
+  }
+  return /^https:\/\//.test(s) ? s : "";
+}
+function toProduct(r, i, seen){
+  var name = {en: pick(r, ["nameenglish","name"]), ar: pick(r, ["namearabic"])};
+  if (!name.en && !name.ar) return null;
+  if (yes(pick(r, ["hidefromsite","hide"]))) return null;
+  var sku = pick(r, ["code","sku"]) || "ITEM-" + (i + 2);
+  var id = sku; while (seen[id]) id += "-" + (i + 2); seen[id] = 1;
+  var cat = CAT_KEYS[norm(pick(r, ["category"]))] || "other";
+  var p = {id: id, sku: sku, cat: cat,
+    price: num(pick(r, ["priceegp","price"])), stock: Math.max(0, Math.floor(num(pick(r, ["instock","stock"])))),
+    name: name,
+    spec: {en: pick(r, ["shortdetailsenglish","detailsenglish"]), ar: pick(r, ["shortdetailsarabic","detailsarabic"])},
+    desc: {en: pick(r, ["descriptionenglish"]), ar: pick(r, ["descriptionarabic"])},
+    tag: {en: pick(r, ["badgeenglish"]), ar: pick(r, ["badgearabic"])},
+    opt: null, img: photoUrl(pick(r, ["photolink","photo"]))};
+  var vals = split(pick(r, ["choicesenglish","choices"]));
+  if (vals.length){
+    var label = {en: pick(r, ["choicenameenglish"]), ar: pick(r, ["choicenamearabic"])};
+    if (!label.en) label.en = label.ar || "Option";
+    p.opt = {label: label, values: vals, values_ar: split(pick(r, ["choicesarabic"])), def: 0,
+             style: vals.every(function(v){ return SHADE_VAR[v]; }) ? "shade" : "chip"};
+    var sw = {}, any = false;
+    vals.forEach(function(v){ if (GRIT[norm(v)]){ sw[v] = GRIT[norm(v)]; any = true; } });
+    if (any){ p.opt.swatch = sw; p.grit = true; }
+  }
+  if (cat === "endo" && /\biso\b/i.test(p.spec.en)) p.iso = true;
+  return p;
+}
+function toSettings(rows){
+  var r = rows[0] || {}, s = Object.assign({}, DEFAULT_SETTINGS), fees = [];
+  Object.keys(r).forEach(function(k){ if (k.indexOf("deliveryfee") === 0) fees.push(num(r[k])); });
+  s.whatsapp = String(pick(r, ["whatsappnumber","whatsapp"])).replace(/\D/g, "");
+  s.instapay = pick(r, ["instapayaddress","instapay"]);
+  if (fees.length) s.fees = [0, 1, 2].map(function(i){ return fees[i] != null ? fees[i] : DEFAULT_SETTINGS.fees[i]; });
+  s.notice = yes(pick(r, ["showpreviewbanner"]));
+  return s;
+}
+function sheetUrl(tab){
+  return "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/gviz/tq?tqx=out:csv&headers=1&sheet=" + encodeURIComponent(tab) + "&_=" + Date.now();
+}
+function getTab(tab){
+  return fetch(sheetUrl(tab), {cache: "no-store", credentials: "omit"}).then(function(res){
+    if (!res.ok) throw new Error("HTTP " + res.status + " on the " + tab + " tab");
+    return res.text();
+  }).then(function(text){
+    if (/^\s*</.test(text)) throw new Error("Google sent a sign-in page instead of the " + tab + " tab, so the sheet isn't shared with Anyone with the link");
+    return table(text);
+  });
+}
+function finish(products, settings, hidden){
+  DATA = {settings: settings, products: products};
+  LOAD = "ready";
+  cleanCart();
+  if (CHECK) LOAD_INFO = PREVIEW ? "" : products.length + " products on the site" + (hidden ? ", " + hidden + " hidden or blank rows skipped" : "") + ". Loaded at " + new Date().toLocaleTimeString() + ".";
+  renderShell();
+}
+function load(){
+  LOAD = "loading"; LOAD_INFO = "";
+  if (PREVIEW){
+    var d = SAMPLE || {products: [], settings: {}};
+    finish(d.products || [], Object.assign({}, DEFAULT_SETTINGS, d.settings || {}), 0);
+    return;
+  }
+  renderShell();
+  Promise.all([getTab("Products"), getTab("Settings").catch(function(){ return []; })]).then(function(res){
+    var seen = {}, rows = res[0], products = [];
+    rows.forEach(function(r, i){ var p = toProduct(r, i, seen); if (p) products.push(p); });
+    finish(products, toSettings(res[1]), rows.length - products.length);
+  }).catch(function(err){
+    LOAD = "error";
+    LOAD_INFO = (err && err.message) || "The sheet couldn't be reached";
+    renderShell();
+  });
+}
+function checkBar(){
+  var bad = LOAD === "error", msg;
+  if (PREVIEW) msg = "Live check: this is the Claude preview, so it shows sample products. The real website reads your Google Sheet.";
+  else if (LOAD === "loading") msg = "Live check: reading your Google Sheet…";
+  else if (bad) msg = "Live check: couldn't read your Google Sheet. " + LOAD_INFO + ". In Google Sheets, tap Share, set General access to “Anyone with the link” as Viewer, then reload this page.";
+  else msg = "Live check: connected to your Google Sheet. " + LOAD_INFO;
+  return '<div class="check-bar' + (bad ? " bad" : "") + '" lang="en" dir="ltr" role="status"><div class="wrap">' + esc(msg) + "</div></div>";
+}
+
+/* ---------- start ---------- */
+load();
+})();
+</script>
+
+</body>
+</html>
