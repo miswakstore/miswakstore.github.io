@@ -8,7 +8,7 @@
 <meta property="og:description" content="Dental materials delivered across Egypt. Cash on delivery. خامات الأسنان بالدفع عند الاستلام.">
 <meta name="theme-color" content="#2C5C3C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M4%2020.5L13.6%2010.9%22%20stroke%3D%22%238A5F35%22%20stroke-width%3D%223.4%22/%3E%3Cpath%20d%3D%22M14.3%2010.2l.6-4.6M14.3%2010.2l2.3-3.9M14.3%2010.2l3.6-2.6M14.3%2010.2l4.4-1.1M14.3%2010.2l4.5.5%22%20stroke%3D%22%232C5C3C%22%20stroke-width%3D%221.6%22/%3E%3C/svg%3E">
-<title>Miswak Dental Supply</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@600&family=Schibsted+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<title>Miswak Dental Supply</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@600&family=Schibsted+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -31,7 +31,7 @@
   --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   --f-arabic:"Reem Kufi","Noto Kufi Arabic","Geeza Pro",Tahoma,sans-serif;
-  --f-arabic-text:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif;
+  --f-arabic-text:"Noto Naskh Arabic","Geeza Pro","Arabic UI Text",Tahoma,serif;
   --f-label:var(--f-mono);
   --radius:12px;
 }
@@ -55,6 +55,8 @@
 }
 :root[lang="ar"]{--f-display:var(--f-arabic-text);--f-body:var(--f-arabic-text);--f-label:var(--f-arabic-text)}
 :root[lang="ar"] body *{letter-spacing:normal!important}
+:root[lang="ar"] body{line-height:1.7}
+:root[lang="ar"] .pname,:root[lang="ar"] .line h4,:root[lang="ar"] .list-head h2{line-height:1.55}
 
 *{box-sizing:border-box}
 html{scroll-padding-top:120px}
@@ -104,7 +106,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 /* hero */
 .hero .wrap{display:grid;gap:22px;padding-block:26px 6px}
 .hero h1{font:800 clamp(30px,7vw,52px)/1.06 var(--f-display);letter-spacing:-.03em;margin:0;max-width:16ch;text-wrap:balance}
-:root[lang="ar"] .hero h1{font-weight:700;line-height:1.3;max-width:15ch}
+:root[lang="ar"] .hero h1{font-weight:700;line-height:1.45;max-width:15ch}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero p{margin:12px 0 0;color:var(--muted);font-size:17px;max-width:52ch}
 .facts{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:16px 0 0;font:500 12px var(--f-label);letter-spacing:.04em;text-transform:uppercase}
@@ -196,7 +198,7 @@ dialog::backdrop{background:var(--scrim)}
 .sheet .tile{border-radius:14px;aspect-ratio:16/10;cursor:default}
 .sheet .tile .ico{width:64px;height:64px}
 .sheet h3{font:800 24px/1.2 var(--f-display);letter-spacing:-.02em;margin:0;text-wrap:balance}
-:root[lang="ar"] .sheet h3{font-weight:700;line-height:1.4}
+:root[lang="ar"] .sheet h3{font-weight:700;line-height:1.55}
 .sheet .spec{font-size:15px;margin-top:4px}
 .sheet .desc{margin:0;font-size:15.5px;max-width:60ch}
 .opt-label{font-weight:700;font-size:14px;margin:0 0 8px}
