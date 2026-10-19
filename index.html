@@ -373,6 +373,15 @@ footer .foot-links .btn{color:var(--ink)}
 .owners li span:not(.avatar){font-size:13.5px;color:var(--muted)}
 .sel{user-select:all;font-weight:700;color:var(--ink)}
 
+/* policies + agreement */
+.policies section{display:grid;gap:6px}
+.policies h3{margin:0;font:700 17px var(--f-display)}
+.policies ul{margin:0;padding-inline-start:20px;display:grid;gap:6px;font-size:15px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:400;cursor:pointer;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.agree input{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:var(--accent)}
+.agree-field [aria-invalid="true"] + span{color:var(--danger)}
+.inline-link{border:0;background:none;padding:0;font:inherit;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
 /* loading, load error, live check */
 .skel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;animation:pulse 1.4s ease-in-out infinite}
 .skel i{display:block;aspect-ratio:4/3;background:var(--sunk)}
@@ -429,6 +438,8 @@ var SHADE_VAR = {"A1":"--sh-A1","A2":"--sh-A2","A3":"--sh-A3","A3.5":"--sh-A35",
 var GUIDE = ["A1","A2","A3","A3.5","A4","B1","B2","B3","C1","C2","D2"];
 var ISO = ["15","20","25","30","35","40"];
 var LOW = 5;
+var POLICY_VERSION = "October 2026";
+var POLICIES = {"en": [["Returns and exchanges", ["You can return or exchange an item within 14 days of delivery if it is unopened, unused and in its original sealed packaging.", "For hygiene and safety, opened or used materials can't be returned: syringes, capsules, files, burs, gloves, masks and other disposables.", "If an item arrives damaged, faulty, expired or isn't what you ordered, message us on WhatsApp within 48 hours of delivery with a photo. We'll replace it or refund you at no cost to you.", "For other returns, the customer pays the return delivery fee. Contact us on WhatsApp first so we can arrange it."]], ["Refunds", ["Once we receive and check a returned item, we refund you within 7 days by InstaPay or mobile wallet.", "The original delivery fee isn't refunded unless the problem was our mistake."]], ["Orders and cancellations", ["An order is confirmed only after we reply to it on WhatsApp.", "You can cancel for free any time before the order is shipped. Message us on WhatsApp.", "Prices and stock on the website can change. The price we confirm on WhatsApp is the one you pay."]], ["Delivery", ["We deliver to all 27 governorates. The delivery fee depends on your governorate and is shown before you order.", "Please check your package when it arrives, before paying the courier."]], ["Payment", ["Cash on delivery, InstaPay or mobile wallet. For InstaPay and wallets we send the details when we confirm your order."]], ["Your information", ["We use your name, phone number and address only to confirm and deliver your order. We don't share them with anyone except the delivery company."]]], "ar": [["الاسترجاع والاستبدال", ["يمكنك إرجاع أو استبدال أي منتج خلال 14 يومًا من الاستلام إذا كان مغلقًا وغير مستخدم وفي عبوته الأصلية المختومة.", "حفاظًا على النظافة والسلامة، لا يمكن إرجاع الخامات المفتوحة أو المستخدمة: السرنجات، الكبسولات، الفايلات، البيرز، الجوانتي، الماسكات وغيرها من المستهلكات.", "إذا وصلك منتج تالف أو معيب أو منتهي الصلاحية أو غير الذي طلبته، راسلنا على واتساب خلال 48 ساعة من الاستلام مع صورة، وسنستبدله أو نرد لك المبلغ بدون أي تكلفة عليك.", "في حالات الإرجاع الأخرى، يتحمل العميل تكلفة شحن الإرجاع. تواصل معنا على واتساب أولًا لترتيب ذلك."]], ["استرداد المبلغ", ["بعد استلام المنتج المرتجع وفحصه، نرد لك المبلغ خلال 7 أيام عن طريق إنستاباي أو المحفظة الإلكترونية.", "لا تُرد مصاريف الشحن الأصلية إلا إذا كانت المشكلة خطأ منا."]], ["الطلبات والإلغاء", ["لا يُعتبر الطلب مؤكدًا إلا بعد ردنا عليه على واتساب.", "يمكنك الإلغاء مجانًا في أي وقت قبل شحن الطلب، بمراسلتنا على واتساب.", "الأسعار والكميات على الموقع قابلة للتغيير، والسعر الذي نؤكده لك على واتساب هو السعر النهائي."]], ["التوصيل", ["نوصّل لكل المحافظات، وتختلف مصاريف الشحن حسب محافظتك وتظهر لك قبل تأكيد الطلب.", "برجاء فحص الطلب عند استلامه وقبل الدفع للمندوب."]], ["الدفع", ["الدفع عند الاستلام أو إنستاباي أو محفظة إلكترونية. في حالة إنستاباي والمحفظة نرسل لك البيانات عند تأكيد الطلب."]], ["بياناتك", ["نستخدم اسمك ورقم موبايلك وعنوانك فقط لتأكيد طلبك وتوصيله، ولا نشاركها مع أحد إلا شركة الشحن."]]]};
 var HADITHS = [{"ar": "«لولا أن أشقّ على أمتي لأمرتهم بالسواك عند كل صلاة»", "en": "“Were it not that I would overburden my nation, I would have commanded them to use the siwak before every prayer.”", "byAr": "عن أبي هريرة · رواه البخاري ومسلم", "byEn": "Narrated by Abu Hurayrah · Al-Bukhari and Muslim"}, {"ar": "«السواك مطهرة للفم، مرضاة للرب»", "en": "“The siwak purifies the mouth and pleases the Lord.”", "byAr": "عن عائشة · رواه النسائي", "byEn": "Narrated by Aisha · An-Nasa'i"}, {"ar": "كان النبي ﷺ إذا قام من الليل يشوص فاه بالسواك.", "en": "When the Prophet ﷺ got up at night, he would clean his mouth with the siwak.", "byAr": "عن حذيفة · رواه البخاري ومسلم", "byEn": "Narrated by Hudhayfah · Al-Bukhari and Muslim"}, {"ar": "سُئلت عائشة: بأي شيء كان يبدأ النبي ﷺ إذا دخل بيته؟ قالت: بالسواك.", "en": "Aisha was asked what the Prophet ﷺ did first when he entered his house. She said: “He used the siwak.”", "byAr": "رواه مسلم", "byEn": "Muslim"}, {"ar": "«أكثرتُ عليكم في السواك»", "en": "“I have urged you a great deal about the siwak.”", "byAr": "عن أنس · رواه البخاري", "byEn": "Narrated by Anas · Al-Bukhari"}, {"ar": "«عشرٌ من الفطرة: قصّ الشارب، وإعفاء اللحية، والسواك…»", "en": "“Ten things are part of the natural way (fitrah): trimming the moustache, letting the beard grow, the siwak…”", "byAr": "عن عائشة · رواه مسلم", "byEn": "Narrated by Aisha · Muslim"}];
 var OWNERS = [
   {en:"Ahmed Waddah", ar:"أحمد وضّاح", role:"founder"},
@@ -477,7 +488,7 @@ var T = {
   yourOrder:"Your order", sendWa:"Send order on WhatsApp", copy:"Copy order text", copied:"Copied. Paste it into a WhatsApp message to us.", copyFallback:"Text selected. Copy it and paste it into a message to us.", keepShopping:"Continue shopping",
   mNew:"New order {no}", mName:"Name", mPhone:"Phone", mCust:"Customer", mAddr:"Address", mItems:"Items", mPay:"Payment", mNotes:"Notes",
   giftBadge:"Gift", giftTitle:"A free miswak with every order", giftText:"Every order arrives with a natural arak miswak, our gift to you. Remember us in your prayers!", giftLine:"Gift: natural miswak", free:"Free", giftMsg:"Gift: 1 free miswak",
-  hadithLink:"Hadiths about the miswak", hadithsTitle:"The miswak in the Sunnah", hadithsIntro:"Some of what the Prophet Muhammad ﷺ said and did about the siwak:", aboutLink:"About us & contact", aboutTitle:"About us", aboutIntro:"Miswak Dental Supply was started by three partners with one goal: to make it easy for dental students, interns and clinics across Egypt to get the materials they need at fair prices, delivered to their door.", ownersTitle:"The team", founder:"Founder", coFounder:"Co-founder", contactTitle:"Contact us", contactText:"The fastest way to reach us is WhatsApp. Message us about orders, stock, bulk prices or anything else.", chatWa:"Chat on WhatsApp", waNumber:"WhatsApp number", based:"Based in Egypt · delivering to all 27 governorates",
+  policyLink:"Store policies", policyTitle:"Store policies", policyUpdated:"Last updated", agreeA:"I have read and agree to the ", agreeLink:"store policies", agreeB:", including the returns policy.", errAgree:"Please confirm that you agree to the store policies.", mAgreed:"✔ Customer agreed to the store policies on the website", hadithLink:"Hadiths about the miswak", hadithsTitle:"The miswak in the Sunnah", hadithsIntro:"Some of what the Prophet Muhammad ﷺ said and did about the siwak:", aboutLink:"About us & contact", aboutTitle:"About us", aboutIntro:"Miswak Dental Supply was started by three partners with one goal: to make it easy for dental students, interns and clinics across Egypt to get the materials they need at fair prices, delivered to their door.", ownersTitle:"The team", founder:"Founder", coFounder:"Co-founder", contactTitle:"Contact us", contactText:"The fastest way to reach us is WhatsApp. Message us about orders, stock, bulk prices or anything else.", chatWa:"Chat on WhatsApp", waNumber:"WhatsApp number", based:"Based in Egypt · delivering to all 27 governorates",
   loading:"Loading products…", loadErrTitle:"Products couldn't load", loadErrText:"Check your internet connection and try again.", retry:"Try again"
  },
  ar:{
@@ -519,7 +530,7 @@ var T = {
   yourOrder:"طلبك", sendWa:"أرسل الطلب على واتساب", copy:"انسخ نص الطلب", copied:"تم النسخ. الصقه في رسالة واتساب لنا.", copyFallback:"تم تحديد النص. انسخه والصقه في رسالة لنا.", keepShopping:"متابعة التسوق",
   mNew:"طلب جديد {no}", mName:"الاسم", mPhone:"الموبايل", mCust:"العميل", mAddr:"العنوان", mItems:"المنتجات", mPay:"الدفع", mNotes:"ملاحظات",
   giftBadge:"هدية", giftTitle:"مسواك هدية مع كل طلب", giftText:"كل طلب يصلك ومعه مسواك أراك طبيعي، هدية منّا لك.. لا تنسانا من صالح دعواك!", giftLine:"هدية: مسواك طبيعي", free:"مجانًا", giftMsg:"هدية: مسواك مجاني",
-  hadithLink:"أحاديث عن السواك", hadithsTitle:"السواك في السنة", hadithsIntro:"من أقوال النبي محمد ﷺ وأفعاله في السواك:", aboutLink:"من نحن وتواصل معنا", aboutTitle:"من نحن", aboutIntro:"بدأ مسواك لمستلزمات الأسنان على يد ثلاثة شركاء بهدف واحد: أن يحصل طلاب طب الأسنان وأطباء الامتياز والعيادات في كل مصر على الخامات التي يحتاجونها بسهولة وبأسعار عادلة، وتصلهم حتى الباب.", ownersTitle:"فريقنا", founder:"مؤسس", coFounder:"شريك مؤسس", contactTitle:"تواصل معنا", contactText:"أسرع طريقة للتواصل معنا هي واتساب. راسلنا بخصوص الطلبات أو التوفر أو أسعار الجملة أو أي استفسار.", chatWa:"راسلنا على واتساب", waNumber:"رقم واتساب", based:"من مصر · نوصّل لكل المحافظات",
+  policyLink:"سياسات المتجر", policyTitle:"سياسات المتجر", policyUpdated:"آخر تحديث", agreeA:"قرأت وأوافق على ", agreeLink:"سياسات المتجر", agreeB:"، ومنها سياسة الاسترجاع.", errAgree:"برجاء تأكيد موافقتك على سياسات المتجر.", mAgreed:"✔ العميل وافق على سياسات المتجر على الموقع", hadithLink:"أحاديث عن السواك", hadithsTitle:"السواك في السنة", hadithsIntro:"من أقوال النبي محمد ﷺ وأفعاله في السواك:", aboutLink:"من نحن وتواصل معنا", aboutTitle:"من نحن", aboutIntro:"بدأ مسواك لمستلزمات الأسنان على يد ثلاثة شركاء بهدف واحد: أن يحصل طلاب طب الأسنان وأطباء الامتياز والعيادات في كل مصر على الخامات التي يحتاجونها بسهولة وبأسعار عادلة، وتصلهم حتى الباب.", ownersTitle:"فريقنا", founder:"مؤسس", coFounder:"شريك مؤسس", contactTitle:"تواصل معنا", contactText:"أسرع طريقة للتواصل معنا هي واتساب. راسلنا بخصوص الطلبات أو التوفر أو أسعار الجملة أو أي استفسار.", chatWa:"راسلنا على واتساب", waNumber:"رقم واتساب", based:"من مصر · نوصّل لكل المحافظات",
   loading:"جارٍ تحميل المنتجات…", loadErrTitle:"تعذّر تحميل المنتجات", loadErrText:"تأكد من اتصالك بالإنترنت وحاول مرة أخرى.", retry:"حاول مرة أخرى"
  }
 };
@@ -602,7 +613,7 @@ function cleanCart(){
 function renderShell(){
   var root = document.documentElement;
   root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
-  ["productSheet","cartSheet","aboutSheet","hadithSheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
+  ["productSheet","cartSheet","aboutSheet","hadithSheet","policySheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
   var s = DATA.settings;
   var steps = T[lang].steps.map(function(st){ return "<li><b>" + st[0] + "</b><span>" + st[1] + "</span></li>"; }).join("");
   var facts = T[lang].facts.map(function(f){ return "<li>" + f + "</li>"; }).join("");
@@ -631,9 +642,10 @@ function renderShell(){
         drop(t("researchTitle"), '<ol class="refs">' + REFS.map(function(r){ return '<li><a href="' + r.u + '" target="_blank" rel="noopener" lang="en" dir="ltr">' + esc(r.t) + "</a><span>" + esc(r.k) + " · " + esc(lang === "ar" ? r.ar : r.en) + "</span></li>"; }).join("") + '</ol><p class="hint">' + t("researchNote") + "</p>") +
         "</div>" +
       (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
-      '<div class="foot-links"><button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="hadiths">' + t("hadithLink") + "</button></div>" +
+      '<div class="foot-links"><button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="hadiths">' + t("hadithLink") + '</button><button class="btn ghost sm" type="button" data-act="policies">' + t("policyLink") + "</button></div>" +
       "<span>" + t("copyright") + "</span><span>" + t("pricesIn") + "</span></div></footer>" +
     '<dialog id="productSheet" aria-labelledby="pTitle"><div class="sheet" id="productBody"></div></dialog>' +
+    '<dialog id="policySheet" class="side" aria-labelledby="polTitle"><div class="cart-head"><h2 id="polTitle">' + t("policyTitle") + '</h2><button class="x" type="button" data-act="closepolicies" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body policies">' + POLICIES[lang].map(function(sec){ return "<section><h3>" + sec[0] + "</h3><ul>" + sec[1].map(function(x){ return "<li>" + x + "</li>"; }).join("") + "</ul></section>"; }).join("") + '<p class="hint">' + t("policyUpdated") + ": " + POLICY_VERSION + "</p></div></dialog>" +
     '<dialog id="hadithSheet" class="side" aria-labelledby="hadTitle"><div class="cart-head"><h2 id="hadTitle">' + t("hadithsTitle") + '</h2><button class="x" type="button" data-act="closehadiths" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body"><p>' + t("hadithsIntro") + "</p>" + HADITHS.map(function(h){ return '<figure class="hadith"><blockquote>' + (lang === "ar" ? h.ar : h.en) + "</blockquote><figcaption>" + (lang === "ar" ? h.byAr : h.byEn) + "</figcaption></figure>"; }).join("") + '</div></dialog>' +
     '<dialog id="aboutSheet" class="side" aria-labelledby="aboutTitle"><div class="cart-head"><h2 id="aboutTitle">' + t("aboutTitle") + '</h2><button class="x" type="button" data-act="closeabout" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="aboutBody"></div></dialog>' +
     '<dialog id="cartSheet" class="side" aria-labelledby="cartTitle">' +
@@ -647,6 +659,8 @@ function renderShell(){
   cs.addEventListener("input", onDetailsInput);
   cs.addEventListener("change", onDetailsInput);
   cs.addEventListener("submit", function(e){ e.preventDefault(); placeOrder(); });
+  var pls = $("#policySheet");
+  pls.addEventListener("click", function(e){ if (e.target === pls) pls.close(); });
   var hs = $("#hadithSheet");
   hs.addEventListener("click", function(e){ if (e.target === hs) hs.close(); });
   var as = $("#aboutSheet");
@@ -901,7 +915,8 @@ function renderDetails(){
     field("address", t("fAddress"), '<textarea id="address" name="address" autocomplete="street-address" rows="2">' + esc(d.address || "") + "</textarea>") +
     '<fieldset><legend class="legend">' + t("fPay") + "</legend>" + seg("pay", T[lang].pays, d.pay == null ? 0 : d.pay) + "</fieldset>" +
     field("notes", t("fNotes") + ' <span class="opt-txt">' + t("optional") + "</span>", '<textarea id="notes" name="notes" rows="2" placeholder="' + esc(t("notesPh")) + '">' + esc(d.notes || "") + "</textarea>") +
-    '<div class="summary totals" id="sumBox"></div></form>';
+    '<div class="summary totals" id="sumBox"></div>' +
+    '<div class="field agree-field"><label class="agree"><input type="checkbox" id="agree" name="agree" value="1"><span>' + t("agreeA") + '<button type="button" class="inline-link" data-act="policies">' + t("agreeLink") + "</button>" + t("agreeB") + '</span></label><p class="err" id="agree-err" hidden></p></div></form>';
   $("#cartFoot").innerHTML = '<button class="btn" type="submit" form="orderForm" id="placeBtn"></button>';
   updateSummary();
 }
@@ -912,7 +927,8 @@ function readForm(){
 }
 function onDetailsInput(e){
   if (!e.target.closest || !e.target.closest("#orderForm")) return;
-  cust = readForm(); saveJSON("miswak-details", cust); updateSummary();
+  cust = readForm(); var keep = Object.assign({}, cust); delete keep.agree; saveJSON("miswak-details", keep); updateSummary();
+  if (e.target.id === "agree" && e.target.checked) setErr("agree", "");
 }
 function totals(gov){
   var sub = subtotal(), z = zoneIndex(gov), fee = z > -1 ? Number(DATA.settings.fees[z] || 0) : 0;
@@ -941,7 +957,8 @@ function placeOrder(){
     phone: /^01[0125]\d{8}$/.test(phone) ? "" : t("errPhone"),
     gov: d.gov ? "" : t("errGov"),
     area: d.area ? "" : t("errArea"),
-    address: d.address ? "" : t("errAddr")
+    address: d.address ? "" : t("errAddr"),
+    agree: d.agree ? "" : t("errAgree")
   };
   var first = null;
   Object.keys(errs).forEach(function(k){ setErr(k, errs[k]); if (errs[k] && !first) first = k; });
@@ -962,6 +979,7 @@ function placeOrder(){
     t("mPay") + ": " + T[lang].pays[payIdx]
   ]);
   if (d.notes) text.push(t("mNotes") + ": " + d.notes);
+  text.push("", t("mAgreed") + " (" + POLICY_VERSION + ")");
   lastOrder = {no: no, text: text.join("\n"), pay: payIdx, total: tt.total, lang: lang};
   cart = []; saveCart(); updateCount(false);
   view = "done"; renderSheet();
@@ -1026,6 +1044,8 @@ document.addEventListener("click", function(e){
     if (act === "copy"){ copyOrder(); return; }
     if (act === "about"){ openAbout(); return; }
     if (act === "hadiths"){ $("#hadithSheet").showModal(); return; }
+    if (act === "policies"){ e.preventDefault(); $("#policySheet").showModal(); return; }
+    if (act === "closepolicies"){ $("#policySheet").close(); return; }
     if (act === "closehadiths"){ $("#hadithSheet").close(); return; }
     if (act === "closeabout"){ $("#aboutSheet").close(); return; }
   }
