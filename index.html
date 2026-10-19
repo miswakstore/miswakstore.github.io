@@ -167,6 +167,41 @@ button,input,select,textarea{font:inherit;color:inherit}
 .totals .gift-row span:last-child{color:var(--ok);font-weight:700}
 .totals .gift-row .ico{width:16px;height:16px}
 
+/* roomier opening screen */
+.hero .wrap{min-height:calc(100svh - 70px);align-content:center;padding-block:36px 28px}
+.cue{justify-self:center;display:inline-flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
+.cue .ico{width:22px;height:22px;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.why .wrap{display:grid;gap:10px;padding-top:28px}
+.why .eyebrow{justify-self:center;margin-bottom:6px}
+#shelves{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;margin-top:28px}
+.shelf{min-width:0}
+#shelves:empty{display:none}
+.shelf-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:12px}
+.shelf-head h3{margin:0;font:800 21px var(--f-display);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+:root[lang="ar"] .shelf-head h3{font-weight:700}
+.shelf-head h3::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--wood);transform:rotate(45deg)}
+.shelf-sale .shelf-head h3::before{background:var(--danger)}
+.shelf-feat .shelf-head h3::before{background:var(--accent)}
+.shelf-head span{color:var(--muted);font-size:14px}
+.shelf-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(160px,42%);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;margin-inline:-2px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.shelf-row .card{scroll-snap-align:start}
+@media (min-width:700px){.shelf-row{grid-auto-columns:minmax(200px,calc((100% - 36px)/4))}}
+.cats{margin-top:8px}
+.price s{display:block;font:500 12.5px/1.2 var(--f-label);color:var(--muted);text-decoration-thickness:1.5px}
+.tile .off{position:absolute;inset-inline-start:8px;bottom:8px;z-index:2;background:var(--danger);color:var(--surface);font:800 12px var(--f-label);border-radius:6px;padding:2px 7px}
+.was-line{margin:8px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.was-line s{color:var(--muted)}
+.was-line b{font:800 18px var(--f-display)}
+.was-line em{font-style:normal;font-weight:700;font-size:13px;color:var(--surface);background:var(--danger);border-radius:6px;padding:1px 8px}
+.shop-head{padding-top:56px;display:grid;gap:4px;justify-items:center;text-align:center}
+.shop-head::before{content:"";width:56px;height:3px;border-radius:2px;background:var(--wood);margin-bottom:14px}
+.eyebrow{font:600 12px var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--wood)}
+:root[lang="ar"] .eyebrow{font-size:14px}
+.shop-head h2{margin:0;font:800 clamp(24px,5.5vw,34px)/1.15 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
+:root[lang="ar"] .shop-head h2{font-weight:700;line-height:1.4}
+@media (min-width:820px){.hero .wrap{min-height:calc(100svh - 64px)}.cue{grid-column:1/-1}}
+
 /* categories */
 .cats{display:flex;gap:8px;overflow-x:auto;padding-block:18px 14px;scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
@@ -228,8 +263,7 @@ footer .story p{margin:0}
 .hadith{margin:0;padding-inline-start:16px;border-inline-start:3px solid var(--wood)}
 .hadith blockquote{margin:0;font-size:17px;line-height:1.6;color:var(--ink)}
 :root[lang="ar"] .hadith blockquote{font-size:19px}
-.benefits{max-width:62ch}
-.benefits[open]{max-width:none}
+.benefits{max-width:none}
 .benefits summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);font-weight:700;font-size:15.5px}
 .benefits summary::-webkit-details-marker{display:none}
 .benefits summary .chev{width:18px;height:18px;flex:none;transition:transform .2s}
@@ -245,10 +279,10 @@ footer .story p{margin:0}
 .benefits li b{color:var(--ink);font-weight:700;font-size:15px}
 .benefits li span{font-size:14px;line-height:1.5}
 footer .story{max-width:none}
-footer .story > p,.hadith{max-width:62ch}
+footer .story > p,.hadith{max-width:none}
 .hadith figcaption{margin-top:4px;font-size:13.5px;color:var(--muted)}
 footer .story .ar{font:600 20px/1 var(--f-arabic);color:var(--wood);margin-inline-end:10px}
-footer .contact{flex-basis:100%;margin:0 0 6px;color:var(--ink);font-size:15px}
+footer .contact{flex-basis:100%;text-align:center;margin:0 0 6px;color:var(--ink);font-size:15px}
 footer .contact a{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;text-underline-offset:3px}
 
 /* dialogs */
@@ -354,7 +388,7 @@ fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
 .samsung .shade-opt{min-height:38px;padding:0 14px;border:1px solid var(--line);background:var(--surface);border-radius:999px;justify-content:center}
 .samsung .shade-opt b{font-size:14px}
 /* about & contact */
-footer .foot-links{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 10px}
+footer .foot-links{flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:4px 0 10px}
 footer .foot-links .btn{color:var(--ink)}
 #hadithSheet .hadith{max-width:none}
 .about-mark{display:flex;align-items:center;gap:12px}
@@ -398,10 +432,19 @@ footer .foot-links .btn{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);border:0;padding:11px 18px;border-radius:999px;font-weight:700;font-size:14.5px;z-index:60;box-shadow:0 8px 24px var(--scrim);cursor:pointer;max-width:calc(100% - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .toast u{text-underline-offset:3px}
 
+.anim .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease var(--d,0ms),transform .8s cubic-bezier(.2,.75,.2,1) var(--d,0ms)}
+.anim .rv.in{opacity:1;transform:none}
+.anim .card.rv{transform:translateY(18px) scale(.98);transition-duration:.5s,.6s}
+.anim .card.rv.in{transform:none}
+.card{transition:transform .2s ease,box-shadow .2s ease}
+@media (hover:hover){.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px -18px var(--scrim)}}
+.anim .card.rv.in:hover{transform:translateY(-3px)}
+.benefits[open] .ben-body{animation:dropIn .35s ease}
+@keyframes dropIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <div id="app"></div>
-<script type="application/json" id="data">{"v":1,"settings":{"whatsapp":"201007805147","instapay":"","fees":[60,75,95],"notice":false},"products":[{"id":"kit-op","sku":"KIT-601","cat":"kit","price":1650,"stock":14,"name":{"en":"Preclinical operative kit","ar":"كيت التحفظي (بريكلينيكال)"},"spec":{"en":"Composite, GI, bond, etch, 10 burs","ar":"كومبوزيت، جلاس أيونومر، بوند، إتشنج، 10 بيرز"},"desc":{"en":"Everything for an operative preclinical course in one box: nanohybrid composite in A2, glass ionomer restorative, universal bonding agent, 37% etching gel and an assorted diamond bur set.","ar":"كل ما تحتاجه لكورس التحفظي العملي في علبة واحدة: كومبوزيت نانوهايبرد درجة A2، جلاس أيونومر للحشو، بوند يونيفرسال، جل إتشنج 37%، ومجموعة بيرز دايموند متنوعة."},"tag":{"en":"Save 25%","ar":"وفّر 25%"},"opt":null,"img":""},{"id":"kit-endo","sku":"KIT-610","cat":"kit","price":520,"stock":22,"name":{"en":"Endo starter kit","ar":"كيت إندو للمبتدئين"},"spec":{"en":"Files, GP, paper points, CaOH, syringes","ar":"فايلات، جوتا، أقماع ورقية، هيدروكسيد كالسيوم، سرنجات"},"desc":{"en":"Hand K-files 15–40, gutta-percha and paper points, calcium hydroxide paste and 10 irrigation syringes. Covers a full preclinical endo block.","ar":"فايلات K مقاس 15–40، أقماع جوتا بيركا وأقماع ورقية، معجون هيدروكسيد الكالسيوم و10 سرنجات غسيل. يغطي بلوك الإندو العملي بالكامل."},"tag":{"en":"For students","ar":"للطلبة"},"opt":null,"img":""},{"id":"cmp4","sku":"RST-101","cat":"resto","price":650,"stock":40,"name":{"en":"Nanohybrid composite syringe","ar":"كومبوزيت نانوهايبرد – سرنجة"},"spec":{"en":"4 g · light-cure","ar":"4 جم · ضوئي"},"desc":{"en":"Universal nanohybrid composite for anterior and posterior restorations. Polishes to a high gloss and doesn't stick to the instrument.","ar":"كومبوزيت نانوهايبرد يونيفرسال للحشوات الأمامية والخلفية. يُلمَّع لدرجة لمعان عالية ولا يلتصق بالأداة."},"tag":{"en":"Best seller","ar":"الأكثر مبيعًا"},"opt":{"label":{"en":"Shade","ar":"الدرجة"},"values":["A1","A2","A3","A3.5","B1"],"values_ar":[],"def":1,"style":"shade"},"img":""},{"id":"bond","sku":"RST-114","cat":"resto","price":780,"stock":9,"name":{"en":"Universal bonding agent","ar":"بوند يونيفرسال"},"spec":{"en":"5 ml bottle","ar":"زجاجة 5 مل"},"desc":{"en":"Single-bottle adhesive for total-etch, self-etch or selective-etch technique. One coat, 10 seconds light cure.","ar":"لاصق بزجاجة واحدة لتقنيات total-etch و self-etch و selective-etch. طبقة واحدة وتصليب ضوئي 10 ثوانٍ."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"gic","sku":"RST-120","cat":"resto","price":520,"stock":3,"name":{"en":"Glass ionomer restorative","ar":"جلاس أيونومر للحشو"},"spec":{"en":"15 g powder + 10 ml liquid","ar":"بودرة 15 جم + سائل 10 مل"},"desc":{"en":"Self-curing glass ionomer with fluoride release. Suited to class V cavities, deciduous teeth and bases.","ar":"جلاس أيونومر ذاتي التصلب يطلق الفلورايد. مناسب لحشوات Class V والأسنان اللبنية والقواعد."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"etch","sku":"RST-131","cat":"resto","price":90,"stock":60,"name":{"en":"Etching gel 37%","ar":"جل إتشنج 37%"},"spec":{"en":"2 × 3 ml syringes + tips","ar":"2 سرنجة × 3 مل + سنون"},"desc":{"en":"Blue phosphoric acid gel that stays where you place it and rinses off cleanly. Disposable tips included.","ar":"جل حمض فوسفوريك أزرق يثبت مكانه ويُشطف بسهولة. السنون الاستعمال الواحد مرفقة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"kfile","sku":"END-201","cat":"endo","price":120,"stock":35,"name":{"en":"Hand K-files","ar":"فايلات K يدوية"},"spec":{"en":"ISO 15–40 assorted · 6 pcs","ar":"مقاسات ISO من 15 إلى 40 · 6 قطع"},"desc":{"en":"Stainless steel K-files for canal negotiation and shaping. Handles follow the ISO colour code from white (15) to black (40).","ar":"فايلات ستانلس ستيل لاستكشاف القنوات وتشكيلها. ألوان المقابض حسب كود ISO من الأبيض (15) إلى الأسود (40)."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Length","ar":"الطول"},"values":["21 mm","25 mm"],"values_ar":["21 مم","25 مم"],"def":1,"style":"chip"},"img":"","iso":true},{"id":"gp","sku":"END-210","cat":"endo","price":95,"stock":50,"name":{"en":"Gutta-percha points","ar":"أقماع جوتا بيركا"},"spec":{"en":"ISO 15–40 assorted · 120 pcs","ar":"مقاسات ISO من 15 إلى 40 · 120 قطعة"},"desc":{"en":"Radiopaque gutta-percha points, colour-coded by size, for lateral condensation.","ar":"أقماع جوتا بيركا ظاهرة في الأشعة وملوّنة حسب المقاس، للحشو بالتكثيف الجانبي."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"pp","sku":"END-212","cat":"endo","price":70,"stock":45,"name":{"en":"Absorbent paper points","ar":"أقماع ورقية ماصّة"},"spec":{"en":"ISO 15–40 assorted · 200 pcs","ar":"مقاسات ISO من 15 إلى 40 · 200 قطعة"},"desc":{"en":"Highly absorbent points for drying canals before obturation.","ar":"أقماع عالية الامتصاص لتجفيف القنوات قبل الحشو."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"caoh","sku":"END-230","cat":"endo","price":160,"stock":18,"name":{"en":"Calcium hydroxide paste","ar":"معجون هيدروكسيد الكالسيوم"},"spec":{"en":"2.2 g syringe + tips","ar":"سرنجة 2.2 جم + سنون"},"desc":{"en":"Radiopaque intracanal medicament, ready to inject straight into the canal.","ar":"دواء داخل القناة ظاهر في الأشعة، جاهز للحقن مباشرة في القناة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"dbur","sku":"BUR-301","cat":"bur","price":180,"stock":30,"name":{"en":"Diamond burs, FG assorted","ar":"بيرز دايموند FG متنوعة"},"spec":{"en":"10 pcs · round, flat-end, flame","ar":"10 قطع · راوند، فلات إند، فليم"},"desc":{"en":"Friction-grip diamond burs for high-speed handpieces. The ring on the shank shows the grit: green coarse, blue medium, red fine.","ar":"بيرز دايموند friction-grip للتوربينة. الحلقة الملوّنة على الساق توضّح الخشونة: أخضر خشن، أزرق متوسط، أحمر ناعم."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Grit","ar":"الخشونة"},"values":["Coarse","Medium","Fine"],"values_ar":["خشن","متوسط","ناعم"],"def":1,"style":"chip","swatch":{"Coarse":"--grit-c","Medium":"--grit-m","Fine":"--grit-f"}},"img":"","grit":true},{"id":"cbur","sku":"BUR-315","cat":"bur","price":150,"stock":25,"name":{"en":"Carbide round burs, FG","ar":"بيرز كاربايد راوند FG"},"spec":{"en":"5 pcs per pack","ar":"5 قطع في العبوة"},"desc":{"en":"Tungsten carbide burs for caries removal and access cavities.","ar":"بيرز تنجستن كاربايد لإزالة التسوس وفتح الكافيتي."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["#2","#4","#6"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"alg","sku":"IMP-401","cat":"imp","price":210,"stock":20,"name":{"en":"Alginate, dust-free","ar":"ألجينات بدون غبار"},"spec":{"en":"450 g bag · fast set","ar":"كيس 450 جم · سريع التصلب"},"desc":{"en":"Colour-changing alginate that shows mixing, loading and setting stages.","ar":"ألجينات يتغيّر لونه ليوضّح مراحل الخلط والتحميل والتصلب."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"pvs","sku":"IMP-420","cat":"imp","price":1450,"stock":0,"name":{"en":"Addition silicone kit","ar":"كيت سيليكون إضافي (أديشن)"},"spec":{"en":"Putty 2 × 300 g + light body 2 × 50 ml","ar":"بوتي 2 × 300 جم + لايت بودي 2 × 50 مل"},"desc":{"en":"A-silicone for crown and bridge impressions with the putty-wash technique.","ar":"سيليكون إضافي لطبعات التيجان والجسور بتقنية البوتي والواش."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"tray","sku":"IMP-440","cat":"imp","price":260,"stock":8,"name":{"en":"Perforated impression trays","ar":"ترايات طبعة مثقّبة"},"spec":{"en":"Set of 10 · upper and lower","ar":"طقم 10 · علوي وسفلي"},"desc":{"en":"Stainless steel trays in five sizes per arch. Autoclavable.","ar":"ترايات ستانلس ستيل بخمسة مقاسات لكل فك. تتحمل الأوتوكلاف."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"glove","sku":"DSP-501","cat":"disp","price":230,"stock":80,"name":{"en":"Nitrile examination gloves","ar":"جوانتي نيتريل للفحص"},"spec":{"en":"Box of 100 · powder-free","ar":"علبة 100 · بدون بودرة"},"desc":{"en":"Textured fingertips for grip on instruments. Latex-free.","ar":"أطراف أصابع محبّبة لثبات أفضل على الأدوات. خالٍ من اللاتكس."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["S","M","L"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"mask","sku":"DSP-510","cat":"disp","price":60,"stock":120,"name":{"en":"3-ply face masks","ar":"ماسكات 3 طبقات"},"spec":{"en":"Box of 50 · ear loop","ar":"علبة 50 · بأستك للأذن"},"desc":{"en":"Fluid-resistant outer layer with a bendable nose wire.","ar":"طبقة خارجية مقاومة للسوائل وسلك أنف قابل للتشكيل."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"se","sku":"DSP-520","cat":"disp","price":85,"stock":70,"name":{"en":"Saliva ejectors","ar":"شفاطات لعاب"},"spec":{"en":"Bag of 100","ar":"كيس 100"},"desc":{"en":"Flexible ejectors with fixed tips. Hold their shape once bent.","ar":"شفاطات مرنة بأطراف ثابتة. تحتفظ بشكلها بعد ثنيها."},"tag":{"en":"","ar":""},"opt":null,"img":""}]}</script>
+<script type="application/json" id="data">{"v":1,"settings":{"whatsapp":"201007805147","instapay":"","fees":[60,75,95],"notice":false},"products":[{"id":"kit-op","sku":"KIT-601","cat":"kit","price":1650,"stock":14,"name":{"en":"Preclinical operative kit","ar":"كيت التحفظي (بريكلينيكال)"},"spec":{"en":"Composite, GI, bond, etch, 10 burs","ar":"كومبوزيت، جلاس أيونومر، بوند، إتشنج، 10 بيرز"},"desc":{"en":"Everything for an operative preclinical course in one box: nanohybrid composite in A2, glass ionomer restorative, universal bonding agent, 37% etching gel and an assorted diamond bur set.","ar":"كل ما تحتاجه لكورس التحفظي العملي في علبة واحدة: كومبوزيت نانوهايبرد درجة A2، جلاس أيونومر للحشو، بوند يونيفرسال، جل إتشنج 37%، ومجموعة بيرز دايموند متنوعة."},"tag":{"en":"Save 25%","ar":"وفّر 25%"},"opt":null,"img":"","best":true,"was":2200},{"id":"kit-endo","sku":"KIT-610","cat":"kit","price":520,"stock":22,"name":{"en":"Endo starter kit","ar":"كيت إندو للمبتدئين"},"spec":{"en":"Files, GP, paper points, CaOH, syringes","ar":"فايلات، جوتا، أقماع ورقية، هيدروكسيد كالسيوم، سرنجات"},"desc":{"en":"Hand K-files 15–40, gutta-percha and paper points, calcium hydroxide paste and 10 irrigation syringes. Covers a full preclinical endo block.","ar":"فايلات K مقاس 15–40، أقماع جوتا بيركا وأقماع ورقية، معجون هيدروكسيد الكالسيوم و10 سرنجات غسيل. يغطي بلوك الإندو العملي بالكامل."},"tag":{"en":"For students","ar":"للطلبة"},"opt":null,"img":"","feat":true},{"id":"cmp4","sku":"RST-101","cat":"resto","price":650,"stock":40,"name":{"en":"Nanohybrid composite syringe","ar":"كومبوزيت نانوهايبرد – سرنجة"},"spec":{"en":"4 g · light-cure","ar":"4 جم · ضوئي"},"desc":{"en":"Universal nanohybrid composite for anterior and posterior restorations. Polishes to a high gloss and doesn't stick to the instrument.","ar":"كومبوزيت نانوهايبرد يونيفرسال للحشوات الأمامية والخلفية. يُلمَّع لدرجة لمعان عالية ولا يلتصق بالأداة."},"tag":{"en":"Best seller","ar":"الأكثر مبيعًا"},"opt":{"label":{"en":"Shade","ar":"الدرجة"},"values":["A1","A2","A3","A3.5","B1"],"values_ar":[],"def":1,"style":"shade"},"img":"","best":true},{"id":"bond","sku":"RST-114","cat":"resto","price":780,"stock":9,"name":{"en":"Universal bonding agent","ar":"بوند يونيفرسال"},"spec":{"en":"5 ml bottle","ar":"زجاجة 5 مل"},"desc":{"en":"Single-bottle adhesive for total-etch, self-etch or selective-etch technique. One coat, 10 seconds light cure.","ar":"لاصق بزجاجة واحدة لتقنيات total-etch و self-etch و selective-etch. طبقة واحدة وتصليب ضوئي 10 ثوانٍ."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"gic","sku":"RST-120","cat":"resto","price":520,"stock":3,"name":{"en":"Glass ionomer restorative","ar":"جلاس أيونومر للحشو"},"spec":{"en":"15 g powder + 10 ml liquid","ar":"بودرة 15 جم + سائل 10 مل"},"desc":{"en":"Self-curing glass ionomer with fluoride release. Suited to class V cavities, deciduous teeth and bases.","ar":"جلاس أيونومر ذاتي التصلب يطلق الفلورايد. مناسب لحشوات Class V والأسنان اللبنية والقواعد."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"etch","sku":"RST-131","cat":"resto","price":90,"stock":60,"name":{"en":"Etching gel 37%","ar":"جل إتشنج 37%"},"spec":{"en":"2 × 3 ml syringes + tips","ar":"2 سرنجة × 3 مل + سنون"},"desc":{"en":"Blue phosphoric acid gel that stays where you place it and rinses off cleanly. Disposable tips included.","ar":"جل حمض فوسفوريك أزرق يثبت مكانه ويُشطف بسهولة. السنون الاستعمال الواحد مرفقة."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":120},{"id":"kfile","sku":"END-201","cat":"endo","price":120,"stock":35,"name":{"en":"Hand K-files","ar":"فايلات K يدوية"},"spec":{"en":"ISO 15–40 assorted · 6 pcs","ar":"مقاسات ISO من 15 إلى 40 · 6 قطع"},"desc":{"en":"Stainless steel K-files for canal negotiation and shaping. Handles follow the ISO colour code from white (15) to black (40).","ar":"فايلات ستانلس ستيل لاستكشاف القنوات وتشكيلها. ألوان المقابض حسب كود ISO من الأبيض (15) إلى الأسود (40)."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Length","ar":"الطول"},"values":["21 mm","25 mm"],"values_ar":["21 مم","25 مم"],"def":1,"style":"chip"},"img":"","iso":true,"best":true},{"id":"gp","sku":"END-210","cat":"endo","price":95,"stock":50,"name":{"en":"Gutta-percha points","ar":"أقماع جوتا بيركا"},"spec":{"en":"ISO 15–40 assorted · 120 pcs","ar":"مقاسات ISO من 15 إلى 40 · 120 قطعة"},"desc":{"en":"Radiopaque gutta-percha points, colour-coded by size, for lateral condensation.","ar":"أقماع جوتا بيركا ظاهرة في الأشعة وملوّنة حسب المقاس، للحشو بالتكثيف الجانبي."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"pp","sku":"END-212","cat":"endo","price":70,"stock":45,"name":{"en":"Absorbent paper points","ar":"أقماع ورقية ماصّة"},"spec":{"en":"ISO 15–40 assorted · 200 pcs","ar":"مقاسات ISO من 15 إلى 40 · 200 قطعة"},"desc":{"en":"Highly absorbent points for drying canals before obturation.","ar":"أقماع عالية الامتصاص لتجفيف القنوات قبل الحشو."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"caoh","sku":"END-230","cat":"endo","price":160,"stock":18,"name":{"en":"Calcium hydroxide paste","ar":"معجون هيدروكسيد الكالسيوم"},"spec":{"en":"2.2 g syringe + tips","ar":"سرنجة 2.2 جم + سنون"},"desc":{"en":"Radiopaque intracanal medicament, ready to inject straight into the canal.","ar":"دواء داخل القناة ظاهر في الأشعة، جاهز للحقن مباشرة في القناة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"dbur","sku":"BUR-301","cat":"bur","price":180,"stock":30,"name":{"en":"Diamond burs, FG assorted","ar":"بيرز دايموند FG متنوعة"},"spec":{"en":"10 pcs · round, flat-end, flame","ar":"10 قطع · راوند، فلات إند، فليم"},"desc":{"en":"Friction-grip diamond burs for high-speed handpieces. The ring on the shank shows the grit: green coarse, blue medium, red fine.","ar":"بيرز دايموند friction-grip للتوربينة. الحلقة الملوّنة على الساق توضّح الخشونة: أخضر خشن، أزرق متوسط، أحمر ناعم."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Grit","ar":"الخشونة"},"values":["Coarse","Medium","Fine"],"values_ar":["خشن","متوسط","ناعم"],"def":1,"style":"chip","swatch":{"Coarse":"--grit-c","Medium":"--grit-m","Fine":"--grit-f"}},"img":"","grit":true,"feat":true},{"id":"cbur","sku":"BUR-315","cat":"bur","price":150,"stock":25,"name":{"en":"Carbide round burs, FG","ar":"بيرز كاربايد راوند FG"},"spec":{"en":"5 pcs per pack","ar":"5 قطع في العبوة"},"desc":{"en":"Tungsten carbide burs for caries removal and access cavities.","ar":"بيرز تنجستن كاربايد لإزالة التسوس وفتح الكافيتي."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["#2","#4","#6"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"alg","sku":"IMP-401","cat":"imp","price":210,"stock":20,"name":{"en":"Alginate, dust-free","ar":"ألجينات بدون غبار"},"spec":{"en":"450 g bag · fast set","ar":"كيس 450 جم · سريع التصلب"},"desc":{"en":"Colour-changing alginate that shows mixing, loading and setting stages.","ar":"ألجينات يتغيّر لونه ليوضّح مراحل الخلط والتحميل والتصلب."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"pvs","sku":"IMP-420","cat":"imp","price":1450,"stock":0,"name":{"en":"Addition silicone kit","ar":"كيت سيليكون إضافي (أديشن)"},"spec":{"en":"Putty 2 × 300 g + light body 2 × 50 ml","ar":"بوتي 2 × 300 جم + لايت بودي 2 × 50 مل"},"desc":{"en":"A-silicone for crown and bridge impressions with the putty-wash technique.","ar":"سيليكون إضافي لطبعات التيجان والجسور بتقنية البوتي والواش."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"tray","sku":"IMP-440","cat":"imp","price":260,"stock":8,"name":{"en":"Perforated impression trays","ar":"ترايات طبعة مثقّبة"},"spec":{"en":"Set of 10 · upper and lower","ar":"طقم 10 · علوي وسفلي"},"desc":{"en":"Stainless steel trays in five sizes per arch. Autoclavable.","ar":"ترايات ستانلس ستيل بخمسة مقاسات لكل فك. تتحمل الأوتوكلاف."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":320},{"id":"glove","sku":"DSP-501","cat":"disp","price":230,"stock":80,"name":{"en":"Nitrile examination gloves","ar":"جوانتي نيتريل للفحص"},"spec":{"en":"Box of 100 · powder-free","ar":"علبة 100 · بدون بودرة"},"desc":{"en":"Textured fingertips for grip on instruments. Latex-free.","ar":"أطراف أصابع محبّبة لثبات أفضل على الأدوات. خالٍ من اللاتكس."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["S","M","L"],"values_ar":[],"def":1,"style":"chip"},"img":"","best":true},{"id":"mask","sku":"DSP-510","cat":"disp","price":60,"stock":120,"name":{"en":"3-ply face masks","ar":"ماسكات 3 طبقات"},"spec":{"en":"Box of 50 · ear loop","ar":"علبة 50 · بأستك للأذن"},"desc":{"en":"Fluid-resistant outer layer with a bendable nose wire.","ar":"طبقة خارجية مقاومة للسوائل وسلك أنف قابل للتشكيل."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":75},{"id":"se","sku":"DSP-520","cat":"disp","price":85,"stock":70,"name":{"en":"Saliva ejectors","ar":"شفاطات لعاب"},"spec":{"en":"Bag of 100","ar":"كيس 100"},"desc":{"en":"Flexible ejectors with fixed tips. Hold their shape once bent.","ar":"شفاطات مرنة بأطراف ثابتة. تحتفظ بشكلها بعد ثنيها."},"tag":{"en":"","ar":""},"opt":null,"img":""}]}</script>
 <script id="main">
 (function(){
 "use strict";
@@ -488,7 +531,7 @@ var T = {
   yourOrder:"Your order", sendWa:"Send order on WhatsApp", copy:"Copy order text", copied:"Copied. Paste it into a WhatsApp message to us.", copyFallback:"Text selected. Copy it and paste it into a message to us.", keepShopping:"Continue shopping",
   mNew:"New order {no}", mName:"Name", mPhone:"Phone", mCust:"Customer", mAddr:"Address", mItems:"Items", mPay:"Payment", mNotes:"Notes",
   giftBadge:"Gift", giftTitle:"A free miswak with every order", giftText:"Every order arrives with a natural arak miswak, our gift to you. Remember us in your prayers!", giftLine:"Gift: natural miswak", free:"Free", giftMsg:"Gift: 1 free miswak",
-  policyLink:"Store policies", policyTitle:"Store policies", policyUpdated:"Last updated", agreeA:"I have read and agree to the ", agreeLink:"store policies", agreeB:", including the returns policy.", errAgree:"Please confirm that you agree to the store policies.", mAgreed:"✔ Customer agreed to the store policies on the website", hadithLink:"Hadiths about the miswak", hadithsTitle:"The miswak in the Sunnah", hadithsIntro:"Some of what the Prophet Muhammad ﷺ said and did about the siwak:", aboutLink:"About us & contact", aboutTitle:"About us", aboutIntro:"Miswak Dental Supply was started by three partners with one goal: to make it easy for dental students, interns and clinics across Egypt to get the materials they need at fair prices, delivered to their door.", ownersTitle:"The team", founder:"Founder", coFounder:"Co-founder", contactTitle:"Contact us", contactText:"The fastest way to reach us is WhatsApp. Message us about orders, stock, bulk prices or anything else.", chatWa:"Chat on WhatsApp", waNumber:"WhatsApp number", based:"Based in Egypt · delivering to all 27 governorates",
+  shopNow:"Browse products", shopEyebrow:"Ready to shop?", bestTitle:"Best sellers", bestSub:"What dentists and students order most", featTitle:"Featured", featSub:"Hand-picked by our team", saleTitle:"On sale", saleSub:"Discounted for a limited time", save:"Save {n}%", whyEyebrow:"Why the miswak?", shopTitle:"Everything for your clinic and your course", policyLink:"Store policies", policyTitle:"Store policies", policyUpdated:"Last updated", agreeA:"I have read and agree to the ", agreeLink:"store policies", agreeB:", including the returns policy.", errAgree:"Please confirm that you agree to the store policies.", mAgreed:"✔ Customer agreed to the store policies on the website", hadithLink:"Hadiths about the miswak", hadithsTitle:"The miswak in the Sunnah", hadithsIntro:"Some of what the Prophet Muhammad ﷺ said and did about the siwak:", aboutLink:"About us & contact", aboutTitle:"About us", aboutIntro:"Miswak Dental Supply was started by three partners with one goal: to make it easy for dental students, interns and clinics across Egypt to get the materials they need at fair prices, delivered to their door.", ownersTitle:"The team", founder:"Founder", coFounder:"Co-founder", contactTitle:"Contact us", contactText:"The fastest way to reach us is WhatsApp. Message us about orders, stock, bulk prices or anything else.", chatWa:"Chat on WhatsApp", waNumber:"WhatsApp number", based:"Based in Egypt · delivering to all 27 governorates",
   loading:"Loading products…", loadErrTitle:"Products couldn't load", loadErrText:"Check your internet connection and try again.", retry:"Try again"
  },
  ar:{
@@ -530,7 +573,7 @@ var T = {
   yourOrder:"طلبك", sendWa:"أرسل الطلب على واتساب", copy:"انسخ نص الطلب", copied:"تم النسخ. الصقه في رسالة واتساب لنا.", copyFallback:"تم تحديد النص. انسخه والصقه في رسالة لنا.", keepShopping:"متابعة التسوق",
   mNew:"طلب جديد {no}", mName:"الاسم", mPhone:"الموبايل", mCust:"العميل", mAddr:"العنوان", mItems:"المنتجات", mPay:"الدفع", mNotes:"ملاحظات",
   giftBadge:"هدية", giftTitle:"مسواك هدية مع كل طلب", giftText:"كل طلب يصلك ومعه مسواك أراك طبيعي، هدية منّا لك.. لا تنسانا من صالح دعواك!", giftLine:"هدية: مسواك طبيعي", free:"مجانًا", giftMsg:"هدية: مسواك مجاني",
-  policyLink:"سياسات المتجر", policyTitle:"سياسات المتجر", policyUpdated:"آخر تحديث", agreeA:"قرأت وأوافق على ", agreeLink:"سياسات المتجر", agreeB:"، ومنها سياسة الاسترجاع.", errAgree:"برجاء تأكيد موافقتك على سياسات المتجر.", mAgreed:"✔ العميل وافق على سياسات المتجر على الموقع", hadithLink:"أحاديث عن السواك", hadithsTitle:"السواك في السنة", hadithsIntro:"من أقوال النبي محمد ﷺ وأفعاله في السواك:", aboutLink:"من نحن وتواصل معنا", aboutTitle:"من نحن", aboutIntro:"بدأ مسواك لمستلزمات الأسنان على يد ثلاثة شركاء بهدف واحد: أن يحصل طلاب طب الأسنان وأطباء الامتياز والعيادات في كل مصر على الخامات التي يحتاجونها بسهولة وبأسعار عادلة، وتصلهم حتى الباب.", ownersTitle:"فريقنا", founder:"مؤسس", coFounder:"شريك مؤسس", contactTitle:"تواصل معنا", contactText:"أسرع طريقة للتواصل معنا هي واتساب. راسلنا بخصوص الطلبات أو التوفر أو أسعار الجملة أو أي استفسار.", chatWa:"راسلنا على واتساب", waNumber:"رقم واتساب", based:"من مصر · نوصّل لكل المحافظات",
+  shopNow:"تصفّح المنتجات", shopEyebrow:"جاهز للتسوق؟", bestTitle:"الأكثر مبيعًا", bestSub:"الأكثر طلبًا من الأطباء والطلبة", featTitle:"منتجات مميزة", featSub:"اختيارات فريقنا", saleTitle:"عروض وخصومات", saleSub:"أسعار مخفّضة لفترة محدودة", save:"وفّر {n}%", whyEyebrow:"لماذا المسواك؟", shopTitle:"كل ما تحتاجه لعيادتك ودراستك", policyLink:"سياسات المتجر", policyTitle:"سياسات المتجر", policyUpdated:"آخر تحديث", agreeA:"قرأت وأوافق على ", agreeLink:"سياسات المتجر", agreeB:"، ومنها سياسة الاسترجاع.", errAgree:"برجاء تأكيد موافقتك على سياسات المتجر.", mAgreed:"✔ العميل وافق على سياسات المتجر على الموقع", hadithLink:"أحاديث عن السواك", hadithsTitle:"السواك في السنة", hadithsIntro:"من أقوال النبي محمد ﷺ وأفعاله في السواك:", aboutLink:"من نحن وتواصل معنا", aboutTitle:"من نحن", aboutIntro:"بدأ مسواك لمستلزمات الأسنان على يد ثلاثة شركاء بهدف واحد: أن يحصل طلاب طب الأسنان وأطباء الامتياز والعيادات في كل مصر على الخامات التي يحتاجونها بسهولة وبأسعار عادلة، وتصلهم حتى الباب.", ownersTitle:"فريقنا", founder:"مؤسس", coFounder:"شريك مؤسس", contactTitle:"تواصل معنا", contactText:"أسرع طريقة للتواصل معنا هي واتساب. راسلنا بخصوص الطلبات أو التوفر أو أسعار الجملة أو أي استفسار.", chatWa:"راسلنا على واتساب", waNumber:"رقم واتساب", based:"من مصر · نوصّل لكل المحافظات",
   loading:"جارٍ تحميل المنتجات…", loadErrTitle:"تعذّر تحميل المنتجات", loadErrText:"تأكد من اتصالك بالإنترنت وحاول مرة أخرى.", retry:"حاول مرة أخرى"
  }
 };
@@ -565,7 +608,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "6";
+var BUILD = "12";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -631,15 +674,18 @@ function renderShell(){
     '<main id="shop">' +
       '<section class="hero"><div class="wrap"><div><div class="logo-slot" aria-hidden="true"></div><h1>' + t("heroTitle") + "</h1><p>" + t("heroText") + '</p><ul class="facts">' + facts + "</ul>" +
         '<div class="gift">' + icon(I_GIFT) + "<div><b>" + t("giftTitle") + "</b><span>" + t("giftText") + '</span></div><em>' + t("giftBadge") + "</em></div></div>" +
-        '<div class="guide-box" id="guideBox"></div></div></section>' +
-      '<div class="wrap"><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
+        '<div class="guide-box" id="guideBox"></div>' +
+        '<a class="cue" href="#products" data-act="goshop">' + t("shopNow") + '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a></div></section>' +
+      '<section class="why" aria-label="' + esc(t("whyEyebrow")) + '"><div class="wrap"><span class="eyebrow">' + t("whyEyebrow") + '</span>' +
+        drop(t("benefitsTitle"), cards(T[lang].benefits) + '<p class="hint">' + t("benefitsNote") + "</p>") +
+        drop(t("edgeTitle"), cards(T[lang].edge)) +
+        drop(t("researchTitle"), '<ol class="refs">' + REFS.map(function(r){ return '<li><a href="' + r.u + '" target="_blank" rel="noopener" lang="en" dir="ltr">' + esc(r.t) + "</a><span>" + esc(r.k) + " · " + esc(lang === "ar" ? r.ar : r.en) + "</span></li>"; }).join("") + '</ol><p class="hint">' + t("researchNote") + "</p>") +
+      "</div></section>" +
+      '<div class="wrap" id="products"><div class="shop-head"><span class="eyebrow">' + t("shopEyebrow") + "</span><h2>" + t("shopTitle") + '</h2></div><div id="shelves"></div><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
         '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div></div>' +
       '<section class="how" aria-labelledby="howTitle"><div class="wrap"><h2 id="howTitle">' + t("howTitle") + "</h2><ol>" + steps + "</ol></div></section>" +
     "</main>" +
     '<footer><div class="wrap"><div class="story"><p><span class="ar" lang="ar">مسواك</span>' + t("story") + '</p><figure class="hadith"><blockquote>' + t("hadith") + "</blockquote><figcaption>" + t("hadithBy") + "</figcaption></figure>" +
-        drop(t("benefitsTitle"), cards(T[lang].benefits) + '<p class="hint">' + t("benefitsNote") + "</p>") +
-        drop(t("edgeTitle"), cards(T[lang].edge)) +
-        drop(t("researchTitle"), '<ol class="refs">' + REFS.map(function(r){ return '<li><a href="' + r.u + '" target="_blank" rel="noopener" lang="en" dir="ltr">' + esc(r.t) + "</a><span>" + esc(r.k) + " · " + esc(lang === "ar" ? r.ar : r.en) + "</span></li>"; }).join("") + '</ol><p class="hint">' + t("researchNote") + "</p>") +
         "</div>" +
       (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
       '<div class="foot-links"><button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="hadiths">' + t("hadithLink") + '</button><button class="btn ghost sm" type="button" data-act="policies">' + t("policyLink") + "</button></div>" +
@@ -653,7 +699,7 @@ function renderShell(){
       '<div class="cart-body" id="cartBody"></div><div class="cart-foot" id="cartFoot"></div></dialog>' +
     '<button class="toast" id="toast" type="button" data-act="toast" hidden></button>';
 
-  $("#q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); renderCats(); renderGrid(); });
+  $("#q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); renderCats(); renderGrid(); var pr = $("#products"); if (query && pr && pr.getBoundingClientRect().top > window.innerHeight * 0.5) smoothTo(pr); });
   var cs = $("#cartSheet");
   cs.addEventListener("click", onCartClick);
   cs.addEventListener("input", onDetailsInput);
@@ -668,6 +714,7 @@ function renderShell(){
   var ps = $("#productSheet");
   ps.addEventListener("click", function(e){ if (e.target === ps) ps.close(); });
   renderGuide(); renderCats(); renderGrid(); updateCount(false);
+  markReveal();
   placeMark(); var bi = document.querySelector(".bgmark img"); if (bi && !bi.complete) bi.addEventListener("load", placeMark);
 }
 
@@ -690,7 +737,7 @@ function visual(p){
 }
 function tileInner(p){
   var tag = L(p.tag);
-  return '<span class="sku">' + esc(p.sku) + "</span>" + (tag ? '<span class="tag">' + esc(tag) + "</span>" : "") +
+  return '<span class="sku">' + esc(p.sku) + "</span>" + (onSale(p) ? '<span class="off" dir="ltr">−' + offPct(p) + "%</span>" : "") + (tag ? '<span class="tag">' + esc(tag) + "</span>" : "") +
     icon(ICONS[p.cat] || ICONS.kit) + visual(p) +
     (p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove(\'photo\');this.remove()">' : "");
 }
@@ -761,17 +808,41 @@ function renderCats(){
     return '<button class="chip" type="button" data-cat="' + c.id + '" aria-pressed="' + (c.id === (query ? "all" : cat)) + '">' + L(c) + " <small>" + n + "</small></button>";
   }).join("");
 }
+function onSale(p){ return p.was > p.price && p.price > 0; }
+function offPct(p){ return Math.round((1 - p.price / p.was) * 100); }
+function priceHtml(p){
+  return '<span class="price">' + (onSale(p) ? '<s>' + Number(p.was).toLocaleString("en-US") + "</s>" : "") + Number(p.price).toLocaleString("en-US") + "<small>" + t("cur") + "</small></span>";
+}
 function card(p){
   var out = p.stock <= 0, choose = !!(p.opt && p.opt.values && p.opt.values.length);
   return '<article class="card" style="--cat:' + catColor(p.cat) + '">' +
     '<button class="tile' + (p.img ? " photo" : "") + '" type="button" data-open="' + p.id + '" aria-label="' + esc(t("view", {name: L(p.name)})) + '">' + tileInner(p) + "</button>" +
     '<div class="card-body"><h3 class="pname">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) +
-      '<div class="buy"><span class="price">' + Number(p.price).toLocaleString("en-US") + "<small>" + t("cur") + "</small></span>" +
+      '<div class="buy">' + priceHtml(p) +
       '<button class="add' + (choose ? " alt" : "") + '" type="button" data-' + (choose ? "open" : "add") + '="' + p.id + '"' + (out ? " disabled" : "") + ">" +
       (out ? t("soldOut") : choose ? t("choose") : t("add")) + "</button></div></div></article>";
 }
+function renderShelves(){
+  var box = $("#shelves"); if (!box) return;
+  if (LOAD !== "ready" || query){ box.innerHTML = ""; return; }
+  var groups = [["best", t("bestTitle"), t("bestSub"), function(p){ return p.best; }],
+                ["feat", t("featTitle"), t("featSub"), function(p){ return p.feat; }],
+                ["sale", t("saleTitle"), t("saleSub"), onSale]];
+  box.innerHTML = groups.map(function(g){
+    var items = DATA.products.filter(g[3]);
+    if (!items.length) return "";
+    items.sort(function(a, b){ return (a.stock <= 0) - (b.stock <= 0); });
+    return '<section class="shelf shelf-' + g[0] + '" aria-label="' + esc(g[1]) + '"><div class="shelf-head"><h3>' + esc(g[1]) + "</h3><span>" + esc(g[2]) + "</span></div>" +
+      '<div class="shelf-row">' + items.map(card).join("") + "</div></section>";
+  }).join("");
+  if (ANIM) Array.prototype.forEach.call(box.querySelectorAll(".shelf-head, .shelf-row .card"), function(c){
+    var i = c.classList.contains("card") ? Array.prototype.indexOf.call(c.parentNode.children, c) : 0;
+    c.classList.add("rv"); c.style.setProperty("--d", Math.min(i, 4) * 70 + "ms"); watch(c);
+  });
+}
 function renderGrid(){
   if (LOAD !== "ready"){
+    renderShelves();
     $("#listTitle").textContent = L(catOf("all"));
     $("#listCount").textContent = "";
     $("#grid").innerHTML = LOAD === "loading"
@@ -779,6 +850,7 @@ function renderGrid(){
       : '<div class="load-err" role="alert"><b>' + esc(t("loadErrTitle")) + "</b><span>" + esc(t("loadErrText")) + '</span><button class="btn sm" type="button" data-act="retry">' + esc(t("retry")) + "</button></div>";
     return;
   }
+  renderShelves();
   var list = DATA.products.filter(matches);
   if (query){
     var ranked = list.map(function(p, i){ return {p: p, s: score(p), i: i}; }).sort(function(a, b){ return b.s - a.s || a.i - b.i; });
@@ -788,6 +860,47 @@ function renderGrid(){
   $("#listTitle").textContent = query ? t("resultsFor", {q: query}) : L(catOf(cat));
   $("#listCount").textContent = list.length === 1 ? t("count1") : t("count", {n: list.length});
   $("#grid").innerHTML = list.length ? list.map(card).join("") : '<p class="empty-list">' + esc(t("noMatch", {q: query})) + "</p>";
+  if (ANIM) Array.prototype.forEach.call(document.querySelectorAll("#grid .card"), function(c, i){ c.classList.add("rv"); c.style.setProperty("--d", (i % 4) * 70 + "ms"); watch(c); });
+}
+
+/* ---------- motion ---------- */
+var CALM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+var ANIM = !CALM && "IntersectionObserver" in window;
+var seer = ANIM ? new IntersectionObserver(function(list){
+  list.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); seer.unobserve(en.target); } });
+}, {rootMargin: "0px 0px -8% 0px", threshold: 0.08}) : null;
+if (ANIM) document.documentElement.classList.add("anim");
+function watch(el){ if (seer) seer.observe(el); }
+function markReveal(){
+  if (!ANIM) return;
+  [[".hero h1, .hero .wrap > div > p, .hero .facts, .hero .gift, .guide-box, .cue", 90],
+   [".why .eyebrow, .why .benefits", 90],
+   [".shop-head, .cats, .list-head", 90],
+   ["#howTitle, .how li", 80],
+   ["footer .story > *, footer .contact, footer .foot-links", 60]].forEach(function(g){
+    Array.prototype.forEach.call(document.querySelectorAll(g[0]), function(el, i){
+      el.classList.add("rv"); el.style.setProperty("--d", Math.min(i, 6) * g[1] + "ms"); watch(el);
+    });
+  });
+}
+var scrollAnim = 0;
+function smoothTo(el){
+  if (!el) return;
+  var top = document.querySelector(".top"), off = (top ? top.offsetHeight : 0) + 8;
+  var from = window.scrollY || 0, to = Math.max(0, el.getBoundingClientRect().top + from - off), dist = to - from;
+  if (CALM || Math.abs(dist) < 4){ window.scrollTo(0, to); return; }
+  var dur = Math.min(1300, Math.max(650, Math.abs(dist) * 0.7)), t0 = 0, id = ++scrollAnim;
+  function stop(){ scrollAnim++; }
+  window.addEventListener("wheel", stop, {once: true, passive: true});
+  window.addEventListener("touchstart", stop, {once: true, passive: true});
+  function step(ts){
+    if (id !== scrollAnim) return;
+    if (!t0) t0 = ts;
+    var k = Math.min(1, (ts - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    window.scrollTo(0, from + dist * e);
+    if (k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
 
 /* ---------- cart ---------- */
@@ -846,7 +959,8 @@ function openProduct(id){
     body.innerHTML =
       '<div class="sheet-top"><span class="sku"><bdi class="ltr">' + esc(p.sku) + "</bdi> · " + esc(L(catOf(p.cat))) + '</span><button class="x" type="button" data-close aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
       '<div class="tile' + (p.img ? " photo" : "") + '" style="--cat:' + catColor(p.cat) + '">' + tileInner(p) + "</div>" +
-      '<div><h3 id="pTitle">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) + "</div>" +
+      '<div><h3 id="pTitle">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) +
+        (onSale(p) ? '<p class="was-line"><s>' + esc(money(p.was)) + "</s> <b>" + esc(money(p.price)) + "</b> <em>" + esc(t("save", {n: offPct(p)})) + "</em></p>" : "") + "</div>" +
       (L(p.desc) ? '<p class="desc">' + esc(L(p.desc)) + "</p>" : "") + optHtml() +
       (!out && r <= 0 ? '<p class="note warn">' + esc(t("allInCart", {n: p.stock})) + "</p>" : "") +
       '<div class="sheet-buy"><div class="qty"><button type="button" data-q="-1" aria-label="' + esc(t("dec")) + '"' + (qty <= 1 || blocked ? " disabled" : "") + ">−</button><output aria-live=\"polite\">" + qty + '</output><button type="button" data-q="1" aria-label="' + esc(t("inc")) + '"' + (qty >= r || blocked ? " disabled" : "") + ">+</button></div>" +
@@ -1035,6 +1149,7 @@ document.addEventListener("click", function(e){
   if (a){
     var act = a.dataset.act;
     if (act === "lang"){ lang = lang === "ar" ? "en" : "ar"; try { localStorage.setItem("miswak-lang", lang); } catch(err){} renderShell(); return; }
+    if (act === "goshop"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "cart"){ openCart(); return; }
     if (act === "toast"){ a.hidden = true; if (a.dataset.cart) openCart("cart"); return; }
     if (act === "retry"){ load(); return; }
@@ -1107,7 +1222,9 @@ function toProduct(r, i, seen){
     spec: {en: pick(r, ["shortdetailsenglish","detailsenglish"]), ar: pick(r, ["shortdetailsarabic","detailsarabic"])},
     desc: {en: pick(r, ["descriptionenglish"]), ar: pick(r, ["descriptionarabic"])},
     tag: {en: pick(r, ["badgeenglish"]), ar: pick(r, ["badgearabic"])},
-    opt: null, img: photoUrl(pick(r, ["photolink","photo"]))};
+    opt: null, img: photoUrl(pick(r, ["photolink","photo"])),
+    was: num(pick(r, ["oldpriceegp","oldprice","pricebeforediscount"])),
+    best: yes(pick(r, ["bestseller","bestsellers"])), feat: yes(pick(r, ["featured"]))};
   var vals = split(pick(r, ["choicesenglish","choices"]));
   if (vals.length){
     var label = {en: pick(r, ["choicenameenglish"]), ar: pick(r, ["choicenamearabic"])};
@@ -1185,14 +1302,16 @@ function placeMark(){
   var box = document.querySelector(".bgmark"), img = box && box.querySelector("img"), slot = document.querySelector(".logo-slot");
   if (!img || !slot || !img.offsetWidth) return;
   var vh = window.innerHeight, r = slot.getBoundingClientRect();
-  var p = Math.min(1, Math.max(0, (window.scrollY || 0) / Math.max(260, vh * 0.5)));
+  var sy = window.scrollY || 0;
+  var p = Math.min(1, Math.max(0, sy / Math.max(180, vh * 0.3)));
   var e = p * p * (3 - 2 * p);
+  var q = Math.min(1, Math.max(0, sy / 60)), f = 1 - (1 - q) * (1 - q);
   var y = (r.top + r.height / 2) * (1 - e) + (vh / 2) * e - vh / 2;
   var s0 = r.width / img.offsetWidth, sc = s0 + (1 - s0) * e;
   var dim = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--mark-dim")) || 1;
   img.style.transform = "translateY(" + y.toFixed(1) + "px) scale(" + sc.toFixed(3) + ")";
-  img.style.filter = "brightness(" + (1 - (1 - dim) * e).toFixed(3) + ")";
-  box.style.opacity = (1 - 0.9 * e).toFixed(3);
+  img.style.filter = "brightness(" + (1 - (1 - dim) * f).toFixed(3) + ")";
+  box.style.opacity = (1 - 0.9 * f).toFixed(3);
 }
 function queueMark(){ if (!markTick){ markTick = true; requestAnimationFrame(placeMark); } }
 window.addEventListener("scroll", queueMark, {passive: true});
