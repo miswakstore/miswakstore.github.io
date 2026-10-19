@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="Dental materials delivered across Egypt. Composites, endo, burs, impression materials and student kits. Cash on delivery. خامات الأسنان توصلك لحد عيادتك أو كليتك.">
 <meta property="og:title" content="Miswak Dental Supply · مسواك لمستلزمات الأسنان">
 <meta property="og:description" content="Dental materials delivered across Egypt. Cash on delivery. خامات الأسنان بالدفع عند الاستلام.">
@@ -28,6 +29,27 @@
   --tab-edge:rgba(70,52,28,.28); --tab-shade:rgba(120,88,40,.2);
   --iso-15:#FFFFFF; --iso-20:#F2C230; --iso-25:#D2332E; --iso-30:#2457B8; --iso-35:#2E8B4A; --iso-40:#1C1C1C;
   --grit-c:#2E8B4A; --grit-m:#2457B8; --grit-f:#D2332E;
+  /* the same physical colours as images, so forced-dark browsers (Samsung Internet) leave them alone */
+  --sh-A1-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAZklEQVR42u2WwQ2AMAwDDcr+y7EEfwYwb/i7wugygFVdUuu26zyUmbEdit4Vm+CrJ5askQyQR3QOiFx5fAB5A8n9Rhsgy4A0dkhwjSoFUnl8AFnWIW4sVUwVUwXIh4Cg7sjC72ThBrJHYxCDWypKAAAAAElFTkSuQmCC);
+  --sh-A2-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAWUlEQVR42u2XwQ0AIAwC0XT/kdzEFVwBp+BRvQ5ACLlAOs5eylzZDklPxS7oumLKKqmja+dcyy0JyXGtJNcdA6GeqCcI+YIQ+ppFh5DXZ5dAWHQWnYfjv0Au/KBd7JTd1y0AAAAASUVORK5CYII=);
+  --sh-A3-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAW0lEQVR42u2VAQ3AMAzDvOv8YQzPUZxGjiKTerkAKqtKnfU+m87cCa3VkIHU6VFTpE7v1vQSMpK6eGtG5lqHHEvIBVJbBVaBVWAVWAU65JRDmt+oVJWqUv27VD+5P1bGWEuD/AAAAABJRU5ErkJggg==);
+  --sh-A35-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAYElEQVR42u2XwQ0AIAwC0bj/w5Gcw13w7x8jDR2gudCU0rbXhKYGCVVrgIbU1FEj1De1rjUzxkcr0+E4Rk9q5cqAnn5tKUiok0PifN9QJ5j555AIUsP5XP/GXPQSH5iqDijmUKDBYo4rAAAAAElFTkSuQmCC);
+  --sh-A4-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAa0lEQVR42u2XwQ3AIAwDTdWxuxObdCX32wUOZOQMEEWXcBbjnY+Yum1RrSVjU4ubmgNiBwK5pEQg5Bqx3izrwDWiQEiHOHGNIBAlAol0SO96qUMiA6zZuNAhiQ+9DjnCIb3r/mU2OqTZ+K8PJnVJaizJwr4AAAAASUVORK5CYII=);
+  --sh-B1-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAX0lEQVR42u3XsQ2AMAxE0UvE/hMyA2VaU9PQ/UiGfwNY0bOdKGNdZ5gcVQWVnsECnhotzYGEBOHamBJEELdREEH+fT2BbYwg3wBpuY3x2X1aC7Jx+Hr+wNJy+AQR5CU37yllImRuN8wAAAAASUVORK5CYII=);
+  --sh-B2-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAXklEQVR42u2VAQ0AMQwC2VL/liblDcwDU8GWfq4CCCHQG/tbylzZDklPxS7oumLKKqmja+dcyy0bkuu1kr0mECbzyHXyqbbstTsOHaJDdIgO0SE6RIfo99ZIIH+YzAHjuF3x4MCMVAAAAABJRU5ErkJggg==);
+  --sh-B3-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAYklEQVR42u2VWw3AMAwDr9X4QyijgigS77sAHCmbAyA65eEbZy889Ui4WoMaUstHjZFavlnju5BQl1E7H73pQFzNJ7R89KjgE2vsmXwxehl1VJDkixujgj+qIMlXdXzE6Fe9e1RUuIetu5AAAAAASUVORK5CYII=);
+  --sh-C1-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAaElEQVR42u2XwQ2AMAwDDcr+Y7EEX/Yw/z76c1DQeYDIuthVejz3pYzKdmj0qZiCris2WSVNdO2caxkgCxBR9K6i51xHcw0Qiv6R62D4pgIZWZmR77VY4y/WSNEbcw2QtmOB+5pv0k4vLYFd6lVshkcAAAAASUVORK5CYII=);
+  --sh-C2-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAXklEQVR42u2X0QmAUAwDo7j/LA7iAG6TN4DfB1avA4SjJCXd7usMM0dbSHoPNlI/pDnqgNTldp1yC5FaX0v9DofMTCN4+TKTWl/bQz7YQ2am0R5iGr3XfgU/bE+Y9gLwRVa+t6rrbQAAAABJRU5ErkJggg==);
+  --sh-D2-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAyCAIAAADEPPy4AAAAYklEQVR42u2WCQ0AIAwDC8G/JVwgACNFxZFs6QQsTZ+t454tZpZtaPUUNiDqZQ61QNTmuJY5QhRff/N1ZOwQ9JLmU8nzBB5Vkagj4zcZE/QWvzFBTwnu2J7S+Xr4OoTU/40Pd6Zb3hHbTIoAAAAASUVORK5CYII=);
+  --iso-15-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIUlEQVR42mP8//8/AymAhWQN//79o7ENg9BJI9LTw8BJALg4L/8OooBhAAAAAElFTkSuQmCC);
+  --iso-20-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAK0lEQVR42mP8dMiAgRTA8v8/A2ka/pGog3QbaK9hEPrhH+k2jEQ//CPNBgDJDSP7j2eraAAAAABJRU5ErkJggg==);
+  --iso-25-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAK0lEQVR42mO8ZKzHQApg+c/AQKKG/6RqYPhPYyf9GwZ+GBbx8J/mnibRDwBrehhYwqedVAAAAABJRU5ErkJggg==);
+  --iso-30-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR42mNUCd/BQApgYWD4T6KG/yRq+E9zGxgGnw3/h4Ef6BBKtHYSAI/1GljKvmecAAAAAElFTkSuQmCC);
+  --iso-35-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAANUlEQVR42mPU6/ZiIAWwMPxnIFEDiTpY/pNsA4k6SPYDEwOJgOU/rZ1EsqfJ8cNgiwfapyUAjbQWKNiIJU4AAAAASUVORK5CYII=);
+  --iso-40-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIklEQVR42mOUkZFhIAUwMZAIaK+B5f///0PdD6PBOjg0AADpCQZyniF0sgAAAABJRU5ErkJggg==);
+  --grit-c-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAANUlEQVR42mPU6/ZiIAWwMPxnIFEDiTpY/pNsA4k6SPYDEwOJgOU/rZ1EsqfJ8cNgiwfapyUAjbQWKNiIJU4AAAAASUVORK5CYII=);
+  --grit-m-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR42mNUCd/BQApgYWD4T6KG/yRq+E9zGxgGnw3/h4Ef6BBKtHYSAI/1GljKvmecAAAAAElFTkSuQmCC);
+  --grit-f-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAK0lEQVR42mO8ZKzHQApg+c/AQKKG/6RqYPhPYyf9GwZ+GBbx8J/mnibRDwBrehhYwqedVAAAAABJRU5ErkJggg==);
   --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -282,6 +304,7 @@ fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
 .order-no{font:600 15px var(--f-mono);color:var(--accent)}
 #orderText{width:100%;min-height:220px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px;font:400 13.5px/1.55 var(--f-body);resize:vertical}
 
+.gt i,.mt,.shade-opt i,.iso,.grit,.chip .sw{background:var(--ci,none) center/100% 100% no-repeat,var(--c)}
 /* loading, load error, live check */
 .skel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;animation:pulse 1.4s ease-in-out infinite}
 .skel i{display:block;aspect-ratio:4/3;background:var(--sunk)}
@@ -434,6 +457,7 @@ var MARK = '<svg class="ico mark" viewBox="0 0 24 24" aria-hidden="true"><path c
 function $(s, r){ return (r || document).querySelector(s); }
 function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
 function icon(path, cls){ return '<svg class="ico' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" aria-hidden="true">' + path + "</svg>"; }
+function pc(v){ return '--c:var(' + v + ');--ci:var(' + v + '-img)'; }
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
@@ -529,16 +553,16 @@ function renderGuide(){
   DATA.products.forEach(function(p){ if (p.opt && p.opt.style === "shade" && p.stock > 0) p.opt.values.forEach(function(v){ stocked[v] = true; }); });
   var list = GUIDE.filter(function(s){ return stocked[s]; });
   $("#guideBox").innerHTML = '<div class="guide" aria-hidden="true">' + GUIDE.map(function(s){
-      return '<div class="gt' + (stocked[s] ? "" : " off") + '" style="--c:var(' + SHADE_VAR[s] + ')"><i></i><b>' + s + "</b></div>";
+      return '<div class="gt' + (stocked[s] ? "" : " off") + '" style="' + pc(SHADE_VAR[s]) + '"><i></i><b>' + s + "</b></div>";
     }).join("") + "</div>" +
     (list.length ? '<p class="guide-cap">' + t("shadesCap") + ' <strong class="ltr">' + list.join(", ") + "</strong></p>" : "");
 }
 
 /* ---------- catalogue ---------- */
 function visual(p){
-  if (p.opt && p.opt.style === "shade") return '<span class="vis">' + p.opt.values.filter(function(v){ return SHADE_VAR[v]; }).map(function(v){ return '<span class="mt" style="--c:var(' + SHADE_VAR[v] + ')"></span>'; }).join("") + "</span>";
-  if (p.iso) return '<span class="vis">' + ISO.map(function(s){ return '<span class="iso" style="--c:var(--iso-' + s + ')"></span>'; }).join("") + "</span>";
-  if (p.grit) return '<span class="vis"><span class="grit" style="--c:var(--grit-c)"></span><span class="grit" style="--c:var(--grit-m)"></span><span class="grit" style="--c:var(--grit-f)"></span></span>';
+  if (p.opt && p.opt.style === "shade") return '<span class="vis">' + p.opt.values.filter(function(v){ return SHADE_VAR[v]; }).map(function(v){ return '<span class="mt" style="' + pc(SHADE_VAR[v]) + '"></span>'; }).join("") + "</span>";
+  if (p.iso) return '<span class="vis">' + ISO.map(function(s){ return '<span class="iso" style="' + pc('--iso-' + s) + '"></span>'; }).join("") + "</span>";
+  if (p.grit) return '<span class="vis">' + ["c","m","f"].map(function(g){ return '<span class="grit" style="' + pc('--grit-' + g) + '"></span>'; }).join("") + '</span>';
   return "";
 }
 function tileInner(p){
@@ -633,8 +657,8 @@ function openProduct(id){
     var shade = p.opt.style === "shade";
     var btns = p.opt.values.map(function(v){
       var on = v === sel;
-      if (shade && SHADE_VAR[v]) return '<button type="button" class="shade-opt" data-v="' + esc(v) + '" aria-pressed="' + on + '" style="--c:var(' + SHADE_VAR[v] + ')"><i></i><b>' + esc(v) + "</b></button>";
-      var sw = p.opt.swatch && p.opt.swatch[v] ? '<span class="sw" style="--c:var(' + p.opt.swatch[v] + ')"></span>' : "";
+      if (shade && SHADE_VAR[v]) return '<button type="button" class="shade-opt" data-v="' + esc(v) + '" aria-pressed="' + on + '" style="' + pc(SHADE_VAR[v]) + '"><i></i><b>' + esc(v) + "</b></button>";
+      var sw = p.opt.swatch && p.opt.swatch[v] ? '<span class="sw" style="' + pc(p.opt.swatch[v]) + '"></span>' : "";
       return '<button type="button" class="chip" data-v="' + esc(v) + '" aria-pressed="' + on + '">' + sw + esc(optText(p, v)) + "</button>";
     }).join("");
     return '<div><p class="opt-label">' + esc(L(p.opt.label)) + ": " + esc(optText(p, sel)) + '</p><div class="opts" role="group" aria-label="' + esc(L(p.opt.label)) + '">' + btns + "</div></div>";
