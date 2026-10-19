@@ -307,6 +307,15 @@ fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
 #orderText{width:100%;min-height:220px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px;font:400 13.5px/1.55 var(--f-body);resize:vertical}
 
 .gt i,.mt,.shade-opt i,.iso,.grit,.chip .sw{--tab-shade:var(--tab-shade-inv);--tab-edge:var(--tab-edge-inv);--line:var(--line-inv);background:var(--c);filter:invert(1)}
+/* Samsung Internet repaints colours in its own dark mode and sites can't opt out,
+   so on Samsung Internet the colour swatches are replaced by their names */
+.samsung .gt i,.samsung .vis,.samsung .shade-opt i,.samsung .chip .sw{display:none}
+.samsung .guide{flex-wrap:wrap;gap:6px}
+.samsung .gt{flex:none;max-width:none}
+.samsung .gt b{font:600 13px var(--f-mono);color:var(--ink);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 11px}
+.samsung .gt.off b{opacity:.45}
+.samsung .shade-opt{min-height:38px;padding:0 14px;border:1px solid var(--line);background:var(--surface);border-radius:999px;justify-content:center}
+.samsung .shade-opt b{font-size:14px}
 /* loading, load error, live check */
 .skel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;animation:pulse 1.4s ease-in-out infinite}
 .skel i{display:block;aspect-ratio:4/3;background:var(--sunk)}
@@ -464,6 +473,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
+if (/SamsungBrowser/i.test(navigator.userAgent || "")) document.documentElement.classList.add("samsung");
 var lang = pickLang();
 function pickLang(){
   var h = (location.hash || "").slice(1);
