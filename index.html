@@ -525,6 +525,7 @@ dialog.closing::backdrop{animation:fadeOut .24s ease forwards}
   .trust span{font-size:12px;line-height:1.35}
   .stabs button{padding:8px 13px;font-size:13.5px}
 }
+body{overflow-x:clip}
 /* ---- language pill ---- */
 .lang-pill{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--wood) 45%,var(--line));background:color-mix(in srgb,var(--wood) 10%,var(--surface));color:var(--ink);font:700 14px var(--f-arabic);cursor:pointer}
 :root[lang="ar"] .lang-pill{font-family:var(--f-display);padding:8px 12px 8px 16px}
@@ -548,6 +549,135 @@ dialog.closing::backdrop{animation:fadeOut .24s ease forwards}
 @keyframes tipIn{0%{opacity:0;transform:translate(8px,-50%)}10%,85%{opacity:1;transform:translate(0,-50%)}100%{opacity:0;transform:translate(8px,-50%)}}
 @media (hover:hover){.fab:hover .fab-tip{animation:none;opacity:1;transform:translate(0,-50%)}}
 body.has-fab .toast{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+/* ---- fast-scroll pill ---- */
+.jump{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:44;display:inline-flex;align-items:center;gap:8px;padding:11px 18px 11px 14px;border:0;border-radius:999px;background:color-mix(in srgb,var(--ink) 88%,transparent);color:var(--bg);font:700 14.5px var(--f-display);box-shadow:0 10px 28px -10px var(--scrim);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:pointer;opacity:0;pointer-events:none;transform:translate(-50%,20px) scale(.9);transition:opacity .3s ease,transform .4s cubic-bezier(.3,1.4,.5,1)!important}
+:root[lang="ar"] .jump{padding:11px 14px 11px 18px}
+.jump .ico{width:18px;height:18px;stroke-width:2.4;transition:transform .3s ease}
+.jump[data-dir="down"] .ico{transform:rotate(180deg)}
+.jump.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.jump.show:active{transform:translate(-50%,0) scale(.94)}
+body.has-fab .jump{bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+/* ---- suggestions ---- */
+.sheet,.cart-body{grid-template-columns:minmax(0,1fr)}
+.pairs{min-width:0}
+.pairs h4{margin:4px 0 10px;font:700 16px var(--f-display);color:var(--ink)}
+.pairs-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,40%);gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.pair{display:grid;gap:4px;align-content:start;padding:8px;border:1px solid var(--line);border-radius:14px;background:var(--surface);scroll-snap-align:start}
+.pair-tile{display:grid;place-items:center;aspect-ratio:4/3;width:100%;border:0;border-radius:10px;background:var(--sunk);color:var(--cat);cursor:pointer;overflow:hidden;padding:0}
+.pair-tile.photo{background:var(--photo-bg)}
+.pair-tile img{width:100%;height:100%;object-fit:contain}
+.pair-tile .ico{width:30px;height:30px}
+.pair b{font-size:13.5px;line-height:1.3;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.pair .price{font-size:14.5px}
+.pair-add{margin-top:4px;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;font-weight:700;font-size:13px;padding:6px 10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.pair-add:disabled{opacity:.4;cursor:default}
+.added{background:var(--ok)!important;border-color:var(--ok)!important;color:#fff!important}
+.added .ico{width:16px;height:16px;stroke-width:2.6;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.3)}to{transform:none}}
+.sheet-acts{display:flex;gap:8px}
+/* ---- sticky cart bar (phones) ---- */
+.cartbar{display:none}
+@media (max-width:640px){
+  .cartbar{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:43;align-items:center;gap:10px;padding:10px 12px 10px 10px;border:0;border-radius:18px;background:var(--accent);color:var(--accent-ink);font:700 15px var(--f-display);box-shadow:0 14px 30px -12px var(--accent),0 4px 12px -4px var(--scrim);transform:translateY(140%);transition:transform .45s cubic-bezier(.3,1.3,.5,1)!important;cursor:pointer}
+  .cartbar.show{transform:none}
+  .cartbar.show:active{transform:scale(.97)}
+  .cartbar.pop{animation:barPop .45s ease}
+  .cb-n{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:10px;background:color-mix(in srgb,var(--accent-ink) 18%,transparent);font-size:14px}
+  .cb-t{flex:1;text-align:start;font-weight:600;opacity:.95}
+  .cb-go{display:inline-flex;align-items:center;gap:4px}
+  .cb-go .ico{width:18px;height:18px;stroke-width:2.4}
+  body.has-bar .fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  body.has-bar .jump{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  body.has-bar .toast{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  body.has-bar footer{padding-bottom:70px}
+}
+@keyframes barPop{40%{transform:translateY(-6px) scale(1.02)}}
+/* ---- free delivery ---- */
+.free{display:grid;gap:7px;padding:10px 12px;margin-bottom:10px;border-radius:12px;background:var(--accent-soft)}
+.free p{margin:0;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--ink)}
+.free p .ico{width:18px;height:18px;color:var(--accent);flex:none}
+.free-bar{height:7px;border-radius:99px;background:color-mix(in srgb,var(--accent) 18%,transparent);overflow:hidden}
+.free-bar i{display:block;height:100%;border-radius:inherit;background:var(--accent);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.free.done{background:color-mix(in srgb,var(--ok) 16%,var(--surface))}
+.free-tag{color:var(--ok)}
+.was-fee{color:var(--muted);font-weight:500;margin-inline-end:4px}
+.cartbar{overflow:hidden}
+.cartbar::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:var(--p,0%);background:color-mix(in srgb,var(--accent-ink) 55%,transparent);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.cartbar.free-ok::after{background:#F2C14E}
+#q.glow{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 35%,transparent)}
+/* ---- discount codes ---- */
+.promo-row{display:flex;gap:8px}
+.promo-row input{flex:1;min-width:0;text-transform:uppercase;letter-spacing:.06em;font-family:var(--f-mono)}
+.promo-row .btn{flex:none;width:auto}
+.promo-msg{margin:6px 0 0;font-size:13.5px;color:var(--muted);min-height:0}
+.promo-msg:empty{display:none}
+.promo-msg.ok{color:var(--ok);font-weight:700}
+.promo-msg.bad{color:var(--danger)}
+.disc-row span:last-child{color:var(--ok);font-weight:700}
+.mycode{margin-top:16px;padding:16px;border-radius:16px;border:1.5px dashed var(--wood);background:color-mix(in srgb,var(--wood) 8%,var(--surface));display:grid;gap:8px;justify-items:center;text-align:center;animation:giftPop .6s cubic-bezier(.2,.9,.3,1.3) both}
+.mycode.wait{color:var(--muted);font-weight:600}
+.mc-k{margin:0;font-weight:700}
+.mc-code{font:800 28px var(--f-mono);letter-spacing:.12em;color:var(--wood);padding:6px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.mc-left{margin:0;color:var(--muted);font-size:13.5px}
+.mc-acts{display:grid;gap:8px;width:100%}
+/* ---- explore & play ---- */
+.play{border-top:1px solid var(--line);margin-top:28px}
+.play .wrap{padding-block:48px}
+.play-head{display:grid;justify-items:center;text-align:center;gap:6px;margin-bottom:22px}
+.play-head h2{margin:0;font:800 clamp(24px,5.5vw,32px)/1.2 var(--f-display);letter-spacing:-.02em}
+:root[lang="ar"] .play-head h2{font-weight:700;line-height:1.4}
+.play-head p{margin:0;color:var(--muted);max-width:46ch}
+.play-grid{display:grid;gap:16px}
+@media (min-width:820px){.play-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.explorer,.quiz{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--radius) + 8px);padding:20px;min-width:0}
+.ex-top{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;position:relative;margin-bottom:14px}
+.ring{width:64px;height:64px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:7}
+.ring-bg{stroke:var(--sunk)}
+.ring-fg{stroke:var(--wood);stroke-linecap:round;transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.2,1)}
+.ring-n{position:absolute;inset-inline-start:0;top:50%;width:64px;transform:translateY(-50%);text-align:center;font:800 15px var(--f-display)}
+.ex-top h3{margin:0;font:800 19px var(--f-display)}
+.ex-top p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.ex-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ex-list button{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-weight:600;font-size:14.5px;cursor:pointer;text-align:start}
+.ex-list button span{flex:1}
+.ex-list i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none}
+.ex-list .ok{color:var(--muted)}
+.ex-list .ok span{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.ex-list .ok i{background:var(--ok);border-color:var(--ok);color:#fff}
+.ex-list .ok i .ico{width:14px;height:14px;stroke-width:3;animation:pop .4s cubic-bezier(.3,1.6,.5,1)}
+.ex-list .go{width:16px;height:16px;color:var(--muted)}
+.ex-share{margin-top:14px;width:100%}
+.qz-intro,.qz-end{display:grid;justify-items:center;text-align:center;gap:10px;padding:10px 0}
+.qz-emoji{font-size:44px;line-height:1;animation:wiggle 2.4s ease-in-out infinite}
+.quiz h3{margin:0;font:800 19px/1.35 var(--f-display);text-wrap:balance}
+.qz-intro p{margin:0 0 6px;color:var(--muted);max-width:40ch}
+.qz-q{display:grid;gap:12px;animation:dropIn .35s ease}
+.qz-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);font-weight:600}
+.qz-dots{display:flex;gap:5px}
+.qz-dots i{width:8px;height:8px;border-radius:50%;background:var(--sunk)}
+.qz-dots i.past{background:var(--wood)}
+.qz-dots i.now{background:var(--accent);transform:scale(1.25)}
+.qz-opts{display:grid;gap:8px}
+.qz-opt{padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-weight:600;font-size:15px;text-align:start;cursor:pointer}
+.qz-opt:hover:not(:disabled){border-color:var(--accent)}
+.qz-opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--surface));animation:pop .35s ease}
+.qz-opt.wrong{border-color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,var(--surface));animation:shake .4s ease}
+.qz-opt.dim{opacity:.5}
+.qz-opt:disabled{cursor:default}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.qz-why{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.qz-why b{color:var(--ink)}
+.qz-score{display:flex;align-items:baseline;gap:2px;font:800 54px/1 var(--f-display);color:var(--accent)}
+.qz-score span{font-size:24px;color:var(--muted)}
+.qz-score.perfect{color:var(--wood);animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+.qz-acts{display:grid;gap:8px;width:100%;max-width:320px}
+.confetti{position:fixed;inset:0;z-index:200;pointer-events:none}
+/* ---- FAQ ---- */
+.faq{border-top:1px solid var(--line)}
+.faq .wrap{padding-block:40px;display:grid;gap:10px}
+.faq h2{font:700 20px var(--f-display);margin:0 0 8px}
+.faq .ben-body p{margin:0;color:var(--muted);line-height:1.6}
 /* ---- press feedback on everything tappable ---- */
 button,a,summary,.chip,label.agree,.tile{-webkit-tap-highlight-color:transparent}
 button,summary,.chip,label.agree,a.btn,a.cue{transition:transform .28s cubic-bezier(.3,1.4,.5,1),background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,opacity .2s ease}
@@ -560,7 +690,7 @@ button:disabled{transition:opacity .2s ease}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <div id="app"></div>
-<script type="application/json" id="data">{"v":1,"settings":{"whatsapp":"201007805147","instapay":"","fees":[60,75,95],"notice":false},"products":[{"id":"kit-op","sku":"KIT-601","cat":"kit","price":1650,"stock":14,"name":{"en":"Preclinical operative kit","ar":"كيت التحفظي (بريكلينيكال)"},"spec":{"en":"Composite, GI, bond, etch, 10 burs","ar":"كومبوزيت، جلاس أيونومر، بوند، إتشنج، 10 بيرز"},"desc":{"en":"Everything for an operative preclinical course in one box: nanohybrid composite in A2, glass ionomer restorative, universal bonding agent, 37% etching gel and an assorted diamond bur set.","ar":"كل ما تحتاجه لكورس التحفظي العملي في علبة واحدة: كومبوزيت نانوهايبرد درجة A2، جلاس أيونومر للحشو، بوند يونيفرسال، جل إتشنج 37%، ومجموعة بيرز دايموند متنوعة."},"tag":{"en":"Save 25%","ar":"وفّر 25%"},"opt":null,"img":"","best":true,"was":2200},{"id":"kit-endo","sku":"KIT-610","cat":"kit","price":520,"stock":22,"name":{"en":"Endo starter kit","ar":"كيت إندو للمبتدئين"},"spec":{"en":"Files, GP, paper points, CaOH, syringes","ar":"فايلات، جوتا، أقماع ورقية، هيدروكسيد كالسيوم، سرنجات"},"desc":{"en":"Hand K-files 15–40, gutta-percha and paper points, calcium hydroxide paste and 10 irrigation syringes. Covers a full preclinical endo block.","ar":"فايلات K مقاس 15–40، أقماع جوتا بيركا وأقماع ورقية، معجون هيدروكسيد الكالسيوم و10 سرنجات غسيل. يغطي بلوك الإندو العملي بالكامل."},"tag":{"en":"For students","ar":"للطلبة"},"opt":null,"img":"","feat":true},{"id":"cmp4","sku":"RST-101","cat":"resto","price":650,"stock":40,"name":{"en":"Nanohybrid composite syringe","ar":"كومبوزيت نانوهايبرد – سرنجة"},"spec":{"en":"4 g · light-cure","ar":"4 جم · ضوئي"},"desc":{"en":"Universal nanohybrid composite for anterior and posterior restorations. Polishes to a high gloss and doesn't stick to the instrument.","ar":"كومبوزيت نانوهايبرد يونيفرسال للحشوات الأمامية والخلفية. يُلمَّع لدرجة لمعان عالية ولا يلتصق بالأداة."},"tag":{"en":"Best seller","ar":"الأكثر مبيعًا"},"opt":{"label":{"en":"Shade","ar":"الدرجة"},"values":["A1","A2","A3","A3.5","B1"],"values_ar":[],"def":1,"style":"shade"},"img":"","best":true},{"id":"bond","sku":"RST-114","cat":"resto","price":780,"stock":9,"name":{"en":"Universal bonding agent","ar":"بوند يونيفرسال"},"spec":{"en":"5 ml bottle","ar":"زجاجة 5 مل"},"desc":{"en":"Single-bottle adhesive for total-etch, self-etch or selective-etch technique. One coat, 10 seconds light cure.","ar":"لاصق بزجاجة واحدة لتقنيات total-etch و self-etch و selective-etch. طبقة واحدة وتصليب ضوئي 10 ثوانٍ."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"gic","sku":"RST-120","cat":"resto","price":520,"stock":3,"name":{"en":"Glass ionomer restorative","ar":"جلاس أيونومر للحشو"},"spec":{"en":"15 g powder + 10 ml liquid","ar":"بودرة 15 جم + سائل 10 مل"},"desc":{"en":"Self-curing glass ionomer with fluoride release. Suited to class V cavities, deciduous teeth and bases.","ar":"جلاس أيونومر ذاتي التصلب يطلق الفلورايد. مناسب لحشوات Class V والأسنان اللبنية والقواعد."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"etch","sku":"RST-131","cat":"resto","price":90,"stock":60,"name":{"en":"Etching gel 37%","ar":"جل إتشنج 37%"},"spec":{"en":"2 × 3 ml syringes + tips","ar":"2 سرنجة × 3 مل + سنون"},"desc":{"en":"Blue phosphoric acid gel that stays where you place it and rinses off cleanly. Disposable tips included.","ar":"جل حمض فوسفوريك أزرق يثبت مكانه ويُشطف بسهولة. السنون الاستعمال الواحد مرفقة."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":120},{"id":"kfile","sku":"END-201","cat":"endo","price":120,"stock":35,"name":{"en":"Hand K-files","ar":"فايلات K يدوية"},"spec":{"en":"ISO 15–40 assorted · 6 pcs","ar":"مقاسات ISO من 15 إلى 40 · 6 قطع"},"desc":{"en":"Stainless steel K-files for canal negotiation and shaping. Handles follow the ISO colour code from white (15) to black (40).","ar":"فايلات ستانلس ستيل لاستكشاف القنوات وتشكيلها. ألوان المقابض حسب كود ISO من الأبيض (15) إلى الأسود (40)."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Length","ar":"الطول"},"values":["21 mm","25 mm"],"values_ar":["21 مم","25 مم"],"def":1,"style":"chip"},"img":"","iso":true,"best":true},{"id":"gp","sku":"END-210","cat":"endo","price":95,"stock":50,"name":{"en":"Gutta-percha points","ar":"أقماع جوتا بيركا"},"spec":{"en":"ISO 15–40 assorted · 120 pcs","ar":"مقاسات ISO من 15 إلى 40 · 120 قطعة"},"desc":{"en":"Radiopaque gutta-percha points, colour-coded by size, for lateral condensation.","ar":"أقماع جوتا بيركا ظاهرة في الأشعة وملوّنة حسب المقاس، للحشو بالتكثيف الجانبي."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"pp","sku":"END-212","cat":"endo","price":70,"stock":45,"name":{"en":"Absorbent paper points","ar":"أقماع ورقية ماصّة"},"spec":{"en":"ISO 15–40 assorted · 200 pcs","ar":"مقاسات ISO من 15 إلى 40 · 200 قطعة"},"desc":{"en":"Highly absorbent points for drying canals before obturation.","ar":"أقماع عالية الامتصاص لتجفيف القنوات قبل الحشو."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"caoh","sku":"END-230","cat":"endo","price":160,"stock":18,"name":{"en":"Calcium hydroxide paste","ar":"معجون هيدروكسيد الكالسيوم"},"spec":{"en":"2.2 g syringe + tips","ar":"سرنجة 2.2 جم + سنون"},"desc":{"en":"Radiopaque intracanal medicament, ready to inject straight into the canal.","ar":"دواء داخل القناة ظاهر في الأشعة، جاهز للحقن مباشرة في القناة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"dbur","sku":"BUR-301","cat":"bur","price":180,"stock":30,"name":{"en":"Diamond burs, FG assorted","ar":"بيرز دايموند FG متنوعة"},"spec":{"en":"10 pcs · round, flat-end, flame","ar":"10 قطع · راوند، فلات إند، فليم"},"desc":{"en":"Friction-grip diamond burs for high-speed handpieces. The ring on the shank shows the grit: green coarse, blue medium, red fine.","ar":"بيرز دايموند friction-grip للتوربينة. الحلقة الملوّنة على الساق توضّح الخشونة: أخضر خشن، أزرق متوسط، أحمر ناعم."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Grit","ar":"الخشونة"},"values":["Coarse","Medium","Fine"],"values_ar":["خشن","متوسط","ناعم"],"def":1,"style":"chip","swatch":{"Coarse":"--grit-c","Medium":"--grit-m","Fine":"--grit-f"}},"img":"","grit":true,"feat":true},{"id":"cbur","sku":"BUR-315","cat":"bur","price":150,"stock":25,"name":{"en":"Carbide round burs, FG","ar":"بيرز كاربايد راوند FG"},"spec":{"en":"5 pcs per pack","ar":"5 قطع في العبوة"},"desc":{"en":"Tungsten carbide burs for caries removal and access cavities.","ar":"بيرز تنجستن كاربايد لإزالة التسوس وفتح الكافيتي."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["#2","#4","#6"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"alg","sku":"IMP-401","cat":"imp","price":210,"stock":20,"name":{"en":"Alginate, dust-free","ar":"ألجينات بدون غبار"},"spec":{"en":"450 g bag · fast set","ar":"كيس 450 جم · سريع التصلب"},"desc":{"en":"Colour-changing alginate that shows mixing, loading and setting stages.","ar":"ألجينات يتغيّر لونه ليوضّح مراحل الخلط والتحميل والتصلب."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"pvs","sku":"IMP-420","cat":"imp","price":1450,"stock":0,"name":{"en":"Addition silicone kit","ar":"كيت سيليكون إضافي (أديشن)"},"spec":{"en":"Putty 2 × 300 g + light body 2 × 50 ml","ar":"بوتي 2 × 300 جم + لايت بودي 2 × 50 مل"},"desc":{"en":"A-silicone for crown and bridge impressions with the putty-wash technique.","ar":"سيليكون إضافي لطبعات التيجان والجسور بتقنية البوتي والواش."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"tray","sku":"IMP-440","cat":"imp","price":260,"stock":8,"name":{"en":"Perforated impression trays","ar":"ترايات طبعة مثقّبة"},"spec":{"en":"Set of 10 · upper and lower","ar":"طقم 10 · علوي وسفلي"},"desc":{"en":"Stainless steel trays in five sizes per arch. Autoclavable.","ar":"ترايات ستانلس ستيل بخمسة مقاسات لكل فك. تتحمل الأوتوكلاف."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":320},{"id":"glove","sku":"DSP-501","cat":"disp","price":230,"stock":80,"name":{"en":"Nitrile examination gloves","ar":"جوانتي نيتريل للفحص"},"spec":{"en":"Box of 100 · powder-free","ar":"علبة 100 · بدون بودرة"},"desc":{"en":"Textured fingertips for grip on instruments. Latex-free.","ar":"أطراف أصابع محبّبة لثبات أفضل على الأدوات. خالٍ من اللاتكس."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["S","M","L"],"values_ar":[],"def":1,"style":"chip"},"img":"","best":true},{"id":"mask","sku":"DSP-510","cat":"disp","price":60,"stock":120,"name":{"en":"3-ply face masks","ar":"ماسكات 3 طبقات"},"spec":{"en":"Box of 50 · ear loop","ar":"علبة 50 · بأستك للأذن"},"desc":{"en":"Fluid-resistant outer layer with a bendable nose wire.","ar":"طبقة خارجية مقاومة للسوائل وسلك أنف قابل للتشكيل."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":75},{"id":"se","sku":"DSP-520","cat":"disp","price":85,"stock":70,"name":{"en":"Saliva ejectors","ar":"شفاطات لعاب"},"spec":{"en":"Bag of 100","ar":"كيس 100"},"desc":{"en":"Flexible ejectors with fixed tips. Hold their shape once bent.","ar":"شفاطات مرنة بأطراف ثابتة. تحتفظ بشكلها بعد ثنيها."},"tag":{"en":"","ar":""},"opt":null,"img":""}]}</script>
+<script type="application/json" id="data">{"v":1,"settings":{"whatsapp":"201007805147","instapay":"","fees":[60,75,95],"notice":false,"freeOver":1500},"products":[{"id":"kit-op","sku":"KIT-601","cat":"kit","price":1650,"stock":14,"name":{"en":"Preclinical operative kit","ar":"كيت التحفظي (بريكلينيكال)"},"spec":{"en":"Composite, GI, bond, etch, 10 burs","ar":"كومبوزيت، جلاس أيونومر، بوند، إتشنج، 10 بيرز"},"desc":{"en":"Everything for an operative preclinical course in one box: nanohybrid composite in A2, glass ionomer restorative, universal bonding agent, 37% etching gel and an assorted diamond bur set.","ar":"كل ما تحتاجه لكورس التحفظي العملي في علبة واحدة: كومبوزيت نانوهايبرد درجة A2، جلاس أيونومر للحشو، بوند يونيفرسال، جل إتشنج 37%، ومجموعة بيرز دايموند متنوعة."},"tag":{"en":"Save 25%","ar":"وفّر 25%"},"opt":null,"img":"","best":true,"was":2200},{"id":"kit-endo","sku":"KIT-610","cat":"kit","price":520,"stock":22,"name":{"en":"Endo starter kit","ar":"كيت إندو للمبتدئين"},"spec":{"en":"Files, GP, paper points, CaOH, syringes","ar":"فايلات، جوتا، أقماع ورقية، هيدروكسيد كالسيوم، سرنجات"},"desc":{"en":"Hand K-files 15–40, gutta-percha and paper points, calcium hydroxide paste and 10 irrigation syringes. Covers a full preclinical endo block.","ar":"فايلات K مقاس 15–40، أقماع جوتا بيركا وأقماع ورقية، معجون هيدروكسيد الكالسيوم و10 سرنجات غسيل. يغطي بلوك الإندو العملي بالكامل."},"tag":{"en":"For students","ar":"للطلبة"},"opt":null,"img":"","feat":true},{"id":"cmp4","sku":"RST-101","cat":"resto","price":650,"stock":40,"name":{"en":"Nanohybrid composite syringe","ar":"كومبوزيت نانوهايبرد – سرنجة"},"spec":{"en":"4 g · light-cure","ar":"4 جم · ضوئي"},"desc":{"en":"Universal nanohybrid composite for anterior and posterior restorations. Polishes to a high gloss and doesn't stick to the instrument.","ar":"كومبوزيت نانوهايبرد يونيفرسال للحشوات الأمامية والخلفية. يُلمَّع لدرجة لمعان عالية ولا يلتصق بالأداة."},"tag":{"en":"Best seller","ar":"الأكثر مبيعًا"},"opt":{"label":{"en":"Shade","ar":"الدرجة"},"values":["A1","A2","A3","A3.5","B1"],"values_ar":[],"def":1,"style":"shade"},"img":"","best":true},{"id":"bond","sku":"RST-114","cat":"resto","price":780,"stock":9,"name":{"en":"Universal bonding agent","ar":"بوند يونيفرسال"},"spec":{"en":"5 ml bottle","ar":"زجاجة 5 مل"},"desc":{"en":"Single-bottle adhesive for total-etch, self-etch or selective-etch technique. One coat, 10 seconds light cure.","ar":"لاصق بزجاجة واحدة لتقنيات total-etch و self-etch و selective-etch. طبقة واحدة وتصليب ضوئي 10 ثوانٍ."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"gic","sku":"RST-120","cat":"resto","price":520,"stock":3,"name":{"en":"Glass ionomer restorative","ar":"جلاس أيونومر للحشو"},"spec":{"en":"15 g powder + 10 ml liquid","ar":"بودرة 15 جم + سائل 10 مل"},"desc":{"en":"Self-curing glass ionomer with fluoride release. Suited to class V cavities, deciduous teeth and bases.","ar":"جلاس أيونومر ذاتي التصلب يطلق الفلورايد. مناسب لحشوات Class V والأسنان اللبنية والقواعد."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"etch","sku":"RST-131","cat":"resto","price":90,"stock":60,"name":{"en":"Etching gel 37%","ar":"جل إتشنج 37%"},"spec":{"en":"2 × 3 ml syringes + tips","ar":"2 سرنجة × 3 مل + سنون"},"desc":{"en":"Blue phosphoric acid gel that stays where you place it and rinses off cleanly. Disposable tips included.","ar":"جل حمض فوسفوريك أزرق يثبت مكانه ويُشطف بسهولة. السنون الاستعمال الواحد مرفقة."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":120},{"id":"kfile","sku":"END-201","cat":"endo","price":120,"stock":35,"name":{"en":"Hand K-files","ar":"فايلات K يدوية"},"spec":{"en":"ISO 15–40 assorted · 6 pcs","ar":"مقاسات ISO من 15 إلى 40 · 6 قطع"},"desc":{"en":"Stainless steel K-files for canal negotiation and shaping. Handles follow the ISO colour code from white (15) to black (40).","ar":"فايلات ستانلس ستيل لاستكشاف القنوات وتشكيلها. ألوان المقابض حسب كود ISO من الأبيض (15) إلى الأسود (40)."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Length","ar":"الطول"},"values":["21 mm","25 mm"],"values_ar":["21 مم","25 مم"],"def":1,"style":"chip"},"img":"","iso":true,"best":true},{"id":"gp","sku":"END-210","cat":"endo","price":95,"stock":50,"name":{"en":"Gutta-percha points","ar":"أقماع جوتا بيركا"},"spec":{"en":"ISO 15–40 assorted · 120 pcs","ar":"مقاسات ISO من 15 إلى 40 · 120 قطعة"},"desc":{"en":"Radiopaque gutta-percha points, colour-coded by size, for lateral condensation.","ar":"أقماع جوتا بيركا ظاهرة في الأشعة وملوّنة حسب المقاس، للحشو بالتكثيف الجانبي."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"pp","sku":"END-212","cat":"endo","price":70,"stock":45,"name":{"en":"Absorbent paper points","ar":"أقماع ورقية ماصّة"},"spec":{"en":"ISO 15–40 assorted · 200 pcs","ar":"مقاسات ISO من 15 إلى 40 · 200 قطعة"},"desc":{"en":"Highly absorbent points for drying canals before obturation.","ar":"أقماع عالية الامتصاص لتجفيف القنوات قبل الحشو."},"tag":{"en":"","ar":""},"opt":null,"img":"","iso":true},{"id":"caoh","sku":"END-230","cat":"endo","price":160,"stock":18,"name":{"en":"Calcium hydroxide paste","ar":"معجون هيدروكسيد الكالسيوم"},"spec":{"en":"2.2 g syringe + tips","ar":"سرنجة 2.2 جم + سنون"},"desc":{"en":"Radiopaque intracanal medicament, ready to inject straight into the canal.","ar":"دواء داخل القناة ظاهر في الأشعة، جاهز للحقن مباشرة في القناة."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"dbur","sku":"BUR-301","cat":"bur","price":180,"stock":30,"name":{"en":"Diamond burs, FG assorted","ar":"بيرز دايموند FG متنوعة"},"spec":{"en":"10 pcs · round, flat-end, flame","ar":"10 قطع · راوند، فلات إند، فليم"},"desc":{"en":"Friction-grip diamond burs for high-speed handpieces. The ring on the shank shows the grit: green coarse, blue medium, red fine.","ar":"بيرز دايموند friction-grip للتوربينة. الحلقة الملوّنة على الساق توضّح الخشونة: أخضر خشن، أزرق متوسط، أحمر ناعم."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Grit","ar":"الخشونة"},"values":["Coarse","Medium","Fine"],"values_ar":["خشن","متوسط","ناعم"],"def":1,"style":"chip","swatch":{"Coarse":"--grit-c","Medium":"--grit-m","Fine":"--grit-f"}},"img":"","grit":true,"feat":true},{"id":"cbur","sku":"BUR-315","cat":"bur","price":150,"stock":25,"name":{"en":"Carbide round burs, FG","ar":"بيرز كاربايد راوند FG"},"spec":{"en":"5 pcs per pack","ar":"5 قطع في العبوة"},"desc":{"en":"Tungsten carbide burs for caries removal and access cavities.","ar":"بيرز تنجستن كاربايد لإزالة التسوس وفتح الكافيتي."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["#2","#4","#6"],"values_ar":[],"def":1,"style":"chip"},"img":""},{"id":"alg","sku":"IMP-401","cat":"imp","price":210,"stock":20,"name":{"en":"Alginate, dust-free","ar":"ألجينات بدون غبار"},"spec":{"en":"450 g bag · fast set","ar":"كيس 450 جم · سريع التصلب"},"desc":{"en":"Colour-changing alginate that shows mixing, loading and setting stages.","ar":"ألجينات يتغيّر لونه ليوضّح مراحل الخلط والتحميل والتصلب."},"tag":{"en":"","ar":""},"opt":null,"img":"","feat":true},{"id":"pvs","sku":"IMP-420","cat":"imp","price":1450,"stock":0,"name":{"en":"Addition silicone kit","ar":"كيت سيليكون إضافي (أديشن)"},"spec":{"en":"Putty 2 × 300 g + light body 2 × 50 ml","ar":"بوتي 2 × 300 جم + لايت بودي 2 × 50 مل"},"desc":{"en":"A-silicone for crown and bridge impressions with the putty-wash technique.","ar":"سيليكون إضافي لطبعات التيجان والجسور بتقنية البوتي والواش."},"tag":{"en":"","ar":""},"opt":null,"img":""},{"id":"tray","sku":"IMP-440","cat":"imp","price":260,"stock":8,"name":{"en":"Perforated impression trays","ar":"ترايات طبعة مثقّبة"},"spec":{"en":"Set of 10 · upper and lower","ar":"طقم 10 · علوي وسفلي"},"desc":{"en":"Stainless steel trays in five sizes per arch. Autoclavable.","ar":"ترايات ستانلس ستيل بخمسة مقاسات لكل فك. تتحمل الأوتوكلاف."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":320},{"id":"glove","sku":"DSP-501","cat":"disp","price":230,"stock":80,"name":{"en":"Nitrile examination gloves","ar":"جوانتي نيتريل للفحص"},"spec":{"en":"Box of 100 · powder-free","ar":"علبة 100 · بدون بودرة"},"desc":{"en":"Textured fingertips for grip on instruments. Latex-free.","ar":"أطراف أصابع محبّبة لثبات أفضل على الأدوات. خالٍ من اللاتكس."},"tag":{"en":"","ar":""},"opt":{"label":{"en":"Size","ar":"المقاس"},"values":["S","M","L"],"values_ar":[],"def":1,"style":"chip"},"img":"","best":true},{"id":"mask","sku":"DSP-510","cat":"disp","price":60,"stock":120,"name":{"en":"3-ply face masks","ar":"ماسكات 3 طبقات"},"spec":{"en":"Box of 50 · ear loop","ar":"علبة 50 · بأستك للأذن"},"desc":{"en":"Fluid-resistant outer layer with a bendable nose wire.","ar":"طبقة خارجية مقاومة للسوائل وسلك أنف قابل للتشكيل."},"tag":{"en":"","ar":""},"opt":null,"img":"","was":75},{"id":"se","sku":"DSP-520","cat":"disp","price":85,"stock":70,"name":{"en":"Saliva ejectors","ar":"شفاطات لعاب"},"spec":{"en":"Bag of 100","ar":"كيس 100"},"desc":{"en":"Flexible ejectors with fixed tips. Hold their shape once bent.","ar":"شفاطات مرنة بأطراف ثابتة. تحتفظ بشكلها بعد ثنيها."},"tag":{"en":"","ar":""},"opt":null,"img":""}]}</script>
 <script id="main">
 (function(){
 "use strict";
@@ -572,7 +702,7 @@ var SHEET_ID = "18ioKcsE_zwM8K_82h5MrY56C-DlbXbr79dLRVSfVSfs";
 var SAMPLE;
 try { SAMPLE = JSON.parse(document.getElementById("data").textContent); } catch(e){ SAMPLE = null; }
 var PREVIEW = !SHEET_ID || !!window.claude || /(^|\.)(claudeusercontent\.com|claude\.ai)$/.test(location.hostname);
-var DEFAULT_SETTINGS = {whatsapp:"", instapay:"", fees:[60,75,95], notice:false};
+var DEFAULT_SETTINGS = {whatsapp:"", instapay:"", fees:[60,75,95], notice:false, freeOver:1500};
 var DATA = {settings: Object.assign({}, DEFAULT_SETTINGS), products: []};
 var LOAD = "loading", LOAD_INFO = "";
 var CHECK = (location.hash || "") === "#check";
@@ -621,7 +751,39 @@ var T = {
   reqTitle:"We don't have “{q}” on the site yet", reqText:"We can source it for you. Message us on WhatsApp and we'll tell you the price and delivery time, then get it to you as a special order.", reqBtn:"Ask us to get it", reqNot:"Can't find exactly what you need?", reqLink:"Ask us to get it for you",
   reqMsg:"Hi Miswak! I'm looking for “{q}” and couldn't find it on the website. Can you get it for me? Please let me know the price and when it would arrive.",
   restockAsk:"Ask us to get it for you", restockMsg:"Hi Miswak! I'd like to order “{n}” ({c}), but it's out of stock on the website. Can you get it for me? Please let me know when it will be available.",
-  fabMsg:"Hi Miswak! I have a question.", fabAria:"Chat with us on WhatsApp", fabTip:"Need help? Contact us",
+  freeLeft:"Add {t} more for free delivery", freeYes:"You've unlocked free delivery!", freeUnlocked:"🎉 Free delivery unlocked!", freeMsg:"Free (order over {t})", freeHint:"Delivery is free on this order.", faqFree:"Delivery is free on orders over {t}. Below that,", factFree:"Free delivery over {t}",
+  promoLabel:"Discount code", promoApply:"Apply", promoRemove:"Remove", promoChecking:"Checking the code…", promoOk:"Code applied: {p}% off your products",
+  promoErr_notfound:"We couldn't find that code. Check the spelling.", promoErr_inactive:"This code isn't active any more.", promoErr_expired:"This code has expired.", promoErr_usedup:"This code has already been used the maximum number of times.",
+  promoNet:"We couldn't check the code right now. Check your internet and try again.", promoSaved:"🎁 Code {c} saved: {p}% off at checkout",
+  discLine:"Discount ({c}, {p}%)", mDisc:"Discount code {c} ({p}%)",
+  exTextReward:"Tick off all six to earn the Explorer badge and a discount code to share with 5 friends.",
+  myCodeMaking:"Creating your discount code…", myCodeTitle:"Your code: {p}% off for {n} friends", myCodeLeft:"{n} of {m} uses left",
+  myCodeShare:"🎁 Use my code {c} for {p}% off your order at Miswak Dental Supply:", myCodeShareBtn:"Share with friends", copyCode:"Copy code", codeCopied:"Code copied",
+  playEyebrow:"Take a break", playTitle:"Explore and play", playSub:"No shopping needed. Discover the site, test what you know, and earn your badge.",
+  exTitle:"Miswak Explorer", exText:"Tick off all six to earn the Explorer badge.", exDoneTitle:"Miswak Explorer badge earned!", exDoneText:"You've explored everything. Thanks for spending time with us.",
+  exShare:"I earned the Miswak Explorer badge 🏅 on Miswak Dental Supply. Have a look:", exShareBtn:"Share your badge",
+  q_benefits:"Read the miswak's benefits", q_sunnah:"Read the hadiths about the miswak", q_research:"Open the research", q_product:"Look inside a product", q_search:"Try the search", q_quiz:"Finish the quiz",
+  questAll:"🏅 You're officially a Miswak Explorer!",
+  quizTitle:"The Miswak quiz", quizIntro:"{n} quick questions on the miswak and the materials you use every day. How many can you get?", quizStart:"Start the quiz",
+  quizQ:"Question {i} of {n}", quizRight:"Correct!", quizWrong:"Not quite.", quizNext:"Next question", quizSee:"See my score",
+  quizPerfect:"Perfect score! You're a true Miswak master 🏆", quizGreat:"Great job! So close to perfect.", quizTry:"Nice try! Have another go.",
+  quizShare:"I scored {s}/{n} on the Miswak quiz 🦷 Can you beat me?", quizShareBtn:"Challenge a friend", quizAgain:"Play again",
+  quiz:[["Which tree does the miswak come from?",["Olive","Arak (Salvadora persica)","Date palm","Neem"],1,"The miswak is cut from the arak tree, Salvadora persica."],
+        ["Complete the hadith: \u201cThe siwak purifies the mouth and\u2026\u201d",["whitens the teeth","freshens the breath","pleases the Lord","strengthens the gums"],2,"\u201cThe siwak purifies the mouth and pleases the Lord.\u201d Reported by Aisha, in an-Nasa\u2019i."],
+        ["The Prophet \uFDFA said that, if it weren\u2019t a hardship, he would have ordered the siwak before every\u2026",["meal","prayer","sleep","journey"],1,"Reported by Abu Hurairah, in al-Bukhari and Muslim."],
+        ["In the ISO colour code, what colour is the handle of a size 15 file?",["Yellow","Red","White","Black"],2,"15 white, 20 yellow, 25 red, 30 blue, 35 green, 40 black."],
+        ["On a diamond bur, what does a red ring on the shank mean?",["Coarse grit","Medium grit","Fine grit","Super-coarse grit"],2,"Green is coarse, blue is medium and red is fine."],
+        ["Composite shades like A2 and B1 follow which shade guide?",["VITA classical","Pantone","ISO 3630","ADA No. 27"],0,"VITA classical groups shades into A (reddish-brown), B (reddish-yellow), C (grey) and D (reddish-grey)."]],
+  pairsTitle:"Goes well with", cartPairsTitle:"You might also need", share:"Share this product", shareFrom:"Miswak Dental Supply", linkCopied:"Link copied. Paste it in WhatsApp to share",
+  addedShort:"Added", checkout:"Checkout", item1:"1 item", itemsN:"{n} items", itemsTotal:"{n} · {t}", welcomeBack:"Welcome back! Your cart still has {n} item(s)",
+  faqTitle:"Questions customers ask",
+  faq:[["Do I need an account?","No. Add products to your cart, fill in your delivery details and send the order on WhatsApp. That's it."],
+       ["How do I pay?","Cash on delivery is the default. You can also pay by InstaPay or mobile wallet if you prefer. We confirm the payment method with you on WhatsApp."],
+       ["How much is delivery, and when will it arrive?","{free}the fee depends on your governorate and is shown at checkout before you send the order. We confirm the delivery date with you on WhatsApp."],
+       ["Can I return something?","Unopened, sealed items can be returned within 14 days. If something arrives damaged or wrong, tell us within 48 hours. Full details are in the store policies at the bottom of the page."],
+       ["Do you do bulk or college-group orders?","Yes. Message us on WhatsApp with the products and quantities and we'll reply with a quote."],
+       ["You don't have the product I need. Can you get it?","Often, yes. Search for it, then tap \u201cAsk us to get it\u201d, or message us on WhatsApp."]],
+  toTop:"Back to top", toBottom:"Go to bottom", fabMsg:"Hi Miswak! I have a question.", fabAria:"Chat with us on WhatsApp", fabTip:"Need help? Contact us",
   noMatch:"No products match “{q}”. Try a shorter word, like “file” or “bur”.",
   view:"View {name}", add:"Add", choose:"Choose", soldOut:"Sold out",
   stockN:"{n} in stock", stockLow:"Only {n} left", stockOut:"Out of stock",
@@ -668,7 +830,39 @@ var T = {
   reqTitle:"«{q}» غير متوفر على الموقع حاليًا", reqText:"نقدر نوفّره لك. راسلنا على واتساب ونبلغك بالسعر وموعد التوصيل، ونجيبه لك كطلب خاص.", reqBtn:"اطلبه منّا", reqNot:"مش لاقي اللي محتاجه بالظبط؟", reqLink:"اطلب منّا نوفّره لك",
   reqMsg:"أهلًا مسواك! بدوّر على «{q}» وما لقيتهوش على الموقع. ممكن توفّروه لي؟ يا ريت تبلغوني بالسعر وموعد الوصول.",
   restockAsk:"اطلب منّا نوفّره لك", restockMsg:"أهلًا مسواك! عايز أطلب «{n}» ({c}) بس مكتوب غير متوفر على الموقع. ممكن توفّروه لي؟ يا ريت تبلغوني إمتى هيتوفر.",
-  fabMsg:"أهلًا مسواك! عندي استفسار.", fabAria:"كلّمنا على واتساب", fabTip:"محتاج مساعدة؟ تواصل معنا",
+  freeLeft:"أضف {t} لتحصل على توصيل مجاني", freeYes:"حصلت على توصيل مجاني!", freeUnlocked:"🎉 حصلت على توصيل مجاني!", freeMsg:"مجاني (طلب أكثر من {t})", freeHint:"التوصيل مجاني لهذا الطلب.", faqFree:"التوصيل مجاني للطلبات فوق {t}، وأقل من ذلك يكون", factFree:"توصيل مجاني فوق {t}",
+  promoLabel:"كود الخصم", promoApply:"تطبيق", promoRemove:"إزالة", promoChecking:"جارٍ التحقق من الكود…", promoOk:"تم تطبيق الكود: خصم {p}% على المنتجات",
+  promoErr_notfound:"لم نجد هذا الكود. تأكد من كتابته.", promoErr_inactive:"هذا الكود لم يعد مفعّلًا.", promoErr_expired:"انتهت صلاحية هذا الكود.", promoErr_usedup:"تم استخدام هذا الكود الحد الأقصى من المرات.",
+  promoNet:"تعذّر التحقق من الكود الآن. تأكد من الإنترنت وحاول مرة أخرى.", promoSaved:"🎁 تم حفظ الكود {c}: خصم {p}% عند إتمام الطلب",
+  discLine:"خصم ({c}، {p}%)", mDisc:"كود الخصم {c} ({p}%)",
+  exTextReward:"أكمل المهام الست لتحصل على وسام المستكشف وكود خصم تشاركه مع 5 من أصدقائك.",
+  myCodeMaking:"جارٍ إنشاء كود الخصم الخاص بك…", myCodeTitle:"كودك: خصم {p}% لـ {n} من أصدقائك", myCodeLeft:"متبقٍ {n} من {m} استخدامات",
+  myCodeShare:"🎁 استخدم كودي {c} لخصم {p}% على طلبك من مسواك لمستلزمات الأسنان:", myCodeShareBtn:"شاركه مع أصدقائك", copyCode:"انسخ الكود", codeCopied:"تم نسخ الكود",
+  playEyebrow:"استراحة", playTitle:"استكشف والعب", playSub:"لا تحتاج للشراء. اكتشف الموقع، واختبر معلوماتك، واحصل على وسامك.",
+  exTitle:"مستكشف مسواك", exText:"أكمل المهام الست لتحصل على وسام المستكشف.", exDoneTitle:"حصلت على وسام مستكشف مسواك!", exDoneText:"استكشفت كل شيء. شكرًا لوقتك معنا.",
+  exShare:"حصلت على وسام مستكشف مسواك 🏅 من مسواك لمستلزمات الأسنان. ألقِ نظرة:", exShareBtn:"شارك وسامك",
+  q_benefits:"اقرأ فوائد المسواك", q_sunnah:"اقرأ أحاديث السواك", q_research:"اطّلع على الأبحاث", q_product:"افتح أي منتج", q_search:"جرّب البحث", q_quiz:"أكمل الاختبار",
+  questAll:"🏅 أصبحت رسميًا مستكشف مسواك!",
+  quizTitle:"اختبار مسواك", quizIntro:"{n} أسئلة سريعة عن المسواك والخامات التي تستخدمها كل يوم. كم إجابة صحيحة ستحصل عليها؟", quizStart:"ابدأ الاختبار",
+  quizQ:"السؤال {i} من {n}", quizRight:"إجابة صحيحة!", quizWrong:"ليست صحيحة.", quizNext:"السؤال التالي", quizSee:"اعرض نتيجتي",
+  quizPerfect:"درجة كاملة! أنت خبير مسواك حقيقي 🏆", quizGreat:"أحسنت! اقتربت جدًا من الدرجة الكاملة.", quizTry:"محاولة جيدة! جرّب مرة أخرى.",
+  quizShare:"حصلت على {s}/{n} في اختبار مسواك 🦷 هل تقدر تغلبني؟", quizShareBtn:"تحدَّ صديقًا", quizAgain:"العب مرة أخرى",
+  quiz:[["من أي شجرة يُؤخذ المسواك؟",["الزيتون","الأراك (Salvadora persica)","النخيل","النيم"],1,"يُقطع المسواك من شجرة الأراك، واسمها العلمي Salvadora persica."],
+        ["أكمل الحديث: «السواك مطهرة للفم\u2026»",["مبيّض للأسنان","مطيّب للنَّفَس","مرضاة للرب","مقوٍّ للثة"],2,"«السواك مطهرة للفم، مرضاة للرب». عن عائشة، رواه النسائي."],
+        ["قال النبي \uFDFA: «لولا أن أشقّ على أمتي لأمرتهم بالسواك عند كل\u2026»",["طعام","صلاة","نوم","سفر"],1,"عن أبي هريرة، رواه البخاري ومسلم."],
+        ["في كود ألوان ISO، ما لون مقبض الفايل مقاس 15؟",["أصفر","أحمر","أبيض","أسود"],2,"15 أبيض، 20 أصفر، 25 أحمر، 30 أزرق، 35 أخضر، 40 أسود."],
+        ["ماذا تعني الحلقة الحمراء على ساق بير الدايموند؟",["خشونة عالية","خشونة متوسطة","ناعم","خشن جدًا"],2,"الأخضر خشن، والأزرق متوسط، والأحمر ناعم."],
+        ["درجات الكومبوزيت مثل A2 وB1 تتبع أي دليل ألوان؟",["VITA classical","Pantone","ISO 3630","ADA رقم 27"],0,"دليل VITA classical يقسّم الدرجات إلى A (بني محمر) وB (أصفر محمر) وC (رمادي) وD (رمادي محمر)."]],
+  pairsTitle:"يناسبه أيضًا", cartPairsTitle:"قد تحتاج أيضًا", share:"شارك المنتج", shareFrom:"مسواك لمستلزمات الأسنان", linkCopied:"تم نسخ الرابط. الصقه في واتساب لمشاركته",
+  addedShort:"تمت الإضافة", checkout:"إتمام الطلب", item1:"منتج واحد", itemsN:"{n} منتجات", itemsTotal:"{n} · {t}", welcomeBack:"أهلًا بعودتك! سلتك لا تزال فيها {n} منتج",
+  faqTitle:"أسئلة يسألها العملاء",
+  faq:[["هل أحتاج إلى حساب؟","لا. أضف المنتجات إلى السلة، واكتب بيانات التوصيل، وأرسل الطلب على واتساب. هذا كل شيء."],
+       ["كيف أدفع؟","الدفع عند الاستلام هو الأساس، ويمكنك الدفع بإنستاباي أو المحفظة الإلكترونية إن أردت. نؤكد معك طريقة الدفع على واتساب."],
+       ["كم سعر التوصيل ومتى يصل الطلب؟","{free}سعر التوصيل حسب محافظتك ويظهر لك عند إتمام الطلب قبل الإرسال. ونؤكد معك موعد التوصيل على واتساب."],
+       ["هل يمكنني إرجاع منتج؟","المنتجات غير المفتوحة والمغلقة يمكن إرجاعها خلال 14 يومًا. وإذا وصلك منتج تالف أو خاطئ أبلغنا خلال 48 ساعة. التفاصيل الكاملة في سياسات المتجر أسفل الصفحة."],
+       ["هل توفرون طلبات بالجملة أو لدفعة كاملة في الكلية؟","نعم. راسلنا على واتساب بالمنتجات والكميات وسنرد عليك بعرض سعر."],
+       ["المنتج الذي أحتاجه غير موجود، هل يمكنكم توفيره؟","غالبًا نعم. ابحث عنه ثم اضغط «اطلب منّا نوفّره لك»، أو راسلنا على واتساب."]],
+  toTop:"العودة للأعلى", toBottom:"الذهاب للأسفل", fabMsg:"أهلًا مسواك! عندي استفسار.", fabAria:"كلّمنا على واتساب", fabTip:"محتاج مساعدة؟ تواصل معنا",
   noMatch:"لا توجد منتجات تطابق “{q}”. جرّب كلمة أقصر مثل “فايل” أو “بيرز”.",
   view:"عرض {name}", add:"أضف", choose:"اختر", soldOut:"نفدت",
   stockN:"متوفر {n}", stockLow:"متبقي {n} فقط", stockOut:"غير متوفر حاليًا",
@@ -732,12 +926,17 @@ function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(
 function icon(path, cls){ return '<svg class="ico' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" aria-hidden="true">' + path + "</svg>"; }
 function pc(v){ return '--c:var(' + v + '-inv)'; }
 function cards(list){ return "<ul>" + list.map(function(b){ return "<li><b>" + b[0] + "</b><span>" + b[1] + "</span></li>"; }).join("") + "</ul>"; }
+function faqText(x, s){
+  if (x.indexOf("{free}") < 0) return x;
+  if (s.freeOver > 0) return x.split("{free}").join(t("faqFree", {t: money(s.freeOver)}) + " ");
+  x = x.split("{free}").join(""); return x.charAt(0).toUpperCase() + x.slice(1);
+}
 function drop(title, body){ return '<details class="benefits"><summary><span>' + title + '</span><svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="ben-body">' + body + "</div></details>"; }
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "23";
+var BUILD = "31";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -792,13 +991,13 @@ function renderShell(){
   ["productSheet","cartSheet","aboutSheet","hadithSheet","policySheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
   var s = DATA.settings;
   var steps = T[lang].steps.map(function(st){ return "<li><b>" + st[0] + "</b><span>" + st[1] + "</span></li>"; }).join("");
-  var facts = T[lang].facts.map(function(f){ return "<li>" + f + "</li>"; }).join("");
+  var facts = (s.freeOver > 0 ? [t("factFree", {t: money(s.freeOver)})] : []).concat(T[lang].facts).map(function(f){ return "<li>" + f + "</li>"; }).join("");
   $("#app").innerHTML =
     BGMARK +
     (CHECK ? checkBar() : "") +
     (s.notice ? '<div class="notice"><div class="wrap">' + t("notice") + "</div></div>" : "") +
     '<header class="top"><div class="wrap">' +
-      '<a class="brand" href="#shop" aria-label="' + esc(t("brandAria")) + '">' + MARK +
+      '<a class="brand" href="#products" data-act="brand" aria-label="' + esc(t("brandAria")) + '">' + MARK +
         '<div><span class="wm">' + (lang === "ar" ? "مسواك" : "Miswak") + '</span><span class="alt"' + (lang === "ar" ? ' lang="en"' : ' lang="ar"') + ">" + (lang === "ar" ? "Miswak" : "مسواك") + "</span><small>" + t("brandSmall") + "</small></div></a>" +
       '<div class="search">' + icon(I_SEARCH) + '<label for="q" class="sr">' + t("searchLabel") + '</label><input id="q" type="search" placeholder="' + esc(t("searchPh")) + '" autocomplete="off" value="' + esc(query) + '"></div>' +
       '<button class="hbtn lang-btn" type="button" data-act="lang" lang="' + (lang === "ar" ? "en" : "ar") + '" aria-label="' + esc(t("langAria")) + '">' + (lang === "ar" ? "English" : "عربي") + "</button>" +
@@ -818,8 +1017,10 @@ function renderShell(){
       "</div></section>" +
       '<div class="wrap" id="products"><div class="shop-head"><span class="eyebrow">' + t("shopEyebrow") + "</span><h2>" + t("shopTitle") + '</h2></div><div id="shelves"></div><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
         '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div></div>' +
+      '<section class="play" aria-labelledby="playTitle"><div class="wrap"><div class="play-head"><span class="eyebrow">' + t("playEyebrow") + '</span><h2 id="playTitle">' + t("playTitle") + "</h2><p>" + t("playSub") + '</p></div><div class="play-grid"><div class="explorer" id="explorer"></div><div class="quiz" id="quiz"></div></div></div></section>' +
       '<section class="trust" aria-label="' + esc(t("trustAria")) + '"><div class="wrap"><ul>' + T[lang].trust.map(function(x, i){ return "<li>" + icon([I_CASH, I_TRUCK, I_RETURN][i]) + "<b>" + x[0] + "</b><span>" + x[1] + "</span></li>"; }).join("") + "</ul></div></section>" +
       '<section class="how" aria-labelledby="howTitle"><div class="wrap"><h2 id="howTitle">' + t("howTitle") + "</h2><ol>" + steps + "</ol></div></section>" +
+      '<section class="faq" aria-labelledby="faqTitle"><div class="wrap"><h2 id="faqTitle">' + t("faqTitle") + "</h2>" + T[lang].faq.map(function(f){ return drop(f[0], "<p>" + faqText(f[1], s) + "</p>"); }).join("") + "</div></section>" +
     "</main>" +
     '<footer><div class="wrap">' +
       (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
@@ -833,9 +1034,11 @@ function renderShell(){
       '<div class="cart-head"><button class="x" id="cartBack" type="button" data-act="backcart" aria-label="' + esc(t("backCart")) + '" hidden>' + icon(I_BACK, "flip") + '</button><h2 id="cartTitle"></h2><button class="x" type="button" data-act="closecart" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
       '<div class="cart-body" id="cartBody"></div><div class="cart-foot" id="cartFoot"></div></dialog>' +
     '<button class="toast" id="toast" type="button" data-act="toast" hidden></button>' +
+    '<button class="cartbar" id="cartBar" type="button" data-act="cart"><span class="cb-n" id="cbN"></span><span class="cb-t" id="cbT"></span><span class="cb-go">' + t("checkout") + icon('<path d="M9 5l7 7-7 7"/>', "flip") + "</span></button>" +
+    '<button class="jump" id="jump" type="button" data-dir="up">' + icon('<path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/>') + "<span>" + t("toTop") + "</span></button>" +
     (!fabGone && s.whatsapp ? '<a class="fab" id="fab" href="https://wa.me/' + esc(s.whatsapp) + "?text=" + encodeURIComponent(t("fabMsg")) + '" target="_blank" rel="noopener" draggable="false" aria-label="' + esc(t("fabAria")) + '">' + icon(I_WA) + '<span class="fab-tip">' + esc(t("fabTip")) + "</span></a>" : "");
 
-  $("#q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); renderCats(); renderGrid(); var pr = $("#products"); if (query && pr && pr.getBoundingClientRect().top > window.innerHeight * 0.5) smoothTo(pr); });
+  $("#q").addEventListener("input", function(e){ query = e.target.value.trim().toLowerCase(); if (query.length > 1) quest("search"); renderCats(); renderGrid(); var pr = $("#products"); if (query && pr && pr.getBoundingClientRect().top > window.innerHeight * 0.5) smoothTo(pr); });
   var cs = $("#cartSheet");
   cs.addEventListener("click", onCartClick);
   cs.addEventListener("input", onDetailsInput);
@@ -851,7 +1054,8 @@ function renderShell(){
   ps.addEventListener("click", function(e){ if (e.target === ps) ps.close(); });
   renderGuide(); renderCats(); renderGrid(); updateCount(false);
   initFab();
-  markReveal();
+  renderExplorer(); renderQuiz();
+  if (!swapping) markReveal();
   placeMark(); var bi = document.querySelector(".bgmark img"); if (bi && !bi.complete) bi.addEventListener("load", placeMark);
 }
 
@@ -912,13 +1116,86 @@ function hayOf(p){
   if (HAY[key]) return HAY[key];
   var text = fold([p.name.en, p.name.ar, p.spec.en, p.spec.ar, p.sku, p.desc.en, p.desc.ar, c.en, c.ar, p.tag.en, p.tag.ar,
     p.opt ? p.opt.values.join(" ") + " " + (p.opt.values_ar || []).join(" ") : ""].join(" "));
-  return (HAY[key] = {text: " " + text + " ", words: text.split(" ").filter(Boolean)});
+  var words = text.split(" ").filter(Boolean), sk = [];
+  var seen = {};
+  words.forEach(function(w){ skels(w).forEach(function(x){ var k = x.v + "|" + x.c; if (x.c && !seen[k]){ seen[k] = 1; sk.push(x); } }); });
+  return (HAY[key] = {text: " " + text + " ", words: words, sk: sk});
 }
+/* Sound skeletons: lets "fail", "fayel", "فايل" and "files" meet, and reads Franco-Arabic (3, 7, 2...) */
+var AR_LAT = {"ب":"b","ت":"t","ث":"s","ج":"g","ح":"h","خ":"k","د":"d","ذ":"d","ر":"r","ز":"s","س":"s","ش":"s","ص":"s","ض":"d","ط":"t","ظ":"d","غ":"g","ف":"f","ك":"k","ل":"l","م":"m","ن":"n","پ":"b","ڤ":"f","چ":"g","گ":"g"};
+var STOP = " and the for with of to in on an or from it its is at by as one each your you our per can be are this that not into up out all off ";
+function skelLat(w){
+  if (w.length > 3 && /[^s]s$|[^s]z$/.test(w)) w = w.slice(0, -1);
+  var v = w.replace(/(.)\1+/g, "$1")
+    .replace(/kh/g, "k").replace(/gh/g, "g").replace(/sh|ch/g, "s").replace(/ph/g, "f").replace(/th/g, "t").replace(/dh/g, "d").replace(/ck/g, "k")
+    .replace(/[cq]/g, "k").replace(/z/g, "s").replace(/x/g, "ks").replace(/v/g, "f").replace(/p/g, "b").replace(/j/g, "g")
+    .replace(/5/g, "k").replace(/7/g, "h").replace(/8/g, "g").replace(/9/g, "k").replace(/6/g, "t").replace(/[23]/g, "a")
+    .replace(/[^a-z]/g, "").replace(/[aeiouyw]+/g, "V").replace(/(.)\1+/g, "$1").replace(/V$/, "");
+  return {v: v, c: v.replace(/V/g, ""), ar: false};
+}
+function skelAr(w){
+  var out = [], forms = [w];
+  if (w.length > 4 && w.indexOf("ال") === 0) forms.push(w.slice(2));
+  forms.slice().forEach(function(f){ if (f.length > 4 && /ات$/.test(f)) forms.push(f.slice(0, -2)); });
+  forms.forEach(function(f){
+    ["k", ""].forEach(function(qaf){
+      var v = "";
+      for (var i = 0; i < f.length; i++){
+        var ch = f.charAt(i);
+        v += ch === "ق" ? (qaf || "V") : AR_LAT[ch] || (ch === "ه" ? (i < f.length - 1 ? "h" : "") : /[اويىءئؤع]/.test(ch) ? "V" : "");
+      }
+      v = v.replace(/V+/g, "V").replace(/(.)\1+/g, "$1").replace(/V$/, "");
+      if (v && !out.some(function(o){ return o.v === v; })) out.push({v: v, c: v.replace(/V/g, ""), ar: true});
+    });
+  });
+  return out;
+}
+function skels(w){
+  if (!/[a-z؀-ۿ]/.test(w)) return [];
+  if (/[؀-ۿ]/.test(w)) return skelAr(w);
+  if (STOP.indexOf(" " + w + " ") > -1) return [];
+  return [skelLat(w)];
+}
+var ALIAS = {kamama:"mask", kemama:"mask", kmama:"mask", "كمامه":"mask", "كمامات":"mask", "قفاز":"gloves", "قفازات":"gloves", "2fazat":"gloves", "afazat":"gloves", gwanty:"gloves", gwanti:"gloves", gwantat:"gloves",
+  tab3a:"impression", "طبعه":"impression", hashw:"restorative", "7ashw":"restorative", "7asho":"restorative", "حشو":"restorative", "حشوات":"restorative", "حشوه":"restorative", "اندو":"endo", "عصب":"endo", "3asab":"endo",
+  a2ma3:"اقماع", "2a2ma3":"اقماع", amaa:"اقماع"};
+/* Latin spelling vs Arabic spelling: Arabic drops short vowels, so Latin may carry extra V's */
+function vfit(lat, ar, prefix){
+  var i = 0, j = 0;
+  while (i < lat.length && j < ar.length){
+    if (lat.charAt(i) === ar.charAt(j)){ i++; j++; }
+    else if (lat.charAt(i) === "V") i++;
+    else return false;
+  }
+  while (i < lat.length && lat.charAt(i) === "V") i++;
+  return i === lat.length && (j === ar.length || prefix);
+}
+function skelScore(w, h){
+  var best = 0;
+  skels(w).forEach(function(q){
+    var n = q.c.length;
+    if (n < 2) return;
+    for (var i = 0; i < h.sk.length; i++){
+      var x = h.sk[i];
+      if (q.ar === x.ar){
+        if (x.v === q.v) best = Math.max(best, 1.4);
+        else if (n >= 3 && x.v.indexOf(q.v) === 0) best = Math.max(best, 1.2);
+        else if (n >= 4 && lev(q.v, x.v, 1) <= 1) best = Math.max(best, 1);
+      } else {
+        var lat = q.ar ? x : q, ar = q.ar ? q : x;
+        if (vfit(lat.v, ar.v, false)) best = Math.max(best, 1.3);
+        else if (n >= 3 && !q.ar && vfit(q.v, x.v, true)) best = Math.max(best, 1.1);
+      }
+    }
+  });
+  return best;
+}
+
 function sound(x){ return x.replace(/k/g, "c").replace(/z/g, "s").replace(/ph/g, "f"); }
 function wordScore(w, h){
   if (h.text.indexOf(" " + w) > -1) return 3;
   if (h.text.indexOf(w) > -1) return 2;
-  var tol = w.length <= 3 ? 0 : w.length <= 6 ? 1 : 2, best = 0, sw = sound(w);
+  var tol = w.length <= 3 ? 0 : w.length <= 7 ? 1 : 2, best = 0, sw = sound(w);
   for (var i = 0; i < h.words.length; i++){
     var hw = sound(h.words[i]); w = sw;
     if (w.length >= 3 && hw.indexOf(w.slice(0, Math.max(3, w.length - 1))) === 0) best = Math.max(best, 2);
@@ -931,7 +1208,10 @@ function score(p){
   var words = fold(query).split(" ").filter(Boolean), total = 0;
   if (!words.length) return 1;
   var h = hayOf(p);
-  for (var i = 0; i < words.length; i++){ var sc = wordScore(words[i], h); if (!sc) return 0; total += sc; }
+  for (var i = 0; i < words.length; i++){
+    var w = ALIAS[words[i]] || words[i], sc = Math.max(wordScore(w, h), skelScore(w, h));
+    if (!sc) return 0; total += sc;
+  }
   return total;
 }
 function matches(p){
@@ -1003,7 +1283,7 @@ function renderGrid(){
   if (query){
     var ranked = list.map(function(p, i){ return {p: p, s: score(p), i: i}; }).sort(function(a, b){ return b.s - a.s || a.i - b.i; });
     var top = ranked.length ? ranked[0].s : 0;
-    list = ranked.filter(function(x){ return x.s >= top * 0.6; }).map(function(x){ return x.p; });
+    list = ranked.filter(function(x){ return x.s >= top * 0.75; }).map(function(x){ return x.p; });
   }
   $("#listTitle").textContent = query ? t("resultsFor", {q: query}) : L(catOf(cat));
   $("#listCount").textContent = list.length === 1 ? t("count1") : t("count", {n: list.length});
@@ -1038,10 +1318,17 @@ var scrollAnim = 0;
 function smoothTo(el){
   if (!el) return;
   var top = document.querySelector(".top"), off = (top ? top.offsetHeight : 0) + 8;
-  var from = window.scrollY || 0, to = Math.max(0, el.getBoundingClientRect().top + from - off), dist = to - from;
+  smoothY(el.getBoundingClientRect().top + (window.scrollY || 0) - off);
+}
+var autoScroll = false;
+function smoothY(to){
+  var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  to = Math.max(0, Math.min(maxY, to));
+  var from = window.scrollY || 0, dist = to - from;
   if (CALM || Math.abs(dist) < 4){ window.scrollTo(0, to); return; }
   var dur = Math.min(1300, Math.max(650, Math.abs(dist) * 0.7)), t0 = 0, id = ++scrollAnim;
-  function stop(){ scrollAnim++; }
+  function stop(){ scrollAnim++; autoScroll = false; }
+  autoScroll = true;
   window.addEventListener("wheel", stop, {once: true, passive: true});
   window.addEventListener("touchstart", stop, {once: true, passive: true});
   function step(ts){
@@ -1049,10 +1336,39 @@ function smoothTo(el){
     if (!t0) t0 = ts;
     var k = Math.min(1, (ts - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
     window.scrollTo(0, from + dist * e);
-    if (k < 1) requestAnimationFrame(step);
+    if (k < 1) requestAnimationFrame(step); else autoScroll = false;
   }
   requestAnimationFrame(step);
 }
+
+/* fast-scroll helper: a "back to top" / "go to bottom" pill that appears on quick flicks */
+(function(){
+  var lastY = 0, lastT = 0, v = 0, hideT = 0, btn = null, dir = 0;
+  function el(){ return document.getElementById("jump"); }
+  function hide(){ var b = el(); if (b) b.classList.remove("show"); dir = 0; }
+  window.addEventListener("scroll", function(){
+    var now = performance.now(), y = window.scrollY || 0, dt = now - lastT;
+    if (dt > 0 && dt < 200) v = v * 0.6 + ((y - lastY) / dt) * 0.4; else v = 0;
+    lastY = y; lastT = now;
+    var b = el(); if (!b) return;
+    clearTimeout(hideT); hideT = setTimeout(hide, 3000);
+    if (autoScroll) return;
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
+    var d = v < -1.6 && y > 700 ? -1 : v > 1.6 && maxY - y > 700 ? 1 : 0;
+    if (d && d !== dir){
+      dir = d;
+      b.dataset.dir = d < 0 ? "up" : "down";
+      b.querySelector("span").textContent = t(d < 0 ? "toTop" : "toBottom");
+      b.classList.add("show");
+    }
+    if (dir === -1 && y < 300 || dir === 1 && maxY - y < 300) hide();
+  }, {passive: true});
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("#jump"); if (!b) return;
+    var down = b.dataset.dir === "down"; hide();
+    smoothY(down ? document.documentElement.scrollHeight : 0);
+  });
+})();
 
 /* ---------- cart ---------- */
 function count(){ return cart.reduce(function(n, i){ return n + i.qty; }, 0); }
@@ -1062,16 +1378,28 @@ function updateCount(bump){
   $("#cartCount").textContent = n;
   b.setAttribute("aria-label", t("cartAria", {n: n}));
   if (bump){ b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
+  var bar = $("#cartBar");
+  if (bar && LOAD === "ready"){
+    var on = n > 0;
+    $("#cbN").textContent = n; $("#cbT").textContent = on ? t("itemsTotal", {n: n === 1 ? t("item1") : t("itemsN", {n: n}), t: money(subtotal())}) : "";
+    bar.classList.toggle("show", on); document.body.classList.toggle("has-bar", on);
+    var fo = Number(DATA.settings.freeOver || 0), sb = subtotal();
+    bar.style.setProperty("--p", fo > 0 ? Math.min(100, sb / fo * 100) + "%" : "0%");
+    bar.classList.toggle("free-ok", fo > 0 && sb >= fo);
+    if (bump && on){ bar.classList.remove("pop"); void bar.offsetWidth; bar.classList.add("pop"); }
+  }
 }
 function saveCart(){ saveJSON("miswak-cart", cart); }
 function addToCart(id, opt, qty){
   var p = byId(id); if (!p) return;
+  var wasFree = isFree(subtotal());
   var room = Math.max(0, p.stock - cartQty(id));
   if (room <= 0){ toast(t("maxStock", {n: p.stock}), true); return; }
   var n = Math.min(qty, room), key = id + "|" + (opt || "");
   var hit = cart.filter(function(i){ return i.key === key; })[0];
   if (hit) hit.qty += n; else cart.push({key: key, id: id, opt: opt || "", qty: n});
   saveCart(); updateCount(true);
+  if (!wasFree && isFree(subtotal())){ toast(t("freeUnlocked"), true); confetti(); return; }
   toast(n < qty ? t("maxStock", {n: p.stock}) : t("added", {name: L(p.name) + (opt ? ", " + optText(p, opt) : "")}), true);
 }
 var toastTimer;
@@ -1084,9 +1412,234 @@ function toast(msg, withCart){
   toastTimer = setTimeout(function(){ el.hidden = true; }, 3200);
 }
 
+/* =================== DISCOUNT CODES (via the owners' Google Apps Script) =================== */
+var promo = {code: "", pct: 0, ok: false, msg: ""};
+var DEVICE = (function(){ var d = loadJSON("miswak-device", ""); if (!d){ d = (Date.now().toString(36) + Math.random().toString(36).slice(2, 10)).toLowerCase(); saveJSON("miswak-device", d); } return d; })();
+function promoOn(){ return !!(DATA && DATA.settings && DATA.settings.promoUrl); }
+function api(action, params){
+  var url = DATA.settings.promoUrl + "?action=" + action;
+  Object.keys(params || {}).forEach(function(k){ url += "&" + k + "=" + encodeURIComponent(params[k]); });
+  var ctl = window.AbortController ? new AbortController() : null;
+  var tm = ctl ? setTimeout(function(){ ctl.abort(); }, 15000) : 0;
+  return fetch(url, {method: "GET", redirect: "follow", credentials: "omit", signal: ctl ? ctl.signal : undefined})
+    .then(function(r){ clearTimeout(tm); return r.json(); });
+}
+function cleanCode(c){ return String(c || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 24); }
+function checkPromo(code, quiet){
+  code = cleanCode(code);
+  if (!code){ promo = {code: "", pct: 0, ok: false, msg: ""}; saveJSON("miswak-promo", ""); paintPromo(); return Promise.resolve(promo); }
+  promo = {code: code, pct: 0, ok: false, msg: t("promoChecking"), busy: true}; paintPromo();
+  return api("check", {code: code}).then(function(r){
+    promo = r && r.ok ? {code: code, pct: Number(r.pct) || 0, ok: true, msg: t("promoOk", {p: r.pct})} : {code: code, pct: 0, ok: false, msg: t("promoErr_" + ((r && r.reason) || "notfound"))};
+    saveJSON("miswak-promo", promo.ok ? code : "");
+    paintPromo(); return promo;
+  }, function(){ promo = {code: code, pct: 0, ok: false, msg: t("promoNet")}; paintPromo(); return promo; });
+}
+function paintPromo(){
+  var st = $("#promoMsg"); if (st){ st.textContent = promo.msg || ""; st.className = "promo-msg" + (promo.ok ? " ok" : promo.busy ? "" : promo.msg ? " bad" : ""); }
+  var btn = $("#promoBtn"); if (btn){ btn.textContent = promo.ok ? t("promoRemove") : t("promoApply"); btn.dataset.mode = promo.ok ? "remove" : "apply"; }
+  var inp = $("#promo"); if (inp && promo.ok) inp.value = promo.code;
+  if ($("#sumBox")) updateSummary();
+}
+function promoField(){
+  if (!promoOn()) return "";
+  var saved = promo.code || loadJSON("miswak-promo", "");
+  return '<div class="field promo-field"><label for="promo">' + t("promoLabel") + ' <span class="opt-txt">' + t("optional") + '</span></label><div class="promo-row"><input id="promo" autocomplete="off" autocapitalize="characters" spellcheck="false" dir="ltr" placeholder="MSWK-XXXX" value="' + esc(saved || "") + '"><button class="btn ghost sm" type="button" id="promoBtn" data-mode="apply">' + t("promoApply") + '</button></div><p class="promo-msg" id="promoMsg" aria-live="polite"></p></div>';
+}
+document.addEventListener("click", function(e){
+  var b = e.target.closest("#promoBtn"); if (!b) return;
+  if (b.dataset.mode === "remove"){ var i = $("#promo"); if (i) i.value = ""; checkPromo(""); return; }
+  checkPromo(($("#promo") || {}).value);
+});
+document.addEventListener("keydown", function(e){
+  if (e.key === "Enter" && e.target && e.target.id === "promo"){ e.preventDefault(); checkPromo(e.target.value); }
+});
+/* a friend opened a shared link: #code=MSWK-XXXX */
+function codeFromHash(){
+  var m = (location.hash || "").match(/^#code=([A-Za-z0-9-]+)/); if (!m || !promoOn()) return;
+  var c = cleanCode(m[1]);
+  checkPromo(c).then(function(r){ toast(r.ok ? t("promoSaved", {c: c, p: r.pct}) : r.msg); });
+  try { history.replaceState(null, "", location.pathname + location.search); } catch(e){}
+}
+window.addEventListener("hashchange", codeFromHash);
+/* the explorer's own code */
+var myCode = loadJSON("miswak-mycode", null), claiming = false;
+function claimCode(){
+  if (claiming || myCode || !promoOn()) return;
+  claiming = true;
+  api("claim", {device: DEVICE}).then(function(r){
+    claiming = false;
+    if (r && r.ok){ myCode = {code: r.code, pct: r.pct, uses: r.uses, used: r.used || 0}; saveJSON("miswak-mycode", myCode); renderExplorer(); confetti(); }
+  }, function(){ claiming = false; });
+}
+function refreshMyCode(){
+  if (!myCode || !promoOn()) return;
+  api("check", {code: myCode.code}).then(function(r){
+    if (r && r.allowed != null){ myCode.used = Number(r.used) || 0; myCode.uses = Number(r.allowed) || myCode.uses; saveJSON("miswak-mycode", myCode); renderExplorer(); }
+  }, function(){});
+}
+function myCodeHtml(){
+  if (!promoOn()) return "";
+  if (!myCode) return '<div class="mycode wait">' + t("myCodeMaking") + "</div>";
+  var link = location.href.split("#")[0] + "#code=" + myCode.code, left = Math.max(0, (myCode.uses || 0) - (myCode.used || 0));
+  var msg = t("myCodeShare", {c: myCode.code, p: myCode.pct}) + " " + link;
+  return '<div class="mycode"><p class="mc-k">' + t("myCodeTitle", {p: myCode.pct, n: myCode.uses}) + '</p><div class="mc-code" dir="ltr">' + esc(myCode.code) + '</div><p class="mc-left">' + t("myCodeLeft", {n: left, m: myCode.uses}) + "</p>" +
+    '<div class="mc-acts"><a class="btn wa" href="https://wa.me/?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener">' + icon(I_WA) + t("myCodeShareBtn") + '</a><button class="btn ghost" type="button" data-copy="' + esc(myCode.code) + '">' + t("copyCode") + "</button></div></div>";
+}
+document.addEventListener("click", function(e){
+  var c = e.target.closest("[data-copy]"); if (!c) return;
+  var v = c.dataset.copy;
+  try { navigator.clipboard.writeText(v).then(function(){ toast(t("codeCopied")); }, function(){ toast(v); }); } catch(err){ toast(v); }
+});
+
+/* =================== EXPLORE & PLAY =================== */
+var QUESTS = ["benefits", "sunnah", "research", "product", "search", "quiz"];
+var questDone = loadJSON("miswak-quests", {});
+function questCount(){ return QUESTS.filter(function(q){ return questDone[q]; }).length; }
+function quest(id){
+  if (questDone[id] || QUESTS.indexOf(id) < 0) return;
+  questDone[id] = 1; saveJSON("miswak-quests", questDone);
+  renderExplorer();
+  var n = questCount();
+  if (n === QUESTS.length){ setTimeout(function(){ confetti(); toast(t("questAll")); }, 250); }
+  else toast("🧭 " + n + "/" + QUESTS.length + " · " + t("q_" + id));
+}
+document.addEventListener("toggle", function(e){
+  var d = e.target; if (!d || d.tagName !== "DETAILS" || !d.open || !d.closest(".why")) return;
+  var i = Array.prototype.indexOf.call(document.querySelectorAll(".why details"), d);
+  quest(["benefits", "sunnah", "", "research"][i] || "");
+}, true);
+function renderExplorer(){
+  var box = $("#explorer"); if (!box) return;
+  var n = questCount(), all = n === QUESTS.length, C = 2 * Math.PI * 26;
+  var exText = all ? t("exDoneText") : promoOn() ? t("exTextReward") : t("exText");
+  box.innerHTML = '<div class="ex-top"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" class="ring-bg"/><circle cx="32" cy="32" r="26" class="ring-fg" style="stroke-dasharray:' + C.toFixed(1) + ";stroke-dashoffset:" + (C * (1 - n / QUESTS.length)).toFixed(1) + '"/></svg><span class="ring-n">' + (all ? "🏅" : n + "/" + QUESTS.length) + "</span>" +
+    "<div><h3>" + t(all ? "exDoneTitle" : "exTitle") + "</h3><p>" + exText + "</p></div></div>" +
+    '<ul class="ex-list">' + QUESTS.map(function(q){
+      return '<li><button type="button" data-quest="' + q + '"' + (questDone[q] ? ' class="ok"' : "") + "><i>" + (questDone[q] ? icon(I_CHECK) : "") + "</i><span>" + t("q_" + q) + "</span>" + (questDone[q] ? "" : icon('<path d="M9 5l7 7-7 7"/>', "flip go")) + "</button></li>";
+    }).join("") + "</ul>" +
+    (all ? (promoOn() ? myCodeHtml() : '<a class="btn ghost sm ex-share" href="https://wa.me/?text=' + encodeURIComponent(t("exShare") + " " + location.href.split("#")[0]) + '" target="_blank" rel="noopener">' + icon(I_WA) + t("exShareBtn") + "</a>") : "");
+  if (all && promoOn() && !myCode) claimCode();
+}
+function goQuest(q){
+  if (q === "product"){ smoothTo($("#products")); return; }
+  if (q === "search"){ var qi = $("#q"); window.scrollTo(window.scrollX, window.scrollY); if (qi){ qi.focus(); qi.classList.add("glow"); setTimeout(function(){ qi.classList.remove("glow"); }, 1600); } return; }
+  if (q === "quiz"){ var qz = $("#quiz"); smoothTo(qz); if (quizState.i < 0) startQuiz(); return; }
+  var i = {benefits: 0, sunnah: 1, research: 3}[q], d = document.querySelectorAll(".why details")[i];
+  if (d){ smoothTo(d); setTimeout(function(){ d.open = true; }, 700); }
+}
+/* the quiz */
+var quizState = {i: -1, score: 0, picked: -1};
+function quizQs(){ return T[lang].quiz; }
+function startQuiz(){ quizState = {i: 0, score: 0, picked: -1}; renderQuiz(); }
+function renderQuiz(){
+  var box = $("#quiz"); if (!box) return;
+  var qs = quizQs(), st = quizState;
+  if (st.i < 0){
+    box.innerHTML = '<div class="qz-intro"><span class="qz-emoji" aria-hidden="true">🦷</span><h3>' + t("quizTitle") + "</h3><p>" + t("quizIntro", {n: qs.length}) + '</p><button class="btn" type="button" data-quiz="start">' + t("quizStart") + "</button></div>";
+    return;
+  }
+  if (st.i >= qs.length){
+    var sc = st.score, perfect = sc === qs.length;
+    var share = "https://wa.me/?text=" + encodeURIComponent(t("quizShare", {s: sc, n: qs.length}) + " " + location.href.split("#")[0]);
+    box.innerHTML = '<div class="qz-end"><div class="qz-score' + (perfect ? " perfect" : "") + '" dir="ltr"><b>' + sc + "</b><span>/" + qs.length + "</span></div><h3>" + t(perfect ? "quizPerfect" : sc >= qs.length - 2 ? "quizGreat" : "quizTry") + "</h3>" +
+      '<div class="qz-acts"><a class="btn wa" href="' + share + '" target="_blank" rel="noopener">' + icon(I_WA) + t("quizShareBtn") + '</a><button class="btn ghost" type="button" data-quiz="start">' + t("quizAgain") + "</button></div></div>";
+    return;
+  }
+  var q = qs[st.i], answered = st.picked > -1;
+  box.innerHTML = '<div class="qz-q"><div class="qz-meta"><span>' + t("quizQ", {i: st.i + 1, n: qs.length}) + '</span><div class="qz-dots">' + qs.map(function(_, k){ return "<i" + (k < st.i ? ' class="past"' : k === st.i ? ' class="now"' : "") + "></i>"; }).join("") + "</div></div>" +
+    "<h3>" + q[0] + '</h3><div class="qz-opts">' + q[1].map(function(o, k){
+      var cls = !answered ? "" : k === q[2] ? " right" : k === st.picked ? " wrong" : " dim";
+      return '<button type="button" class="qz-opt' + cls + '" data-quiz="' + k + '"' + (answered ? " disabled" : "") + ">" + o + "</button>";
+    }).join("") + "</div>" +
+    (answered ? '<p class="qz-why"><b>' + t(st.picked === q[2] ? "quizRight" : "quizWrong") + "</b> " + q[3] + '</p><button class="btn" type="button" data-quiz="next">' + t(st.i === qs.length - 1 ? "quizSee" : "quizNext") + "</button>" : "") + "</div>";
+}
+document.addEventListener("click", function(e){
+  var qb = e.target.closest("[data-quest]");
+  if (qb){ goQuest(qb.dataset.quest); return; }
+  var b = e.target.closest("[data-quiz]"); if (!b) return;
+  var v = b.dataset.quiz, qs = quizQs();
+  if (v === "start"){ startQuiz(); return; }
+  if (v === "next"){
+    quizState.i++; quizState.picked = -1; renderQuiz();
+    if (quizState.i >= qs.length){ quest("quiz"); if (quizState.score === qs.length) confetti(); }
+    return;
+  }
+  if (quizState.picked > -1) return;
+  quizState.picked = Number(v);
+  if (quizState.picked === qs[quizState.i][2]) quizState.score++;
+  renderQuiz();
+});
+/* confetti, drawn on a throwaway canvas */
+function confetti(){
+  if (CALM) return;
+  var c = document.createElement("canvas"), x = c.getContext("2d"), W = c.width = innerWidth, H = c.height = innerHeight;
+  c.className = "confetti"; document.body.appendChild(c);
+  var cs = getComputedStyle(document.documentElement), cols = [cs.getPropertyValue("--accent"), cs.getPropertyValue("--wood"), "#F2C14E", "#E9DFC9", "#25D366"];
+  var ps = []; for (var i = 0; i < 140; i++) ps.push({x: W / 2 + (Math.random() - .5) * 80, y: H * .35, vx: (Math.random() - .5) * 13, vy: -Math.random() * 13 - 4, r: Math.random() * 6 + 4, c: cols[i % cols.length], a: Math.random() * 6, va: (Math.random() - .5) * .4});
+  var t0 = performance.now();
+  (function f(now){
+    var k = (now - t0) / 1900; x.clearRect(0, 0, W, H);
+    ps.forEach(function(p){ p.vy += .32; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va;
+      x.save(); x.globalAlpha = Math.max(0, 1 - k * k); x.translate(p.x, p.y); x.rotate(p.a); x.fillStyle = p.c.trim(); x.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); x.restore(); });
+    if (k < 1) requestAnimationFrame(f); else c.remove();
+  })(t0);
+}
+
+/* ---------- free delivery goal ---------- */
+function isFree(sub){ var f = Number(DATA.settings.freeOver || 0); return f > 0 && sub >= f; }
+function freeHtml(sub){
+  var f = Number(DATA.settings.freeOver || 0); if (!(f > 0)) return "";
+  var pct = Math.min(100, Math.round(sub / f * 100)), done = sub >= f;
+  return '<div class="free' + (done ? " done" : "") + '"><p>' + icon(done ? I_CHECK : I_TRUCK) + "<span>" + (done ? t("freeYes") : t("freeLeft", {t: money(f - sub)})) + '</span></p><div class="free-bar"><i style="width:' + pct + '%"></i></div></div>';
+}
+
+/* ---------- "goes well with" suggestions ---------- */
+var I_SHARE = '<circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/>';
+var PAIR_CATS = {resto: ["resto", "bur", "disp"], endo: ["endo", "disp"], bur: ["bur", "resto"], imp: ["imp", "disp"], disp: ["disp"], kit: ["kit", "disp"]};
+function related(p, exclude){
+  exclude = exclude || {}; exclude[p.id] = 1;
+  var want = PAIR_CATS[p.cat] || [p.cat], pool = DATA.products.filter(function(x){ return !exclude[x.id] && x.stock > 0; });
+  var out = [];
+  want.forEach(function(c){ pool.forEach(function(x){ if (x.cat === c && out.indexOf(x) < 0) out.push(x); }); });
+  pool.forEach(function(x){ if (x.best && out.indexOf(x) < 0) out.push(x); });
+  return out.slice(0, 4);
+}
+function pairsHtml(list, title){
+  if (!list.length) return "";
+  return '<section class="pairs"><h4>' + esc(title) + '</h4><div class="pairs-row">' + list.map(function(x){
+    var choose = !!(x.opt && x.opt.values && x.opt.values.length), left = Math.max(0, x.stock - cartQty(x.id));
+    return '<div class="pair"><button class="pair-tile' + (x.img ? " photo" : "") + '" type="button" data-sopen="' + esc(x.id) + '" style="--cat:' + catColor(x.cat) + '" aria-label="' + esc(t("view", {name: L(x.name)})) + '">' +
+      (x.img ? '<img src="' + esc(x.img) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : icon(ICONS[x.cat] || ICONS.kit)) + "</button>" +
+      '<b>' + esc(L(x.name)) + "</b>" + priceHtml(x) +
+      '<button class="pair-add" type="button" ' + (choose ? 'data-sopen="' : 'data-sadd="') + esc(x.id) + '"' + (left <= 0 ? " disabled" : "") + ">" + (choose ? t("choose") : "+ " + t("add")) + "</button></div>";
+  }).join("") + "</div></section>";
+}
+function cartPairs(){
+  if (!cart.length) return "";
+  var ex = {}, list = [];
+  cart.forEach(function(i){ ex[i.id] = 1; });
+  cart.forEach(function(i){ var p = byId(i.id); if (p) related(p, Object.assign({}, ex)).forEach(function(x){ if (list.indexOf(x) < 0) list.push(x); }); });
+  return pairsHtml(list.slice(0, 4), t("cartPairsTitle"));
+}
+function shareProduct(p){
+  var url = location.href.split("#")[0] + "#p=" + encodeURIComponent(p.sku);
+  var text = L(p.name) + " · " + money(p.price) + " | " + t("shareFrom");
+  if (navigator.share){ navigator.share({title: L(p.name), text: text, url: url}).catch(function(){}); return; }
+  try { navigator.clipboard.writeText(url).then(function(){ toast(t("linkCopied")); }, function(){ toast(url); }); } catch(e){ toast(url); }
+}
+function openFromHash(){
+  var m = (location.hash || "").match(/^#p=(.+)$/); if (!m || LOAD !== "ready") return;
+  var code = decodeURIComponent(m[1]).toLowerCase();
+  var p = DATA.products.filter(function(x){ return String(x.sku).toLowerCase() === code || String(x.id).toLowerCase() === code; })[0];
+  if (p) setTimeout(function(){ openProduct(p.id); }, 350);
+}
+window.addEventListener("hashchange", openFromHash);
+
 /* ---------- product sheet ---------- */
 function openProduct(id){
   var p = byId(id); if (!p) return;
+  quest("product");
   var sheet = $("#productSheet"), body = $("#productBody");
   var hasOpt = !!(p.opt && p.opt.values && p.opt.values.length);
   var sel = hasOpt ? p.opt.values[Math.min(p.opt.def || 0, p.opt.values.length - 1)] : "";
@@ -1108,11 +1661,11 @@ function openProduct(id){
     if (qty > r) qty = Math.max(1, r);
     var blocked = out || r <= 0;
     body.innerHTML =
-      '<div class="sheet-top"><span class="sku"><bdi class="ltr">' + esc(p.sku) + "</bdi> · " + esc(L(catOf(p.cat))) + '</span><button class="x" type="button" data-close aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
+      '<div class="sheet-top"><span class="sku"><bdi class="ltr">' + esc(p.sku) + "</bdi> · " + esc(L(catOf(p.cat))) + '</span><span class="sheet-acts"><button class="x share" type="button" data-share="' + esc(p.id) + '" aria-label="' + esc(t("share")) + '">' + icon(I_SHARE) + '</button><button class="x" type="button" data-close aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></span></div>" +
       '<div class="tile' + (p.img ? " photo" : "") + '" style="--cat:' + catColor(p.cat) + '">' + tileInner(p) + "</div>" +
       '<div><h3 id="pTitle">' + esc(L(p.name)) + '</h3><p class="spec">' + esc(L(p.spec)) + "</p>" + stockHtml(p) +
         (onSale(p) ? '<p class="was-line"><s>' + esc(money(p.was)) + "</s> <b>" + esc(money(p.price)) + "</b> <em>" + esc(t("save", {n: offPct(p)})) + "</em></p>" : "") + "</div>" +
-      (L(p.desc) ? '<p class="desc">' + esc(L(p.desc)) + "</p>" : "") + optHtml() +
+      (L(p.desc) ? '<p class="desc">' + esc(L(p.desc)) + "</p>" : "") + optHtml() + pairsHtml(related(p), t("pairsTitle")) +
       (!out && r <= 0 ? '<p class="note warn">' + esc(t("allInCart", {n: p.stock})) + "</p>" : "") +
       (out && waLink("x") ? '<div class="sheet-buy"><a class="btn wa" href="' + waLink(t("restockMsg", {n: L(p.name), c: p.sku})) + '" target="_blank" rel="noopener">' + icon(I_WA) + esc(t("restockAsk")) + "</a></div>" :
       '<div class="sheet-buy"><div class="qty"><button type="button" data-q="-1" aria-label="' + esc(t("dec")) + '"' + (qty <= 1 || blocked ? " disabled" : "") + ">−</button><output aria-live=\"polite\">" + qty + '</output><button type="button" data-q="1" aria-label="' + esc(t("inc")) + '"' + (qty >= r || blocked ? " disabled" : "") + ">+</button></div>" +
@@ -1155,9 +1708,9 @@ function renderCartView(){
       '<div class="lt">' + money(p.price * i.qty) + "</div>" +
       '<div class="ctl"><div class="qty sm"><button type="button" data-line="' + idx + '" data-d="-1" aria-label="' + esc(t("dec")) + '">−</button><output>' + i.qty + '</output><button type="button" data-line="' + idx + '" data-d="1" aria-label="' + esc(t("inc")) + '"' + (full ? " disabled" : "") + ">+</button></div>" +
       '<button class="link" type="button" data-remove="' + idx + '">' + t("remove") + "</button></div></div>";
-  }).join("");
-  $("#cartFoot").innerHTML = '<div class="totals"><div class="row gift-row"><span>' + icon(I_GIFT) + t("giftLine") + "</span><span>" + t("free") + '</span></div><div class="row total"><span>' + t("subtotal") + "</span><span>" + money(subtotal()) + "</span></div></div>" +
-    '<p class="hint">' + t("deliveryNext") + "</p>" +
+  }).join("") + cartPairs();
+  $("#cartFoot").innerHTML = freeHtml(subtotal()) + '<div class="totals"><div class="row gift-row"><span>' + icon(I_GIFT) + t("giftLine") + "</span><span>" + t("free") + '</span></div><div class="row total"><span>' + t("subtotal") + "</span><span>" + money(subtotal()) + "</span></div></div>" +
+    '<p class="hint">' + t(isFree(subtotal()) ? "freeHint" : "deliveryNext") + "</p>" +
     '<button class="btn" type="button" data-act="details">' + t("toDetails") + "</button>";
 }
 function field(id, label, control, hint){
@@ -1181,10 +1734,12 @@ function renderDetails(){
     field("address", t("fAddress"), '<textarea id="address" name="address" autocomplete="street-address" rows="2">' + esc(d.address || "") + "</textarea>") +
     '<fieldset><legend class="legend">' + t("fPay") + "</legend>" + seg("pay", T[lang].pays, d.pay == null ? 0 : d.pay) + "</fieldset>" +
     field("notes", t("fNotes") + ' <span class="opt-txt">' + t("optional") + "</span>", '<textarea id="notes" name="notes" rows="2" placeholder="' + esc(t("notesPh")) + '">' + esc(d.notes || "") + "</textarea>") +
+    promoField() +
     '<div class="summary totals" id="sumBox"></div>' +
     '<div class="field agree-field"><label class="agree"><input type="checkbox" id="agree" name="agree" value="1"><span>' + t("agreeA") + '<button type="button" class="inline-link" data-act="policies">' + t("agreeLink") + "</button>" + t("agreeB") + '</span></label><p class="err" id="agree-err" hidden></p></div></form>';
   $("#cartFoot").innerHTML = '<button class="btn" type="submit" form="orderForm" id="placeBtn"></button>';
   updateSummary();
+  if (promoOn() && promo.code && !promo.ok && !promo.busy) checkPromo(promo.code); else paintPromo();
 }
 function readForm(){
   var f = $("#orderForm"); if (!f) return cust;
@@ -1197,15 +1752,18 @@ function onDetailsInput(e){
   if (e.target.id === "agree" && e.target.checked) setErr("agree", "");
 }
 function totals(gov){
-  var sub = subtotal(), z = zoneIndex(gov), fee = z > -1 ? Number(DATA.settings.fees[z] || 0) : 0;
-  return {sub: sub, z: z, fee: fee, total: sub + fee};
+  var sub = subtotal(), z = zoneIndex(gov), fee = z > -1 ? Number(DATA.settings.fees[z] || 0) : 0, base = fee;
+  var free = isFree(sub); if (free) fee = 0;
+  var disc = promo.ok && promoOn() ? Math.round(sub * promo.pct / 100) : 0;
+  return {sub: sub, z: z, fee: fee, base: base, free: free, disc: disc, total: sub - disc + fee};
 }
 function updateSummary(){
   var tt = totals(cust.gov), n = count();
   $("#sumBox").innerHTML =
     '<div class="row"><span>' + (n === 1 ? t("subItems1") : t("subItems", {n: n})) + "</span><span>" + money(tt.sub) + "</span></div>" +
+    (tt.disc ? '<div class="row disc-row"><span>' + t("discLine", {c: promo.code, p: promo.pct}) + "</span><span>−" + money(tt.disc) + "</span></div>" : "") +
     '<div class="row gift-row"><span>' + icon(I_GIFT) + t("giftLine") + "</span><span>" + t("free") + "</span></div>" +
-    '<div class="row"><span>' + t("delivery") + (tt.z > -1 ? " · " + L(ZONES[tt.z]) : "") + "</span><span>" + (tt.z > -1 ? money(tt.fee) : t("chooseGov")) + "</span></div>" +
+    '<div class="row"><span>' + t("delivery") + (tt.z > -1 ? " · " + L(ZONES[tt.z]) : "") + "</span><span>" + (tt.free ? (tt.z > -1 ? "<s class=\"was-fee\">" + money(tt.base) + "</s> " : "") + '<b class="free-tag">' + t("free") + "</b>" : tt.z > -1 ? money(tt.fee) : t("chooseGov")) + "</span></div>" +
     '<div class="row total"><span>' + t("total") + "</span><span>" + money(tt.total) + "</span></div>";
   $("#placeBtn").textContent = t("place", {t: money(tt.total)});
 }
@@ -1239,14 +1797,19 @@ function placeOrder(){
     t("mAddr") + ": " + d.address + "، ".replace("، ", lang === "ar" ? "، " : ", ") + d.area + (lang === "ar" ? "، " : ", ") + govName(d.gov), "",
     t("mItems") + ":"
   ].concat(lines, [t("giftMsg"), "",
-    t("subtotal") + ": " + money(tt.sub),
-    t("delivery") + " (" + L(ZONES[tt.z]) + "): " + money(tt.fee),
+    t("subtotal") + ": " + money(tt.sub)
+  ].concat(tt.disc ? [t("mDisc", {c: promo.code, p: promo.pct}) + ": −" + money(tt.disc)] : [], [
+    t("delivery") + " (" + L(ZONES[tt.z]) + "): " + (tt.free ? t("freeMsg", {t: money(DATA.settings.freeOver)}) : money(tt.fee)),
     t("total") + ": " + money(tt.total),
     t("mPay") + ": " + T[lang].pays[payIdx]
-  ]);
+  ]));
   if (d.notes) text.push(t("mNotes") + ": " + d.notes);
   text.push("", t("mAgreed") + " (" + POLICY_VERSION + ")");
   lastOrder = {no: no, text: text.join("\n"), pay: payIdx, total: tt.total, lang: lang};
+  if (tt.disc && promoOn()){
+    api("use", {code: promo.code, order: no, total: tt.total}).catch(function(){});
+    promo = {code: "", pct: 0, ok: false, msg: ""}; saveJSON("miswak-promo", "");
+  }
   cart = []; saveCart(); updateCount(false);
   view = "done"; renderSheet();
 }
@@ -1301,7 +1864,8 @@ document.addEventListener("click", function(e){
   var a = e.target.closest("[data-act]");
   if (a){
     var act = a.dataset.act;
-    if (act === "lang"){ lang = lang === "ar" ? "en" : "ar"; try { localStorage.setItem("miswak-lang", lang); } catch(err){} renderShell(); return; }
+    if (act === "lang"){ switchLang(); return; }
+    if (act === "brand"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "goshop"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "cart"){ openCart(); return; }
     if (act === "toast"){ a.hidden = true; if (a.dataset.cart) openCart("cart"); return; }
@@ -1324,8 +1888,23 @@ document.addEventListener("click", function(e){
   var o = e.target.closest("[data-open]");
   if (o && !o.closest("dialog")){ openProduct(o.dataset.open); return; }
   var ad = e.target.closest("[data-add]");
-  if (ad){ addToCart(ad.dataset.add, "", 1); }
+  if (ad){ addToCart(ad.dataset.add, "", 1); flashAdded(ad); }
+  var so = e.target.closest("[data-sopen]");
+  if (so){ var cs0 = $("#cartSheet"); if (cs0 && cs0.open) cs0.close(); openProduct(so.dataset.sopen); return; }
+  var sa = e.target.closest("[data-sadd]");
+  if (sa){
+    addToCart(sa.dataset.sadd, "", 1); flashAdded(sa);
+    var cs1 = $("#cartSheet"); if (cs1 && cs1.open && view === "cart") setTimeout(renderSheet, 650);
+    return;
+  }
+  var shr = e.target.closest("[data-share]");
+  if (shr){ var sp = byId(shr.dataset.share); if (sp) shareProduct(sp); }
 });
+function flashAdded(b){
+  if (!b || b.disabled || b.classList.contains("added")) return;
+  var html = b.innerHTML; b.classList.add("added"); b.innerHTML = icon(I_CHECK) + "<span>" + esc(t("addedShort")) + "</span>";
+  setTimeout(function(){ if (b.isConnected){ b.classList.remove("added"); b.innerHTML = html; } }, 1300);
+}
 
 /* =================== LOADING THE CATALOGUE FROM GOOGLE SHEETS =================== */
 var CAT_KEYS = {studentkits:"kit", kits:"kit", kit:"kit", restorative:"resto", resto:"resto", endodontics:"endo", endo:"endo", burs:"bur", bur:"bur", impression:"imp", imp:"imp", disposables:"disp", disp:"disp"};
@@ -1400,6 +1979,9 @@ function toSettings(rows){
   s.instapay = pick(r, ["instapayaddress","instapay"]);
   if (fees.length) s.fees = [0, 1, 2].map(function(i){ return fees[i] != null ? fees[i] : DEFAULT_SETTINGS.fees[i]; });
   s.notice = yes(pick(r, ["showpreviewbanner"]));
+  var pu = String(pick(r, ["discountcodeslink","discountlink","promolink"]) || "").trim();
+  s.promoUrl = /^https:\/\/script\.google(usercontent)?\.com\//.test(pu) ? pu : "";
+  if ("freedeliveryoveregp" in r || "freedeliveryover" in r) s.freeOver = num(pick(r, ["freedeliveryoveregp","freedeliveryover"]));
   return s;
 }
 function sheetUrl(tab){
@@ -1419,6 +2001,16 @@ function finish(products, settings, hidden){
   LOAD = "ready";
   cleanCart();
   if (WANT_ABOUT){ WANT_ABOUT = false; setTimeout(openAbout, 50); }
+  setTimeout(openFromHash, 0);
+  setTimeout(codeFromHash, 0);
+  setTimeout(refreshMyCode, 1500);
+  if (promoOn() && !promo.code){ var sp = loadJSON("miswak-promo", ""); if (sp) promo = {code: sp, pct: 0, ok: false, msg: ""}; }
+  try {
+    if (cart.length && !sessionStorage.getItem("miswak-back")){
+      setTimeout(function(){ toast(t("welcomeBack", {n: count()}), true); }, 1800);
+    }
+    sessionStorage.setItem("miswak-back", "1");
+  } catch(e){}
   if (CHECK) LOAD_INFO = PREVIEW ? "" : products.length + " products on the site" + (hidden ? ", " + hidden + " hidden or blank rows skipped" : "") + ". Loaded at " + new Date().toLocaleTimeString() + ".";
   renderShell();
 }
@@ -1474,6 +2066,31 @@ function queueMark(){ if (!markTick){ markTick = true; requestAnimationFrame(pla
 window.addEventListener("scroll", queueMark, {passive: true});
 window.addEventListener("resize", queueMark);
 
+/* language switch: the page swooshes out one way and the new language slides in from the other */
+var swapping = false;
+function switchLang(){
+  var next = lang === "ar" ? "en" : "ar";
+  function apply(){ lang = next; try { localStorage.setItem("miswak-lang", lang); } catch(err){} }
+  function parts(){ return Array.prototype.slice.call(document.querySelectorAll(".top .wrap, main, footer")); }
+  if (CALM || swapping){ if (!swapping){ apply(); renderShell(); } return; }
+  swapping = true;
+  var dir = next === "ar" ? 1 : -1, y = window.scrollY || 0;
+  parts().forEach(function(el){
+    el.style.transition = "transform .24s cubic-bezier(.4,0,1,1), opacity .2s ease";
+    el.style.transform = "translateX(" + (dir * 56) + "px)"; el.style.opacity = "0";
+  });
+  setTimeout(function(){
+    apply(); renderShell(); window.scrollTo(0, y);
+    var els = parts();
+    els.forEach(function(el){ el.style.transition = "none"; el.style.transform = "translateX(" + (-dir * 56) + "px)"; el.style.opacity = "0"; });
+    void document.body.offsetWidth;
+    els.forEach(function(el){
+      el.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1), opacity .38s ease";
+      el.style.transform = ""; el.style.opacity = "";
+    });
+    setTimeout(function(){ els.forEach(function(el){ el.style.transition = ""; }); swapping = false; }, 520);
+  }, 240);
+}
 /* floating WhatsApp button: tap to chat, fling it away to hide until the next visit */
 var fabGone = false;
 function fabTip(){
@@ -1485,6 +2102,7 @@ setInterval(fabTip, 60000);
 function initFab(){
   var f = $("#fab"); document.body.classList.toggle("has-fab", !!f);
   if (!f) return;
+  if (swapping) f.classList.add("ready");
   var sx = 0, sy = 0, dx = 0, dy = 0, down = false, moved = false;
   f.addEventListener("dragstart", function(e){ e.preventDefault(); });
   f.addEventListener("animationend", function(e){ if (e.animationName === "fabIn") f.classList.add("ready"); });
