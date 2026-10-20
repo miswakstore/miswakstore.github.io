@@ -732,6 +732,14 @@ button:disabled{transition:opacity .2s ease}
 .fav-tools p{margin:0;color:var(--muted);font-size:14.5px}
 .fav-acts{display:flex;flex-wrap:wrap;gap:8px}
 .fav-acts .btn{width:auto;flex:none;padding-inline:18px}
+/* ---- layout polish ---- */
+.sec-head{display:grid;justify-items:center;text-align:center;gap:4px;margin-bottom:22px}
+.how .sec-head h2,.faq .sec-head h2{margin:0;font:800 clamp(22px,5vw,30px)/1.25 var(--f-display);letter-spacing:-.02em}
+:root[lang="ar"] .how .sec-head h2,:root[lang="ar"] .faq .sec-head h2{font-weight:700;line-height:1.45}
+.faq .wrap{max-width:820px}
+.how ol{max-width:1000px;margin-inline:auto}
+@media (min-width:820px){.how li{justify-content:center}}
+@media (max-width:640px){.facts li:nth-child(n+4){display:none}}
 /* ---- tap bursts + secret rain ---- */
 .burst{position:fixed;width:0;height:0;pointer-events:none;z-index:150}
 .burst b{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;border:2px solid var(--accent);animation:burstRing .5s ease-out forwards}
@@ -847,7 +855,7 @@ var T = {
         ["Composite shades like A2 and B1 follow which shade guide?",["VITA classical","Pantone","ISO 3630","ADA No. 27"],0,"VITA classical groups shades into A (reddish-brown), B (reddish-yellow), C (grey) and D (reddish-grey)."]],
   pairsTitle:"Goes well with", cartPairsTitle:"You might also need", share:"Share this product", shareFrom:"Miswak Dental Supply", linkCopied:"Link copied. Paste it in WhatsApp to share",
   addedShort:"Added", checkout:"Checkout", item1:"1 item", itemsN:"{n} items", itemsTotal:"{n} · {t}", welcomeBack:"Welcome back! Your cart still has {n} item(s)",
-  faqTitle:"Questions customers ask",
+  faqTitle:"Questions customers ask", faqEyebrow:"Good to know", howEyebrow:"Three simple steps",
   faq:[["Do I need an account?","No. Add products to your cart, fill in your delivery details and send the order on WhatsApp. That's it."],
        ["How do I pay?","Cash on delivery is the default. You can also pay by InstaPay or mobile wallet if you prefer. We confirm the payment method with you on WhatsApp."],
        ["How much is delivery, and when will it arrive?","{free}the fee depends on your governorate and is shown at checkout before you send the order. We confirm the delivery date with you on WhatsApp."],
@@ -928,7 +936,7 @@ var T = {
         ["درجات الكومبوزيت مثل A2 وB1 تتبع أي دليل ألوان؟",["VITA classical","Pantone","ISO 3630","ADA رقم 27"],0,"دليل VITA classical يقسّم الدرجات إلى A (بني محمر) وB (أصفر محمر) وC (رمادي) وD (رمادي محمر)."]],
   pairsTitle:"يناسبه أيضًا", cartPairsTitle:"قد تحتاج أيضًا", share:"شارك المنتج", shareFrom:"مسواك لمستلزمات الأسنان", linkCopied:"تم نسخ الرابط. الصقه في واتساب لمشاركته",
   addedShort:"تمت الإضافة", checkout:"إتمام الطلب", item1:"منتج واحد", itemsN:"{n} منتجات", itemsTotal:"{n} · {t}", welcomeBack:"أهلًا بعودتك! سلتك لا تزال فيها {n} منتج",
-  faqTitle:"أسئلة يسألها العملاء",
+  faqTitle:"أسئلة يسألها العملاء", faqEyebrow:"معلومات تهمك", howEyebrow:"ثلاث خطوات بسيطة",
   faq:[["هل أحتاج إلى حساب؟","لا. أضف المنتجات إلى السلة، واكتب بيانات التوصيل، وأرسل الطلب على واتساب. هذا كل شيء."],
        ["كيف أدفع؟","الدفع عند الاستلام هو الأساس، ويمكنك الدفع بإنستاباي أو المحفظة الإلكترونية إن أردت. نؤكد معك طريقة الدفع على واتساب."],
        ["كم سعر التوصيل ومتى يصل الطلب؟","{free}سعر التوصيل حسب محافظتك ويظهر لك عند إتمام الطلب قبل الإرسال. ونؤكد معك موعد التوصيل على واتساب."],
@@ -1011,7 +1019,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "38";
+var BUILD = "39";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -1094,8 +1102,8 @@ function renderShell(){
         '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div></div>' +
       '<section class="play" aria-labelledby="playTitle"><div class="wrap"><div class="play-head"><span class="eyebrow">' + t("playEyebrow") + '</span><h2 id="playTitle">' + t("playTitle") + "</h2><p>" + t("playSub") + '</p></div><div class="play-grid"><div class="explorer" id="explorer"></div><div class="quiz" id="quiz"></div></div></div></section>' +
       '<section class="trust" aria-label="' + esc(t("trustAria")) + '"><div class="wrap"><ul>' + T[lang].trust.map(function(x, i){ return "<li>" + icon([I_CASH, I_TRUCK, I_RETURN][i]) + "<b>" + x[0] + "</b><span>" + x[1] + "</span></li>"; }).join("") + "</ul></div></section>" +
-      '<section class="how" aria-labelledby="howTitle"><div class="wrap"><h2 id="howTitle">' + t("howTitle") + "</h2><ol>" + steps + "</ol></div></section>" +
-      '<section class="faq" aria-labelledby="faqTitle"><div class="wrap"><h2 id="faqTitle">' + t("faqTitle") + "</h2>" + T[lang].faq.map(function(f){ return drop(f[0], "<p>" + faqText(f[1], s) + "</p>"); }).join("") + "</div></section>" +
+      '<section class="how" aria-labelledby="howTitle"><div class="wrap"><div class="sec-head"><span class="eyebrow">' + t("howEyebrow") + '</span><h2 id="howTitle">' + t("howTitle") + "</h2></div><ol>" + steps + "</ol></div></section>" +
+      '<section class="faq" aria-labelledby="faqTitle"><div class="wrap"><div class="sec-head"><span class="eyebrow">' + t("faqEyebrow") + '</span><h2 id="faqTitle">' + t("faqTitle") + "</h2></div>" + T[lang].faq.map(function(f){ return drop(f[0], "<p>" + faqText(f[1], s) + "</p>"); }).join("") + "</div></section>" +
     "</main>" +
     '<footer><div class="wrap">' +
       (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
@@ -2206,7 +2214,8 @@ function switchLang(){
 /* floating WhatsApp button: tap to chat, fling it away to hide until the next visit */
 var fabGone = false;
 function fabTip(){
-  var f = $("#fab"); if (!f || f.classList.contains("drag")) return;
+  var f = $("#fab"), tt = $("#toast"); if (!f || f.classList.contains("drag")) return;
+  if (tt && !tt.hidden){ setTimeout(fabTip, 4000); return; }
   f.classList.remove("tip"); void f.offsetWidth; f.classList.add("tip");
 }
 setTimeout(fabTip, 2200);
