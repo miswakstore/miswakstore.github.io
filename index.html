@@ -31,6 +31,7 @@
   --accent:#2C5C3C; --accent-hover:#224A30; --accent-ink:#FFFFFF; --accent-soft:#E1EDE3; --wood:#8A5F35;
   --ok:#2B7A4C; --warn:#94590A; --danger:#B3261E; --scrim:rgba(12,20,18,.5);
   --wa:#1E8C4C; --wa-ink:#FFFFFF;
+  --page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(76,150,104,.16),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(196,150,96,.13),transparent 62%),radial-gradient(55vmax 45vmax at 0% 12%,rgba(70,140,140,.07),transparent 65%),linear-gradient(160deg,#F4F8F5 0%,#F1F5F2 50%,#F3F2EC 100%);
   --solid:#2C5C3C; --solid-hover:#224A30; --solid-ink:#FFFFFF; --okfill:#2B7A4C;
   --pick-bg:#16201D; --pick-ink:#F2F5F3; --pick-line:#16201D; --tab-on:#FFFFFF;
   --c-resto:#A3264B; --c-endo:#1D6A86; --c-bur:#4E54A6; --c-imp:#257564; --c-disp:#80611A; --c-kit:#72388D;
@@ -68,6 +69,7 @@
   --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-num:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --f-arabic:"Reem Kufi","Noto Kufi Arabic","Geeza Pro",Tahoma,sans-serif;
   --f-arabic-text:"Noto Naskh Arabic","Geeza Pro","Arabic UI Text",Tahoma,serif;
   --f-label:var(--f-mono);
@@ -75,22 +77,24 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0C1110; --surface:#151D1B; --sunk:#1D2825; --ink:#ECF2EE; --muted:#A7B6AF; --line:#2D3B37;
-    --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#1A3022; --wood:#D9AE7E;
+    --page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(84,176,118,.34),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(214,166,112,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(56,128,128,.16),transparent 65%),linear-gradient(160deg,#1F2D28 0%,#1A2522 50%,#1C2420 100%);
+    --bg:#1B2522; --surface:#23302C; --sunk:#2B3935; --ink:#EEF3F0; --muted:#B4C2BC; --line:#3A4A45;
+    --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#273F31; --wood:#DDB487;
     --solid:#2F7D4F; --solid-hover:#38905C; --solid-ink:#F3FFF6; --okfill:#2F8A55;
-    --pick-bg:#1E3A29; --pick-ink:#D5F0DE; --pick-line:#5FA77A; --tab-on:#2C3B37;
-    --ok:#6DC491; --warn:#E3A94B; --danger:#F08A80; --scrim:rgba(0,0,0,.62);
+    --pick-bg:#2A4B36; --pick-ink:#DDF3E4; --pick-line:#6BB585; --tab-on:#3A4B46;
+    --ok:#7BD19E; --warn:#E8B25A; --danger:#F49A90; --scrim:rgba(4,10,8,.55);
     --wa:#3DC27A; --wa-ink:#06200F; --mark-filter:none; --line-inv:#D5C7CB; --mark-dim:1;
     --c-resto:#EE7799; --c-endo:#6CC0DE; --c-bur:#A3A8F0; --c-imp:#6DCBB5; --c-disp:#DDB75E; --c-kit:#C99BE0;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0C1110; --surface:#151D1B; --sunk:#1D2825; --ink:#ECF2EE; --muted:#A7B6AF; --line:#2D3B37;
-  --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#1A3022; --wood:#D9AE7E;
+  --page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(84,176,118,.34),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(214,166,112,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(56,128,128,.16),transparent 65%),linear-gradient(160deg,#1F2D28 0%,#1A2522 50%,#1C2420 100%);
+    --bg:#1B2522; --surface:#23302C; --sunk:#2B3935; --ink:#EEF3F0; --muted:#B4C2BC; --line:#3A4A45;
+  --accent:#8ECB9D; --accent-hover:#A8D9B4; --accent-ink:#0A2414; --accent-soft:#273F31; --wood:#DDB487;
   --solid:#2F7D4F; --solid-hover:#38905C; --solid-ink:#F3FFF6; --okfill:#2F8A55;
-  --pick-bg:#1E3A29; --pick-ink:#D5F0DE; --pick-line:#5FA77A; --tab-on:#2C3B37;
-  --ok:#6DC491; --warn:#E3A94B; --danger:#F08A80; --scrim:rgba(0,0,0,.62);
+  --pick-bg:#2A4B36; --pick-ink:#DDF3E4; --pick-line:#6BB585; --tab-on:#3A4B46;
+  --ok:#7BD19E; --warn:#E8B25A; --danger:#F49A90; --scrim:rgba(4,10,8,.55);
   --wa:#3DC27A; --wa-ink:#06200F; --mark-filter:none; --line-inv:#D5C7CB; --mark-dim:1;
   --c-resto:#EE7799; --c-endo:#6CC0DE; --c-bur:#A3A8F0; --c-imp:#6DCBB5; --c-disp:#DDB75E; --c-kit:#C99BE0;
   color-scheme:dark;
@@ -102,7 +106,9 @@
 
 *{box-sizing:border-box}
 html{scroll-padding-top:120px}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--page-grad,none)}
+body{font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:45;background:var(--bg)}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -145,7 +151,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .lang-btn[lang="ar"]{font-family:var(--f-arabic-text);font-size:15px}
 .lang-btn[lang="en"]{font-family:"Source Sans 3",Arial,sans-serif}
 .cart-btn{border:0;background:var(--ink);color:var(--bg);padding:0 11px 0 13px}
-.cart-btn .count{min-width:22px;height:22px;border-radius:11px;background:var(--accent);color:var(--accent-ink);font:600 12px/22px var(--f-mono);text-align:center;padding:0 6px}
+.cart-btn .count{min-width:22px;height:22px;border-radius:11px;background:var(--accent);color:var(--accent-ink);font:700 12.5px/22px var(--f-display);font-variant-numeric:tabular-nums;text-align:center;padding:0 6px}
 .cart-btn.bump .count{animation:bump .35s ease}
 @keyframes bump{40%{transform:scale(1.3)}}
 @media (max-width:640px){.search{order:5;flex-basis:100%}}
@@ -752,6 +758,97 @@ button:disabled{transition:opacity .2s ease}
 .rain span{position:absolute;top:-40px;width:30px;height:30px;color:var(--accent);animation:rainFall 2.4s cubic-bezier(.4,0,.8,.6) forwards}
 .rain span .ico{width:30px;height:30px}
 @keyframes rainFall{to{transform:translateY(calc(100vh + 80px)) rotate(var(--r))}}
+/* ---- WhatsApp bubble in dark mode: light bubble, green logo ---- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .fab{background:#F1F5F2;box-shadow:0 10px 26px -8px rgba(0,0,0,.55),0 0 0 1px rgba(37,211,102,.35)}
+  :root:not([data-theme="light"]) .fab .ico{stroke:#1DA851}
+  :root:not([data-theme="light"]) .fab::before{background:rgba(241,245,242,.55)}
+}
+:root[data-theme="dark"] .fab{background:#F1F5F2;box-shadow:0 10px 26px -8px rgba(0,0,0,.55),0 0 0 1px rgba(37,211,102,.35)}
+:root[data-theme="dark"] .fab .ico{stroke:#1DA851}
+:root[data-theme="dark"] .fab::before{background:rgba(241,245,242,.55)}
+/* numbers keep the same clean Latin figures in both languages */
+.cart-btn .count{font-family:var(--f-num)!important;display:inline-grid;place-items:center;line-height:1}
+.cb-n,.price,.ring-n,.qz-score,.chip small,.mc-code{font-family:var(--f-num)}
+/* ---- announcement, re-order, quotes, tracking ---- */
+.announce{position:relative;z-index:41;background:linear-gradient(90deg,var(--solid),color-mix(in srgb,var(--solid) 70%,var(--wood)));color:var(--solid-ink);font-size:14px;font-weight:600;transition:opacity .3s,max-height .3s;max-height:120px;overflow:hidden}
+.announce .wrap{display:flex;align-items:center;justify-content:center;gap:10px;padding-block:8px;text-align:center}
+.announce .wrap > span{display:inline-flex;align-items:center;gap:8px}
+.announce .ico{width:18px;height:18px;flex:none}
+.announce .x{width:30px;height:30px;flex:none;background:transparent;color:inherit;border:0}
+.announce.gone{opacity:0;max-height:0}
+.reorder{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin:22px 0 0;padding:14px 16px;border-radius:var(--radius);background:var(--surface);border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));animation:giftPop .5s ease both}
+.reorder > .ico{width:26px;height:26px;color:var(--accent)}
+.reorder b{display:block;font:700 15.5px var(--f-display)}
+.reorder span{display:block;font-size:13.5px;color:var(--muted)}
+.reorder small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46ch}
+.reorder > div{min-width:0}
+.cart-body .reorder{margin:6px 0 0}
+@media (max-width:480px){.reorder{grid-template-columns:auto 1fr}.reorder .btn{grid-column:1/-1}}
+.quote-cta{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;margin-top:22px;padding:16px 18px;border-radius:var(--radius);background:color-mix(in srgb,var(--wood) 9%,var(--surface));border:1px dashed color-mix(in srgb,var(--wood) 55%,var(--line))}
+.quote-cta > .ico{width:30px;height:30px;color:var(--wood)}
+.quote-cta b{display:block;font:700 16px var(--f-display)}
+.quote-cta span{display:block;font-size:14px;color:var(--muted)}
+@media (max-width:560px){.quote-cta{grid-template-columns:auto 1fr}.quote-cta .btn{grid-column:1/-1;width:100%}}
+#quoteForm,.track-form{display:grid;gap:14px}
+.q-intro,.track-form p{margin:0;color:var(--muted)}
+.q-cart{justify-self:start;margin-top:-6px}
+#quoteSheet .cart-foot .btn{width:100%}
+.track-hint{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.track-msg{margin:14px 0 0;color:var(--muted)}
+.track-msg.bad{color:var(--danger)}
+.track-card{margin-top:16px;padding:16px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);display:grid;gap:12px;animation:giftPop .45s ease both}
+.tk-no{margin:0;font:800 18px var(--f-num);letter-spacing:.04em}
+.tk-steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tk-steps li{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:10px;position:relative;padding:6px 0;color:var(--muted);font-weight:600}
+.tk-steps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:13px;top:30px;height:calc(100% - 18px);width:2px;background:var(--line)}
+.tk-steps li.done:not(:last-child)::after{background:var(--okfill)}
+.tk-steps i{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;background:var(--bg)}
+.tk-steps li.done i,.tk-steps li.now i{background:var(--okfill);border-color:var(--okfill);color:#fff}
+.tk-steps li.now{color:var(--ink);font-weight:800}
+.tk-steps li.now i{box-shadow:0 0 0 5px color-mix(in srgb,var(--okfill) 22%,transparent)}
+.tk-steps i .ico{width:15px;height:15px;stroke-width:3}
+.tk-cancel{margin:0;display:flex;gap:8px;align-items:center;color:var(--danger);font-weight:700}
+.tk-cancel .ico{width:18px;height:18px}
+.tk-note{margin:0;padding:10px 12px;border-radius:10px;background:var(--accent-soft);font-size:14.5px}
+/* ---- seasonal themes (switched from the Settings tab) ---- */
+:root[data-season="ramadan"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(78,70,170,.16),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(214,160,60,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 12%,rgba(120,90,200,.07),transparent 65%),linear-gradient(160deg,#F5F4FA 0%,#F3F2F8 50%,#F7F2E8 100%);--solid:#2F3178; --solid-hover:#25276A; --accent:#3A3C93; --accent-soft:#E8E7F6; --wood:#A8761E; --pick-bg:#2F3178; --pick-line:#2F3178;}
+@media (prefers-color-scheme: dark){:root[data-season="ramadan"]:not([data-theme="light"]){--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(110,100,220,.30),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(222,170,70,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(90,70,180,.18),transparent 65%),linear-gradient(160deg,#1C1F3D 0%,#171A33 50%,#1B1B2F 100%);--bg:#181B33; --surface:#212542; --sunk:#292D4D; --line:#383D60; --muted:#B9BCD6; --accent:#E9C47A; --accent-hover:#F2D394; --accent-ink:#1B1630; --accent-soft:#2E3159; --wood:#E9C47A;--solid:#4B4FB0; --solid-hover:#5A5EC2; --solid-ink:#FFFFFF; --pick-bg:#363A7A; --pick-ink:#F1EEFF; --pick-line:#8F93E8; --tab-on:#3A3F66; --okfill:#3E9A68;}}
+:root[data-season="ramadan"][data-theme="dark"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(110,100,220,.30),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(222,170,70,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(90,70,180,.18),transparent 65%),linear-gradient(160deg,#1C1F3D 0%,#171A33 50%,#1B1B2F 100%);--bg:#181B33; --surface:#212542; --sunk:#292D4D; --line:#383D60; --muted:#B9BCD6; --accent:#E9C47A; --accent-hover:#F2D394; --accent-ink:#1B1630; --accent-soft:#2E3159; --wood:#E9C47A;--solid:#4B4FB0; --solid-hover:#5A5EC2; --solid-ink:#FFFFFF; --pick-bg:#363A7A; --pick-ink:#F1EEFF; --pick-line:#8F93E8; --tab-on:#3A3F66; --okfill:#3E9A68;}
+:root[data-season="fitr"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(212,165,50,.22),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(46,140,96,.14),transparent 62%),radial-gradient(55vmax 45vmax at 0% 12%,rgba(240,200,110,.10),transparent 65%),linear-gradient(160deg,#FBF8EF 0%,#F6F6EF 50%,#F2F7F1 100%);--solid:#1F6E4B; --solid-hover:#185A3D; --wood:#B8861E;}
+@media (prefers-color-scheme: dark){:root[data-season="fitr"]:not([data-theme="light"]){--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(230,180,70,.26),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(70,180,120,.24),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(240,200,110,.10),transparent 65%),linear-gradient(160deg,#1E2B25 0%,#1A2521 50%,#1E241C 100%);--wood:#EBC56E; --solid:#2F8A5B; --solid-hover:#38A06A;}}
+:root[data-season="fitr"][data-theme="dark"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(230,180,70,.26),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(70,180,120,.24),transparent 62%),radial-gradient(55vmax 45vmax at 0% 15%,rgba(240,200,110,.10),transparent 65%),linear-gradient(160deg,#1E2B25 0%,#1A2521 50%,#1E241C 100%);--wood:#EBC56E; --solid:#2F8A5B; --solid-hover:#38A06A;}
+:root[data-season="adha"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(190,120,70,.18),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(214,170,90,.20),transparent 62%),radial-gradient(55vmax 45vmax at 0% 12%,rgba(160,100,60,.07),transparent 65%),linear-gradient(160deg,#FAF5EE 0%,#F7F1EA 50%,#F5EEE4 100%);--solid:#8C4A28; --solid-hover:#743D20; --accent:#8C4A28; --accent-soft:#F3E6DA; --wood:#A97B2C; --pick-bg:#8C4A28; --pick-line:#8C4A28;}
+@media (prefers-color-scheme: dark){:root[data-season="adha"]:not([data-theme="light"]){--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(210,130,80,.26),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(225,180,100,.18),transparent 62%),linear-gradient(160deg,#2A211B 0%,#241C17 50%,#211A15 100%);--bg:#241C17; --surface:#2E2520; --sunk:#382D26; --line:#4A3C33; --muted:#C9B8AB; --accent:#E8B98C; --accent-hover:#F1CBA5; --accent-ink:#2A1A10; --accent-soft:#3B2D23; --wood:#E5BE79;--solid:#A65D33; --solid-hover:#B96C40; --solid-ink:#FFF7F0; --pick-bg:#4A3324; --pick-ink:#FCE9D9; --pick-line:#C98B5E; --tab-on:#463830;}}
+:root[data-season="adha"][data-theme="dark"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(210,130,80,.26),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(225,180,100,.18),transparent 62%),linear-gradient(160deg,#2A211B 0%,#241C17 50%,#211A15 100%);--bg:#241C17; --surface:#2E2520; --sunk:#382D26; --line:#4A3C33; --muted:#C9B8AB; --accent:#E8B98C; --accent-hover:#F1CBA5; --accent-ink:#2A1A10; --accent-soft:#3B2D23; --wood:#E5BE79;--solid:#A65D33; --solid-hover:#B96C40; --solid-ink:#FFF7F0; --pick-bg:#4A3324; --pick-ink:#FCE9D9; --pick-line:#C98B5E; --tab-on:#463830;}
+:root[data-season="whitefriday"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(0,0,0,.05),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(201,161,74,.12),transparent 62%),linear-gradient(160deg,#FAFAF8 0%,#F5F5F3 50%,#F3F2EE 100%);--bg:#F6F6F4; --sunk:#ECECEA; --line:#DADAD6; --solid:#141414; --solid-hover:#2B2B2B; --accent:#141414; --accent-soft:#EDEDEA; --wood:#A8842E; --pick-bg:#141414; --pick-line:#141414; --okfill:#1E7A4A;}
+@media (prefers-color-scheme: dark){:root[data-season="whitefriday"]:not([data-theme="light"]){--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(255,255,255,.08),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(216,180,90,.14),transparent 62%),linear-gradient(160deg,#1A1A1A 0%,#141414 50%,#161513 100%);--bg:#151515; --surface:#1F1F1F; --sunk:#272727; --line:#363636; --muted:#B8B8B8; --accent:#F2F2F2; --accent-hover:#FFFFFF; --accent-ink:#111111; --accent-soft:#2A2A2A; --wood:#DDB862;--solid:#F2F2F2; --solid-hover:#FFFFFF; --solid-ink:#111111; --pick-bg:#F2F2F2; --pick-ink:#111111; --pick-line:#F2F2F2; --tab-on:#333333;}}
+:root[data-season="whitefriday"][data-theme="dark"]{--page-grad:radial-gradient(75vmax 55vmax at 100% 0%,rgba(255,255,255,.08),transparent 65%),radial-gradient(70vmax 55vmax at 0% 100%,rgba(216,180,90,.14),transparent 62%),linear-gradient(160deg,#1A1A1A 0%,#141414 50%,#161513 100%);--bg:#151515; --surface:#1F1F1F; --sunk:#272727; --line:#363636; --muted:#B8B8B8; --accent:#F2F2F2; --accent-hover:#FFFFFF; --accent-ink:#111111; --accent-soft:#2A2A2A; --wood:#DDB862;--solid:#F2F2F2; --solid-hover:#FFFFFF; --solid-ink:#111111; --pick-bg:#F2F2F2; --pick-ink:#111111; --pick-line:#F2F2F2; --tab-on:#333333;}
+.season-deco{position:absolute;inset:0 0 auto;height:min(420px,70vh);pointer-events:none;z-index:0;overflow:hidden}
+.hero{position:relative}
+.hero .wrap{position:relative;z-index:1}
+.season-chip{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:7px 14px;border-radius:999px;font:700 14px var(--f-display);color:var(--solid-ink);background:linear-gradient(90deg,var(--solid),color-mix(in srgb,var(--solid) 55%,var(--wood)));box-shadow:0 8px 20px -12px var(--solid)}
+.season-chip .ico{width:17px;height:17px}
+@media (max-width:640px){.season-chip{margin-inline:auto}}
+.lantern{position:absolute;top:0;width:44px;transform-origin:50% 0;animation:swing 4.5s ease-in-out infinite;color:var(--wood)}
+.lantern svg{display:block;width:100%;height:auto;overflow:visible}
+.lantern.l1{inset-inline-end:7%;animation-delay:-1s}
+.lantern.l2{inset-inline-end:17%;width:34px;animation-delay:-2.6s}
+.lantern.l3{inset-inline-start:6%;width:38px;animation-delay:-.4s}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.bunting{position:absolute;top:0;inset-inline:0;height:46px;width:100%;color:var(--wood)}
+.moon{position:absolute;top:58px;inset-inline-start:13%;width:54px;color:var(--wood);filter:drop-shadow(0 0 14px color-mix(in srgb,var(--wood) 55%,transparent))}
+.sparkle{position:absolute;width:16px;color:var(--wood);animation:twinkle 2.8s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+.wf-ribbon{position:absolute;top:22px;inset-inline-end:-46px;transform:rotate(38deg);background:var(--solid);color:var(--solid-ink);font:800 12px var(--f-num);letter-spacing:.22em;padding:7px 56px;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
+:root[dir="rtl"] .wf-ribbon{transform:rotate(-38deg)}
+@media (max-width:640px){.lantern.l2,.moon{display:none}.lantern{width:34px}.lantern.l3{width:30px}}
+/* ---- appearance switch ---- */
+.theme-btn{width:42px;padding:0;justify-content:center}
+.theme-btn .ico{width:19px;height:19px}
+@media (max-width:440px){.top .wrap{gap:7px}.theme-btn{width:38px}.hbtn{height:40px}}
+@media (max-width:410px){.brand .alt{display:none}}
+.theming,.theming *{transition:background-color .4s ease,color .4s ease,border-color .4s ease!important}
 /* ---- dark mode polish ---- */
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .gt.off i{opacity:.6}
@@ -759,14 +856,26 @@ button:disabled{transition:opacity .2s ease}
   :root:not([data-theme="light"]) .cart-btn{background:var(--solid);color:var(--solid-ink)}
   :root:not([data-theme="light"]) .cart-btn .count{background:var(--solid-ink);color:var(--solid)}
   :root:not([data-theme="light"]) .lang-btn,:root:not([data-theme="light"]) .search input{background:var(--surface)}
-  :root:not([data-theme="light"]) .toast,:root:not([data-theme="light"]) .fab-tip{background:#E6EEE9;color:#0C1110}
-  :root:not([data-theme="light"]) .jump{background:color-mix(in srgb,#E6EEE9 92%,transparent);color:#0C1110}
+  :root:not([data-theme="light"]) .toast,:root:not([data-theme="light"]) .fab-tip{background:#EEF3F0;color:#14201C}
+  :root:not([data-theme="light"]) .jump{background:color-mix(in srgb,#EEF3F0 94%,transparent);color:#14201C}
   :root:not([data-theme="light"]) .tile{background:var(--sunk)}
   :root:not([data-theme="light"]) .hero h1 em,:root:not([data-theme="light"]) .hero h1 span{color:var(--accent)}
-  :root:not([data-theme="light"]) .stabs{background:#141B19;border:1px solid var(--line)}
-  :root:not([data-theme="light"]) .ex-list button,:root:not([data-theme="light"]) .qz-opt{background:#111816}
+  :root:not([data-theme="light"]) .stabs{background:var(--bg);border:1px solid var(--line)}
+  :root:not([data-theme="light"]) .ex-list button,:root:not([data-theme="light"]) .qz-opt{background:var(--bg)}
   :root:not([data-theme="light"]) .bgmark{opacity:.07}
 }
+  :root[data-theme="dark"] .gt.off i{opacity:.6}
+  :root[data-theme="dark"] .card,:root[data-theme="dark"] .benefits summary,:root[data-theme="dark"] .explorer,:root[data-theme="dark"] .quiz,:root[data-theme="dark"] .req-card{box-shadow:0 1px 0 rgba(255,255,255,.035) inset,0 10px 24px -18px rgba(0,0,0,.8)}
+  :root[data-theme="dark"] .cart-btn{background:var(--solid);color:var(--solid-ink)}
+  :root[data-theme="dark"] .cart-btn .count{background:var(--solid-ink);color:var(--solid)}
+  :root[data-theme="dark"] .lang-btn,:root[data-theme="dark"] .search input{background:var(--surface)}
+  :root[data-theme="dark"] .toast,:root[data-theme="dark"] .fab-tip{background:#EEF3F0;color:#14201C}
+  :root[data-theme="dark"] .jump{background:color-mix(in srgb,#EEF3F0 94%,transparent);color:#14201C}
+  :root[data-theme="dark"] .tile{background:var(--sunk)}
+  :root[data-theme="dark"] .hero h1 em,:root[data-theme="dark"] .hero h1 span{color:var(--accent)}
+  :root[data-theme="dark"] .stabs{background:var(--bg);border:1px solid var(--line)}
+  :root[data-theme="dark"] .ex-list button,:root[data-theme="dark"] .qz-opt{background:var(--bg)}
+  :root[data-theme="dark"] .bgmark{opacity:.07}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <div id="app"></div>
@@ -856,14 +965,25 @@ var T = {
         ["Composite shades like A2 and B1 follow which shade guide?",["VITA classical","Pantone","ISO 3630","ADA No. 27"],0,"VITA classical groups shades into A (reddish-brown), B (reddish-yellow), C (grey) and D (reddish-grey)."]],
   pairsTitle:"Goes well with", cartPairsTitle:"You might also need", share:"Share this product", shareFrom:"Miswak Dental Supply", linkCopied:"Link copied. Paste it in WhatsApp to share",
   addedShort:"Added", checkout:"Checkout", item1:"1 item", itemsN:"{n} items", itemsTotal:"{n} · {t}", welcomeBack:"Welcome back! Your cart still has {n} item(s)",
+  qtypes:["Clinic","Dental center","College batch","Dental lab"], qfreqs:["One time","Every month","Every term"],
   faqTitle:"Questions customers ask", faqEyebrow:"Good to know", howEyebrow:"Three simple steps",
   faq:[["Do I need an account?","No. Add products to your cart, fill in your delivery details and send the order on WhatsApp. That's it."],
        ["How do I pay?","Cash on delivery is the default. You can also pay by InstaPay or mobile wallet if you prefer. We confirm the payment method with you on WhatsApp."],
        ["How much is delivery, and when will it arrive?","{free}the fee depends on your governorate and is shown at checkout before you send the order. We confirm the delivery date with you on WhatsApp."],
        ["Can I return something?","Unopened, sealed items can be returned within 14 days. If something arrives damaged or wrong, tell us within 48 hours. Full details are in the store policies at the bottom of the page."],
-       ["Do you do bulk or college-group orders?","Yes. Message us on WhatsApp with the products and quantities and we'll reply with a quote."],
+       ["Do you do bulk or college-group orders?","Yes. Use \u201cGet a bulk quote\u201d under the products (or in the footer) to send us your list and quantities, and we'll reply on WhatsApp with a price."],
        ["You don't have the product I need. Can you get it?","Often, yes. Search for it, then tap \u201cAsk us to get it\u201d, or message us on WhatsApp."]],
-  secretRain:"🌿 You found the secret miswak rain!", save:"Save {name} to your list", unsave:"Remove {name} from your list", savedChip:"Saved",
+  secretRain:"🌿 You found the secret miswak rain!",
+  season_ramadan:"Ramadan Kareem", season_fitr:"Eid Mubarak", season_adha:"Eid al-Adha Mubarak", season_whitefriday:"White Friday deals are on",
+  reorderTitle:"Order again?", reorderText:"Your last order on {d}: {n} item(s).", reorderBtn:"Add to cart", reorderDone:"Added {n} item(s) from your last order", reorderSome:"Added {n} item(s). Some are out of stock or limited now", reorderNone:"Those products are out of stock right now",
+  trackTitle:"Track your order", trackIntro:"Enter the order number from your WhatsApp message (it starts with MSW).", trackLabel:"Order number", trackBtn:"Check status", trackEmpty:"Type your order number first.", trackChecking:"Checking…",
+  trackNotFound:"We can't find that order yet. Orders show here once we've confirmed them with you on WhatsApp, usually within a few hours. Check the number, or message us.", trackNet:"We couldn't check right now. Check your internet and try again.", trackUpdated:"Last updated:",
+  st_received:"Order received", st_confirmed:"Confirmed", st_shipped:"On the way", st_delivered:"Delivered", st_cancelled:"This order was cancelled. Message us on WhatsApp if that's unexpected.",
+  trackHint:"Your order number is {no}. You can check its status any time.", trackHintLink:"Track order", trackLinkFoot:"Track my order", quoteLinkFoot:"Bulk & clinic quotes",
+  quoteCtaTitle:"Ordering for a clinic or a whole batch?", quoteCtaText:"Send us your list and quantities and we'll reply with a bulk price on WhatsApp.", quoteCtaBtn:"Get a bulk quote",
+  quoteTitle:"Bulk & clinic quote", quoteIntro:"Tell us what you need and how many. We'll reply on WhatsApp with prices and delivery time. No commitment.", quoteSend:"Send request on WhatsApp", quoteSent:"Opening WhatsApp with your request…",
+  qName:"Clinic or your name", qType:"Ordering for", qItems:"Products and quantities", qItemsPh:"e.g. 20 × Nitrile gloves M\n10 × A2 composite\n5 × Etching gel", qItemsHint:"Write each product on its own line with the quantity. Brands you prefer are welcome too.",
+  qUseCart:"Use the items in my cart", qFreq:"How often", qNotesPh:"Preferred brands, delivery timing, anything else", qErrItems:"Tell us which products and how many.", qMsgHead:"📦 Bulk quote request", themeAria:"Appearance: {m}. Tap to change", themeToast:"Appearance: {m}", theme_auto:"Automatic (follows your phone)", theme_light:"Light", theme_dark:"Dark", save:"Save {name} to your list", unsave:"Remove {name} from your list", savedChip:"Saved",
   savedToast:"♥ Saved to your list", unsavedToast:"Removed from your list", favIntro:"Your saved products. Share the list with your batch or add them to your cart in one tap.",
   shareList:"Share my list", addAll:"Add {n} to cart", listMsg:"My Miswak Dental Supply list:", toTop:"Back to top", toBottom:"Go to bottom", fabMsg:"Hi Miswak! I have a question.", fabAria:"Chat with us on WhatsApp", fabTip:"Need help? Contact us",
   noMatch:"No products match “{q}”. Try a shorter word, like “file” or “bur”.",
@@ -937,14 +1057,25 @@ var T = {
         ["درجات الكومبوزيت مثل A2 وB1 تتبع أي دليل ألوان؟",["VITA classical","Pantone","ISO 3630","ADA رقم 27"],0,"دليل VITA classical يقسّم الدرجات إلى A (بني محمر) وB (أصفر محمر) وC (رمادي) وD (رمادي محمر)."]],
   pairsTitle:"يناسبه أيضًا", cartPairsTitle:"قد تحتاج أيضًا", share:"شارك المنتج", shareFrom:"مسواك لمستلزمات الأسنان", linkCopied:"تم نسخ الرابط. الصقه في واتساب لمشاركته",
   addedShort:"تمت الإضافة", checkout:"إتمام الطلب", item1:"منتج واحد", itemsN:"{n} منتجات", itemsTotal:"{n} · {t}", welcomeBack:"أهلًا بعودتك! سلتك لا تزال فيها {n} منتج",
+  qtypes:["عيادة","مركز أسنان","دفعة في الكلية","معمل أسنان"], qfreqs:["مرة واحدة","كل شهر","كل ترم"],
   faqTitle:"أسئلة يسألها العملاء", faqEyebrow:"معلومات تهمك", howEyebrow:"ثلاث خطوات بسيطة",
   faq:[["هل أحتاج إلى حساب؟","لا. أضف المنتجات إلى السلة، واكتب بيانات التوصيل، وأرسل الطلب على واتساب. هذا كل شيء."],
        ["كيف أدفع؟","الدفع عند الاستلام هو الأساس، ويمكنك الدفع بإنستاباي أو المحفظة الإلكترونية إن أردت. نؤكد معك طريقة الدفع على واتساب."],
        ["كم سعر التوصيل ومتى يصل الطلب؟","{free}سعر التوصيل حسب محافظتك ويظهر لك عند إتمام الطلب قبل الإرسال. ونؤكد معك موعد التوصيل على واتساب."],
        ["هل يمكنني إرجاع منتج؟","المنتجات غير المفتوحة والمغلقة يمكن إرجاعها خلال 14 يومًا. وإذا وصلك منتج تالف أو خاطئ أبلغنا خلال 48 ساعة. التفاصيل الكاملة في سياسات المتجر أسفل الصفحة."],
-       ["هل توفرون طلبات بالجملة أو لدفعة كاملة في الكلية؟","نعم. راسلنا على واتساب بالمنتجات والكميات وسنرد عليك بعرض سعر."],
+       ["هل توفرون طلبات بالجملة أو لدفعة كاملة في الكلية؟","نعم. استخدم «اطلب عرض سعر» أسفل المنتجات (أو في أسفل الصفحة) لإرسال القائمة والكميات، وسنرد عليك بالسعر على واتساب."],
        ["المنتج الذي أحتاجه غير موجود، هل يمكنكم توفيره؟","غالبًا نعم. ابحث عنه ثم اضغط «اطلب منّا نوفّره لك»، أو راسلنا على واتساب."]],
-  secretRain:"🌿 اكتشفت مطر المساويك السري!", save:"احفظ {name} في قائمتك", unsave:"أزل {name} من قائمتك", savedChip:"المحفوظة",
+  secretRain:"🌿 اكتشفت مطر المساويك السري!",
+  season_ramadan:"رمضان كريم", season_fitr:"عيد فطر مبارك", season_adha:"عيد أضحى مبارك", season_whitefriday:"عروض الجمعة البيضاء بدأت",
+  reorderTitle:"تطلب نفس الطلب مرة أخرى؟", reorderText:"طلبك الأخير يوم {d}: {n} منتج.", reorderBtn:"أضف للسلة", reorderDone:"تمت إضافة {n} منتج من طلبك الأخير", reorderSome:"تمت إضافة {n} منتج. بعض المنتجات غير متوفرة أو بكمية محدودة الآن", reorderNone:"هذه المنتجات غير متوفرة حاليًا",
+  trackTitle:"تتبّع طلبك", trackIntro:"اكتب رقم الطلب الموجود في رسالة واتساب (يبدأ بـ MSW).", trackLabel:"رقم الطلب", trackBtn:"اعرض الحالة", trackEmpty:"اكتب رقم الطلب أولًا.", trackChecking:"جارٍ البحث…",
+  trackNotFound:"لم نجد هذا الطلب بعد. تظهر الطلبات هنا بعد تأكيدها معك على واتساب، عادةً خلال ساعات قليلة. تأكد من الرقم أو راسلنا.", trackNet:"تعذّر التحقق الآن. تأكد من الإنترنت وحاول مرة أخرى.", trackUpdated:"آخر تحديث:",
+  st_received:"تم استلام الطلب", st_confirmed:"تم التأكيد", st_shipped:"في الطريق", st_delivered:"تم التسليم", st_cancelled:"تم إلغاء هذا الطلب. راسلنا على واتساب إن لم يكن ذلك متوقعًا.",
+  trackHint:"رقم طلبك {no}. يمكنك متابعة حالته في أي وقت.", trackHintLink:"تتبّع الطلب", trackLinkFoot:"تتبّع طلبي", quoteLinkFoot:"عروض أسعار الجملة والعيادات",
+  quoteCtaTitle:"تطلب لعيادة أو لدفعة كاملة؟", quoteCtaText:"أرسل لنا القائمة والكميات وسنرد عليك بسعر الجملة على واتساب.", quoteCtaBtn:"اطلب عرض سعر",
+  quoteTitle:"عرض سعر للجملة والعيادات", quoteIntro:"أخبرنا بما تحتاجه والكميات، وسنرد على واتساب بالأسعار وموعد التوصيل. بدون أي التزام.", quoteSend:"أرسل الطلب على واتساب", quoteSent:"جارٍ فتح واتساب بطلبك…",
+  qName:"اسم العيادة أو اسمك", qType:"الطلب لـ", qItems:"المنتجات والكميات", qItemsPh:"مثال: 20 × جوانتي نيتريل M\n10 × كومبوزيت A2\n5 × جل إتشنج", qItemsHint:"اكتب كل منتج في سطر مع الكمية، ويمكنك ذكر الماركات التي تفضلها.",
+  qUseCart:"استخدم المنتجات الموجودة في سلتي", qFreq:"كم مرة", qNotesPh:"الماركات المفضلة، موعد التوصيل، أي تفاصيل أخرى", qErrItems:"اكتب المنتجات والكميات.", qMsgHead:"📦 طلب عرض سعر جملة", themeAria:"المظهر: {m}. اضغط للتغيير", themeToast:"المظهر: {m}", theme_auto:"تلقائي (حسب جهازك)", theme_light:"فاتح", theme_dark:"داكن", save:"احفظ {name} في قائمتك", unsave:"أزل {name} من قائمتك", savedChip:"المحفوظة",
   savedToast:"♥ تم الحفظ في قائمتك", unsavedToast:"تمت الإزالة من قائمتك", favIntro:"منتجاتك المحفوظة. شارك القائمة مع دفعتك أو أضفها للسلة بضغطة واحدة.",
   shareList:"شارك قائمتي", addAll:"أضف {n} للسلة", listMsg:"قائمتي من مسواك لمستلزمات الأسنان:", toTop:"العودة للأعلى", toBottom:"الذهاب للأسفل", fabMsg:"أهلًا مسواك! عندي استفسار.", fabAria:"كلّمنا على واتساب", fabTip:"محتاج مساعدة؟ تواصل معنا",
   noMatch:"لا توجد منتجات تطابق “{q}”. جرّب كلمة أقصر مثل “فايل” أو “بيرز”.",
@@ -1020,11 +1151,32 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "41";
+var BUILD = "50";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
 var lang = pickLang();
+/* appearance: automatic (follows the phone), light, or our own dark */
+var THEME_ICON = {
+  auto: '<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/>',
+  light: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/>',
+  dark: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>'
+};
+var themeMode = (function(){ try { var m = localStorage.getItem("miswak-theme"); return m === "light" || m === "dark" ? m : "auto"; } catch(e){ return "auto"; } })();
+function applyTheme(){
+  var r = document.documentElement;
+  if (themeMode === "auto") r.removeAttribute("data-theme"); else r.setAttribute("data-theme", themeMode);
+}
+applyTheme();
+function cycleTheme(btn){
+  themeMode = {auto: "dark", dark: "light", light: "auto"}[themeMode];
+  try { localStorage.setItem("miswak-theme", themeMode); } catch(e){}
+  var r = document.documentElement; r.classList.add("theming");
+  applyTheme();
+  setTimeout(function(){ r.classList.remove("theming"); }, 450);
+  if (btn){ btn.innerHTML = icon(THEME_ICON[themeMode]); btn.setAttribute("aria-label", t("themeAria", {m: t("theme_" + themeMode)})); }
+  toast(t("themeToast", {m: t("theme_" + themeMode)}));
+}
 var I_GLOBE = '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 3.8 5.8 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-5.8-3.8-9s1.3-6.2 3.8-9z"/>';
 function langPill(cls){
   return '<button class="lang-pill' + (cls ? " " + cls : "") + '" type="button" data-act="lang" lang="' + (lang === "ar" ? "en" : "ar") + '">' + icon(I_GLOBE) + "<span>" + (lang === "ar" ? "View in English" : "اعرض الموقع بالعربية") + "</span></button>";
@@ -1072,23 +1224,26 @@ function cleanCart(){
 function renderShell(){
   var root = document.documentElement;
   root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
-  ["productSheet","cartSheet","aboutSheet","hadithSheet","policySheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
+  var season = LOAD === "ready" ? currentSeason() : "";
+  if (season) root.setAttribute("data-season", season); else root.removeAttribute("data-season");
+  ["productSheet","cartSheet","aboutSheet","hadithSheet","policySheet","trackSheet","quoteSheet"].forEach(function(id){ var d = document.getElementById(id); if (d && d.open) d.close(); });
   var s = DATA.settings;
   var steps = T[lang].steps.map(function(st){ return "<li><b>" + st[0] + "</b><span>" + st[1] + "</span></li>"; }).join("");
   var facts = (s.freeOver > 0 ? [t("factFree", {t: money(s.freeOver)})] : []).concat(T[lang].facts).map(function(f){ return "<li>" + f + "</li>"; }).join("");
   $("#app").innerHTML =
     BGMARK +
     (CHECK ? checkBar() : "") +
-    (s.notice ? '<div class="notice"><div class="wrap">' + t("notice") + "</div></div>" : "") +
+    (s.notice ? '<div class="notice"><div class="wrap">' + t("notice") + "</div></div>" : "") + announceHtml(s) +
     '<header class="top"><div class="wrap">' +
       '<a class="brand" href="#products" data-act="brand" aria-label="' + esc(t("brandAria")) + '">' + MARK +
         '<div><span class="wm">' + (lang === "ar" ? "مسواك" : "Miswak") + '</span><span class="alt"' + (lang === "ar" ? ' lang="en"' : ' lang="ar"') + ">" + (lang === "ar" ? "Miswak" : "مسواك") + "</span><small>" + t("brandSmall") + "</small></div></a>" +
       '<div class="search">' + icon(I_SEARCH) + '<label for="q" class="sr">' + t("searchLabel") + '</label><input id="q" type="search" placeholder="' + esc(t("searchPh")) + '" autocomplete="off" value="' + esc(query) + '"></div>' +
+      '<button class="hbtn theme-btn" type="button" data-act="theme" aria-label="' + esc(t("themeAria", {m: t("theme_" + themeMode)})) + '">' + icon(THEME_ICON[themeMode]) + "</button>" +
       '<button class="hbtn lang-btn" type="button" data-act="lang" lang="' + (lang === "ar" ? "en" : "ar") + '" aria-label="' + esc(t("langAria")) + '">' + (lang === "ar" ? "English" : "عربي") + "</button>" +
       '<button class="hbtn cart-btn" id="cartBtn" type="button" data-act="cart">' + icon(I_CART) + '<span class="lbl">' + t("cart") + '</span><span class="count" id="cartCount" aria-live="polite">0</span></button>' +
     "</div></header>" +
     '<main id="shop">' +
-      '<section class="hero"><div class="wrap"><div class="logo-slot" aria-hidden="true"></div><div class="hero-copy">' + langPill() + '<h1>' + t("heroTitle") + "</h1><p>" + t("heroText") + '</p><ul class="facts">' + facts + "</ul>" +
+      '<section class="hero">' + seasonDeco(season) + '<div class="wrap"><div class="logo-slot" aria-hidden="true"></div><div class="hero-copy">' + seasonChip(season) + langPill() + '<h1>' + t("heroTitle") + "</h1><p>" + t("heroText") + '</p><ul class="facts">' + facts + "</ul>" +
         "</div>" +
         '<div class="guide-box" id="guideBox"></div>' +
         '<a class="cue" href="#products" data-act="goshop">' + t("shopNow") + '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a></div></section>' +
@@ -1099,8 +1254,9 @@ function renderShell(){
         drop(t("edgeTitle"), cards(T[lang].edge)) +
         drop(t("researchTitle"), '<ol class="refs">' + REFS.map(function(r){ return '<li><a href="' + r.u + '" target="_blank" rel="noopener" lang="en" dir="ltr">' + esc(r.t) + "</a><span>" + esc(r.k) + " · " + esc(lang === "ar" ? r.ar : r.en) + "</span></li>"; }).join("") + '</ol><p class="hint">' + t("researchNote") + "</p>") +
       "</div></section>" +
-      '<div class="wrap" id="products"><div class="shop-head"><span class="eyebrow">' + t("shopEyebrow") + "</span><h2>" + t("shopTitle") + '</h2></div><div id="shelves"></div><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
-        '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div></div>' +
+      '<div class="wrap" id="products"><div class="shop-head"><span class="eyebrow">' + t("shopEyebrow") + "</span><h2>" + t("shopTitle") + '</h2></div><div id="reorderSlot"></div><div id="shelves"></div><nav class="cats" id="cats" aria-label="' + esc(t("catsAria")) + '"></nav>' +
+        '<div class="list-head"><h2 id="listTitle"></h2><span id="listCount"></span></div><div class="grid" id="grid"></div>' +
+        '<div class="quote-cta">' + icon(I_BOX) + '<div><b>' + t("quoteCtaTitle") + "</b><span>" + t("quoteCtaText") + '</span></div><button class="btn ghost sm" type="button" data-act="quote">' + t("quoteCtaBtn") + "</button></div></div>" +
       '<section class="play" aria-labelledby="playTitle"><div class="wrap"><div class="play-head"><span class="eyebrow">' + t("playEyebrow") + '</span><h2 id="playTitle">' + t("playTitle") + "</h2><p>" + t("playSub") + '</p></div><div class="play-grid"><div class="explorer" id="explorer"></div><div class="quiz" id="quiz"></div></div></div></section>' +
       '<section class="trust" aria-label="' + esc(t("trustAria")) + '"><div class="wrap"><ul>' + T[lang].trust.map(function(x, i){ return "<li>" + icon([I_CASH, I_TRUCK, I_RETURN][i]) + "<b>" + x[0] + "</b><span>" + x[1] + "</span></li>"; }).join("") + "</ul></div></section>" +
       '<section class="how" aria-labelledby="howTitle"><div class="wrap"><div class="sec-head"><span class="eyebrow">' + t("howEyebrow") + '</span><h2 id="howTitle">' + t("howTitle") + "</h2></div><ol>" + steps + "</ol></div></section>" +
@@ -1108,11 +1264,13 @@ function renderShell(){
     "</main>" +
     '<footer><div class="wrap">' +
       (s.whatsapp ? '<p class="contact">' + t("contact") + ' <a href="https://wa.me/' + esc(s.whatsapp) + '" target="_blank" rel="noopener"><bdi class="ltr">' + esc(fmtPhone(s.whatsapp)) + "</bdi></a></p>" : "") +
-      '<div class="foot-links">' + langPill("btn ghost sm") + '<button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="policies">' + t("policyLink") + "</button></div>" +
+      '<div class="foot-links">' + langPill("btn ghost sm") + '<button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="track">' + t("trackLinkFoot") + '</button><button class="btn ghost sm" type="button" data-act="quote">' + t("quoteLinkFoot") + '</button><button class="btn ghost sm" type="button" data-act="policies">' + t("policyLink") + "</button></div>" +
       "<span>" + t("copyright") + "</span><span>" + t("pricesIn") + "</span></div></footer>" +
     '<dialog id="productSheet" aria-labelledby="pTitle"><div class="sheet" id="productBody"></div></dialog>' +
     '<dialog id="policySheet" class="side" aria-labelledby="polTitle"><div class="cart-head"><h2 id="polTitle">' + t("policyTitle") + '</h2><button class="x" type="button" data-act="closepolicies" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body policies">' + POLICIES[lang].map(function(sec){ return "<section><h3>" + sec[0] + "</h3><ul>" + sec[1].map(function(x){ return "<li>" + x + "</li>"; }).join("") + "</ul></section>"; }).join("") + '<p class="hint">' + t("policyUpdated") + ": " + POLICY_VERSION + "</p></div></dialog>" +
     '<dialog id="hadithSheet" class="side" aria-labelledby="hadTitle"><div class="cart-head"><h2 id="hadTitle">' + t("hadithsTitle") + '</h2><button class="x" type="button" data-act="closehadiths" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body"><p>' + t("hadithsIntro") + "</p>" + HADITHS.map(function(h){ return '<figure class="hadith"><blockquote>' + (lang === "ar" ? h.ar : h.en) + "</blockquote><figcaption>" + (lang === "ar" ? h.byAr : h.byEn) + "</figcaption></figure>"; }).join("") + '</div></dialog>' +
+    '<dialog id="trackSheet" class="side" aria-labelledby="trackTitle"><div class="cart-head"><h2 id="trackTitle">' + t("trackTitle") + '</h2><button class="x" type="button" data-act="closetrack" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="trackBody"></div></dialog>' +
+    '<dialog id="quoteSheet" class="side" aria-labelledby="quoteTitle"><div class="cart-head"><h2 id="quoteTitle">' + t("quoteTitle") + '</h2><button class="x" type="button" data-act="closequote" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="quoteBody"></div><div class="cart-foot"><button class="btn wa" type="submit" form="quoteForm">' + icon(I_WA) + t("quoteSend") + "</button></div></dialog>" +
     '<dialog id="aboutSheet" class="side" aria-labelledby="aboutTitle"><div class="cart-head"><h2 id="aboutTitle">' + t("aboutTitle") + '</h2><button class="x" type="button" data-act="closeabout" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="aboutBody"></div></dialog>' +
     '<dialog id="cartSheet" class="side" aria-labelledby="cartTitle">' +
       '<div class="cart-head"><button class="x" id="cartBack" type="button" data-act="backcart" aria-label="' + esc(t("backCart")) + '" hidden>' + icon(I_BACK, "flip") + '</button><h2 id="cartTitle"></h2><button class="x" type="button" data-act="closecart" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div>" +
@@ -1134,6 +1292,9 @@ function renderShell(){
   hs.addEventListener("click", function(e){ if (e.target === hs) hs.close(); });
   var as = $("#aboutSheet");
   as.addEventListener("click", function(e){ if (e.target === as) as.close(); });
+  ["trackSheet", "quoteSheet"].forEach(function(id){ var d = $("#" + id); d.addEventListener("click", function(e){ if (e.target === d) d.close(); }); });
+  $("#quoteSheet").addEventListener("submit", function(e){ e.preventDefault(); sendQuote(); });
+  $("#trackSheet").addEventListener("submit", function(e){ e.preventDefault(); checkTrack(); });
   var ps = $("#productSheet");
   ps.addEventListener("click", function(e){ if (e.target === ps) ps.close(); });
   renderGuide(); renderCats(); renderGrid(); updateCount(false);
@@ -1465,6 +1626,7 @@ function updateCount(bump){
   $("#cartCount").textContent = n;
   b.setAttribute("aria-label", t("cartAria", {n: n}));
   if (bump){ b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
+  var rs = $("#reorderSlot"); if (rs) rs.innerHTML = LOAD === "ready" ? reorderHtml() : "";
   var bar = $("#cartBar");
   if (bar && LOAD === "ready"){
     var on = n > 0;
@@ -1549,6 +1711,11 @@ function codeFromHash(){
   try { history.replaceState(null, "", location.pathname + location.search); } catch(e){}
 }
 window.addEventListener("hashchange", codeFromHash);
+function trackFromHash(){
+  var m = (location.hash || "").match(/^#track(?:=([A-Za-z0-9-]+))?$/); if (!m || LOAD !== "ready") return;
+  setTimeout(function(){ openTrack(m[1] || ""); if (m[1]) checkTrack(); }, 300);
+}
+window.addEventListener("hashchange", trackFromHash);
 /* the explorer's own code */
 var myCode = loadJSON("miswak-mycode", null), claiming = false;
 function claimCode(){
@@ -1707,6 +1874,155 @@ document.addEventListener("click", function(e){
   }
 }, true);
 
+/* ---------- seasonal themes ---------- */
+function seasonKey(v){
+  v = String(v || "").toLowerCase();
+  if (/ramad|رمضان/.test(v)) return "ramadan";
+  if (/fitr|الفطر/.test(v)) return "fitr";
+  if (/adha|الأضحى|الاضحى/.test(v)) return "adha";
+  if (/white|black|friday|الجمعة البيضاء/.test(v)) return "whitefriday";
+  return "";
+}
+function currentSeason(){
+  var m = location.search.match(/[?&]season=([a-z-]+)/i);
+  if (m) return m[1].toLowerCase() === "none" ? "" : seasonKey(m[1]);
+  return (DATA && DATA.settings && DATA.settings.season) || "";
+}
+var LANTERN = '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M20 0v26" stroke="currentColor" stroke-width="1.2"/><path d="M14 26h12l3 6H11z" fill="currentColor"/><path d="M11 32h18l4 10v22l-4 10H11l-4-10V42z" fill="currentColor" fill-opacity=".22" stroke="currentColor" stroke-width="1.6"/><path d="M14 40h12v26H14z" fill="#FFD77A" opacity=".85"/><path d="M20 40v26M14 53h12" stroke="currentColor" stroke-width="1"/><path d="M11 74h18l-4 7H15z" fill="currentColor"/><path d="M20 81v8" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="91" r="2.4" fill="currentColor"/></svg>';
+var MOON = '<svg viewBox="0 0 60 60" aria-hidden="true"><path d="M38 6a24 24 0 1 0 16 38A20 20 0 1 1 38 6z" fill="currentColor"/><path d="M47 14l1.6 4.4 4.6.2-3.6 2.9 1.3 4.5-3.9-2.6-3.9 2.6 1.3-4.5-3.6-2.9 4.6-.2z" fill="currentColor"/></svg>';
+var STAR = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0l2.2 7.8L20 10l-7.8 2.2L10 20l-2.2-7.8L0 10l7.8-2.2z" fill="currentColor"/></svg>';
+var BUNTING = function(){
+  var cols = ["#C0392B", "#E9B43A", "#2E8B57", "#2F5DA8", "#8E44AD"], out = '<svg class="bunting" viewBox="0 0 1000 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 6 Q500 30 1000 6" stroke="currentColor" stroke-width="1.5" fill="none"/>';
+  for (var i = 0; i < 25; i++){ var x = 10 + i * 40, y = 6 + 24 * (1 - Math.pow((x - 500) / 500, 2)); out += '<path d="M' + (x - 13) + " " + (y - 1) + "L" + (x + 13) + " " + (y - 1) + "L" + x + " " + (y + 18) + 'z" fill="' + cols[i % cols.length] + '" opacity=".85"/>'; }
+  return out + "</svg>";
+};
+function seasonDeco(k){
+  if (k === "ramadan") return '<div class="season-deco" aria-hidden="true">' + BUNTING() + '<span class="lantern l1">' + LANTERN + '</span><span class="lantern l2">' + LANTERN + '</span><span class="lantern l3">' + LANTERN + '</span><span class="moon">' + MOON + "</span></div>";
+  if (k === "fitr" || k === "adha"){
+    var sp = ""; [[8,22,0],[18,60,.6],[30,14,1.2],[72,30,.3],[84,62,1.6],[92,18,.9],[60,8,2]].forEach(function(a){ sp += '<span class="sparkle" style="inset-inline-start:' + a[0] + "%;top:" + a[1] + "px;animation-delay:" + a[2] + 's">' + STAR + "</span>"; });
+    return '<div class="season-deco" aria-hidden="true">' + (k === "fitr" ? BUNTING() : "") + '<span class="moon">' + MOON + "</span>" + sp + "</div>";
+  }
+  if (k === "whitefriday") return '<div class="season-deco" aria-hidden="true"><span class="wf-ribbon">WHITE FRIDAY</span></div>';
+  return "";
+}
+function seasonChip(k){
+  if (!k) return "";
+  var ic = k === "whitefriday" ? I_TAG : '<path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.4A7 7 0 1 1 15.5 3.5z"/>';
+  return '<span class="season-chip">' + icon(ic) + t("season_" + k) + "</span>";
+}
+var I_TAG = '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.4"/>';
+var seasonCheered = false;
+
+/* ---------- announcement bar (from the Settings tab) ---------- */
+function announceHtml(s){
+  var a = s.announce || {}, txt = lang === "ar" ? (a.ar || a.en) : (a.en || a.ar);
+  if (!txt) return "";
+  var k = String(txt).length + ":" + String(txt).slice(0, 40);
+  try { if (sessionStorage.getItem("miswak-ann") === k) return ""; } catch(e){}
+  return '<div class="announce" id="announce" data-k="' + esc(k) + '"><div class="wrap"><span>' + icon(I_MEGA) + "<span>" + esc(txt) + '</span></span><button class="x" type="button" data-act="closeannounce" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + "</button></div></div>";
+}
+var I_MEGA = '<path d="M3.5 10v4h3l6 4V6l-6 4z"/><path d="M16 9.2a4 4 0 0 1 0 5.6M18.6 7a7 7 0 0 1 0 10"/>';
+var I_BOX = '<path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/>';
+var I_REPEAT = '<path d="M17 2.5l3 3-3 3"/><path d="M4 11v-1.5a4 4 0 0 1 4-4h12"/><path d="M7 21.5l-3-3 3-3"/><path d="M20 13v1.5a4 4 0 0 1-4 4H4"/>';
+
+/* ---------- order again ---------- */
+var lastBuy = loadJSON("miswak-last", null);
+function reorderHtml(){
+  if (!lastBuy || !lastBuy.items || !lastBuy.items.length || cart.length) return "";
+  var items = lastBuy.items.filter(function(i){ return byId(i.id); });
+  if (!items.length) return "";
+  var n = items.reduce(function(a, i){ return a + i.qty; }, 0);
+  var d = new Date(lastBuy.at || Date.now()).toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB", {day: "numeric", month: "short"});
+  var names = items.slice(0, 3).map(function(i){ return L(byId(i.id).name); }).join(lang === "ar" ? "، " : ", ") + (items.length > 3 ? "…" : "");
+  return '<div class="reorder">' + icon(I_REPEAT) + '<div><b>' + t("reorderTitle") + "</b><span>" + esc(t("reorderText", {n: n, d: d})) + "</span><small>" + esc(names) + '</small></div><button class="btn sm" type="button" data-act="reorder">' + t("reorderBtn") + "</button></div>";
+}
+function reorder(){
+  if (!lastBuy) return;
+  var added = 0, missed = 0;
+  lastBuy.items.forEach(function(i){
+    var p = byId(i.id); if (!p){ missed++; return; }
+    var room = Math.max(0, p.stock - cartQty(p.id)), q = Math.min(i.qty, room);
+    if (q <= 0){ missed++; return; }
+    if (q < i.qty) missed++;
+    var key = p.id + "|" + (i.opt || ""), hit = cart.filter(function(x){ return x.key === key; })[0];
+    if (hit) hit.qty += q; else cart.push({key: key, id: p.id, opt: i.opt || "", qty: q});
+    added += q;
+  });
+  saveCart(); updateCount(true);
+  openCart("cart");
+  toast(added ? t(missed ? "reorderSome" : "reorderDone", {n: added}) : t("reorderNone"));
+}
+
+/* ---------- order tracking (Orders tab in the sheet) ---------- */
+var STEPS = ["received", "confirmed", "shipped", "delivered"];
+function statusStep(st){
+  st = String(st || "").toLowerCase();
+  if (/cancel|ملغ|الغاء|إلغاء/.test(st)) return -1;
+  if (/deliver|received by|تم التسليم|تم التوصيل|وصل|استلم/.test(st)) return 3;
+  if (/ship|out for|on the way|courier|شحن|الطريق|مع المندوب/.test(st)) return 2;
+  if (/confirm|prepar|packing|تأكيد|تم التأكيد|تجهيز|مؤكد/.test(st)) return 1;
+  return 0;
+}
+function openTrack(no){
+  var saved = no || (lastBuy && lastBuy.no) || "";
+  $("#trackBody").innerHTML = '<form id="trackForm" class="track-form" novalidate><p>' + t("trackIntro") + "</p>" +
+    field("trackNo", t("trackLabel"), '<input id="trackNo" dir="ltr" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="MSW-1020-583" value="' + esc(saved) + '">') +
+    '<button class="btn" type="submit">' + t("trackBtn") + '</button></form><div id="trackOut" aria-live="polite"></div>';
+  var d = $("#trackSheet"); if (!d.open) d.showModal();
+}
+function checkTrack(){
+  var inp = $("#trackNo"), out = $("#trackOut"); if (!inp || !out) return;
+  var no = String(inp.value || "").toUpperCase().replace(/\s+/g, "").replace(/[^A-Z0-9-]/g, "");
+  if (!no){ out.innerHTML = '<p class="track-msg bad">' + t("trackEmpty") + "</p>"; return; }
+  out.innerHTML = '<p class="track-msg">' + t("trackChecking") + "</p>";
+  getTab("Orders").then(function(rows){
+    var r = rows.filter(function(x){ return String(pick(x, ["ordernumber","order","orderno"])).toUpperCase().replace(/\s+/g, "") === no; }).pop();
+    if (!r){ out.innerHTML = '<p class="track-msg">' + t("trackNotFound") + "</p>"; return; }
+    var st = pick(r, ["status"]), step = statusStep(st), note = pick(r, lang === "ar" ? ["noteforcustomerarabic","notearabic","noteforcustomer","note"] : ["noteforcustomer","note","noteforcustomerenglish"]), upd = pick(r, ["lastupdated","updated","date"]);
+    out.innerHTML = '<div class="track-card"><p class="tk-no" dir="ltr">' + esc(no) + "</p>" +
+      (step < 0 ? '<p class="tk-cancel">' + icon(I_CLOSE) + t("st_cancelled") + "</p>" :
+      '<ol class="tk-steps">' + STEPS.map(function(sname, k){ return '<li class="' + (k < step ? "done" : k === step ? "now" : "") + '"><i>' + (k <= step ? icon(I_CHECK) : "") + "</i><span>" + t("st_" + sname) + "</span></li>"; }).join("") + "</ol>") +
+      (note ? '<p class="tk-note">' + esc(note) + "</p>" : "") + (upd ? '<p class="hint">' + t("trackUpdated") + " " + esc(upd) + "</p>" : "") + "</div>";
+  }, function(){ out.innerHTML = '<p class="track-msg bad">' + t("trackNet") + "</p>"; });
+}
+
+/* ---------- bulk & clinic quotes ---------- */
+function cartLines(){ return cart.map(function(i){ var p = byId(i.id); return p ? i.qty + " × " + L(p.name) + (i.opt ? " (" + optText(p, i.opt) + ")" : "") + " · " + p.sku : ""; }).filter(Boolean).join("\n"); }
+function openQuote(){
+  var d0 = loadJSON("miswak-details", {}) || {};
+  var govs = ZONES.reduce(function(a, z){ return a.concat(z.govs); }, []).sort(function(a, b){ return govName(a).localeCompare(govName(b), lang); });
+  $("#quoteBody").innerHTML = '<form id="quoteForm" novalidate><p class="q-intro">' + t("quoteIntro") + "</p>" +
+    field("q-name", t("qName"), '<input id="q-name" autocomplete="organization" value="' + esc(d0.name || "") + '">') +
+    field("q-phone", t("fPhone"), '<input id="q-phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" placeholder="01X XXXX XXXX" value="' + esc(d0.phone || "") + '">') +
+    '<fieldset><legend class="legend">' + t("qType") + "</legend>" + seg("qtype", T[lang].qtypes, 0) + "</fieldset>" +
+    field("q-gov", t("fGov") + ' <span class="opt-txt">' + t("optional") + "</span>", '<select id="q-gov"><option value="">' + t("chooseOpt") + "</option>" + govs.map(function(g){ return '<option value="' + g + '"' + (d0.gov === g ? " selected" : "") + ">" + govName(g) + "</option>"; }).join("") + "</select>") +
+    field("q-items", t("qItems"), '<textarea id="q-items" rows="5" placeholder="' + esc(t("qItemsPh")) + '">' + esc(cartLines()) + "</textarea>", cart.length ? "" : t("qItemsHint")) +
+    (cart.length ? '<button type="button" class="link q-cart" data-act="quotecart">' + t("qUseCart") + "</button>" : "") +
+    '<fieldset><legend class="legend">' + t("qFreq") + "</legend>" + seg("qfreq", T[lang].qfreqs, 0) + "</fieldset>" +
+    field("q-notes", t("fNotes") + ' <span class="opt-txt">' + t("optional") + "</span>", '<textarea id="q-notes" rows="2" placeholder="' + esc(t("qNotesPh")) + '"></textarea>') +
+    "</form>";
+  var d = $("#quoteSheet"); if (!d.open) d.showModal();
+  $("#quoteBody").scrollTop = 0;
+}
+function sendQuote(){
+  var v = function(id){ var e = $("#" + id); return e ? String(e.value || "").trim() : ""; };
+  var radio = function(n){ var e = document.querySelector('#quoteForm input[name="' + n + '"]:checked'); return e ? Number(e.value) : 0; };
+  var phone = v("q-phone").replace(/[\s-]/g, "").replace(/^\+?20(?=1)/, "0");
+  var errs = {"q-name": v("q-name") ? "" : t("errName"), "q-phone": /^01[0125]\d{8}$/.test(phone) ? "" : t("errPhone"), "q-items": v("q-items") ? "" : t("qErrItems")};
+  var first = null;
+  Object.keys(errs).forEach(function(k){ setErr(k, errs[k]); if (errs[k] && !first) first = k; });
+  if (first){ document.getElementById(first).focus(); return; }
+  var g = v("q-gov");
+  var lines = [t("qMsgHead"), (lang === "ar" ? "مسواك لمستلزمات الأسنان" : "Miswak Dental Supply"), "",
+    t("qName") + ": " + v("q-name"), t("mPhone") + ": " + phone, t("qType") + ": " + T[lang].qtypes[radio("qtype")]]
+    .concat(g ? [t("fGov") + ": " + govName(g)] : [])
+    .concat(["", t("qItems") + ":", v("q-items"), "", t("qFreq") + ": " + T[lang].qfreqs[radio("qfreq")]])
+    .concat(v("q-notes") ? [t("fNotes") + ": " + v("q-notes")] : []);
+  var url = "https://wa.me/" + (DATA.settings.whatsapp || "") + "?text=" + encodeURIComponent(lines.join("\n"));
+  var w = window.open(url, "_blank", "noopener"); if (!w) location.href = url;
+  $("#quoteSheet").close(); toast(t("quoteSent"));
+}
+
 /* ---------- free delivery goal ---------- */
 function isFree(sub){ var f = Number(DATA.settings.freeOver || 0); return f > 0 && sub >= f; }
 function freeHtml(sub){
@@ -1819,7 +2135,7 @@ function renderSheet(){
 function renderCartView(){
   $("#cartTitle").textContent = t("yourCart");
   if (!cart.length){
-    $("#cartBody").innerHTML = '<div class="empty">' + icon(I_CART) + "<b>" + t("emptyTitle") + "</b><span>" + t("emptyText") + "</span></div>";
+    $("#cartBody").innerHTML = '<div class="empty">' + icon(I_CART) + "<b>" + t("emptyTitle") + "</b><span>" + t("emptyText") + "</span></div>" + reorderHtml();
     $("#cartFoot").innerHTML = '<button class="btn ghost" type="button" data-act="closecart">' + t("browse") + "</button>";
     return;
   }
@@ -1927,6 +2243,8 @@ function placeOrder(){
   if (d.notes) text.push(t("mNotes") + ": " + d.notes);
   text.push("", t("mAgreed") + " (" + POLICY_VERSION + ")");
   lastOrder = {no: no, text: text.join("\n"), pay: payIdx, total: tt.total, lang: lang};
+  lastBuy = {no: no, at: Date.now(), items: cart.map(function(i){ return {id: i.id, opt: i.opt, qty: i.qty}; })};
+  saveJSON("miswak-last", lastBuy);
   if (tt.disc && promoOn()){
     api("use", {code: promo.code, order: no, total: tt.total}).catch(function(){});
     promo = {code: "", pct: 0, ok: false, msg: ""}; saveJSON("miswak-promo", "");
@@ -1941,6 +2259,7 @@ function renderDone(){
   var payNote = o.pay === 1 ? (s.instapay ? t("payInsta", {t: money(o.total), a: '<bdi class="ltr">' + esc(s.instapay) + "</bdi>"}) : t("payInstaLater")) : o.pay === 2 ? t("payWallet") : t("payCod", {t: money(o.total)});
   $("#cartBody").innerHTML = '<div class="done"><div class="done-mark">' + icon(I_CHECK) + "</div><h3>" + t("doneHead") + '</h3><p class="order-no ltr">' + o.no + "</p><p>" + t("doneBody") + " " + payNote + "</p>" +
     '<div class="gift">' + icon(I_GIFT) + "<div><b>" + t("giftTitle") + "</b><span>" + t("giftText") + '</span></div><em>' + t("giftBadge") + "</em></div>" +
+    '<p class="track-hint">' + t("trackHint", {no: '<b dir="ltr">' + o.no + "</b>"}) + ' <button type="button" class="inline-link" data-act="track">' + t("trackHintLink") + "</button></p>" +
     '<label class="legend" for="orderText">' + t("yourOrder") + '</label><textarea id="orderText" readonly dir="auto">' + esc(o.text) + '</textarea><p class="hint" id="copyNote" aria-live="polite"></p></div>';
   $("#cartFoot").innerHTML = '<a class="btn wa" href="' + wa + '" target="_blank" rel="noopener">' + icon(I_WA) + t("sendWa") + "</a>" +
     '<button class="btn ghost" type="button" data-act="copy">' + t("copy") + "</button>" +
@@ -1986,6 +2305,7 @@ document.addEventListener("click", function(e){
   if (a){
     var act = a.dataset.act;
     if (act === "lang"){ switchLang(); return; }
+    if (act === "theme"){ cycleTheme(a); return; }
     if (act === "brand"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "goshop"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "cart"){ openCart(); return; }
@@ -2001,6 +2321,13 @@ document.addEventListener("click", function(e){
     if (act === "closepolicies"){ $("#policySheet").close(); return; }
     if (act === "closehadiths"){ $("#hadithSheet").close(); return; }
     if (act === "closeabout"){ $("#aboutSheet").close(); return; }
+    if (act === "track"){ openTrack(); return; }
+    if (act === "closetrack"){ $("#trackSheet").close(); return; }
+    if (act === "quote"){ openQuote(); return; }
+    if (act === "closequote"){ $("#quoteSheet").close(); return; }
+    if (act === "quotecart"){ var qi = $("#q-items"); if (qi) qi.value = cartLines(); return; }
+    if (act === "reorder"){ reorder(); return; }
+    if (act === "closeannounce"){ var an = $("#announce"); try { sessionStorage.setItem("miswak-ann", an.dataset.k); } catch(err){} an.classList.add("gone"); setTimeout(function(){ an.remove(); }, 300); return; }
   }
   var sh = e.target.closest("[data-shelf]");
   if (sh){ shelfTab = sh.dataset.shelf; renderShelves(); var row = document.querySelector(".shelf-row"); if (row) row.scrollLeft = 0; return; }
@@ -2100,6 +2427,8 @@ function toSettings(rows){
   s.instapay = pick(r, ["instapayaddress","instapay"]);
   if (fees.length) s.fees = [0, 1, 2].map(function(i){ return fees[i] != null ? fees[i] : DEFAULT_SETTINGS.fees[i]; });
   s.notice = yes(pick(r, ["showpreviewbanner"]));
+  s.announce = {en: pick(r, ["announcementenglish","announcement"]), ar: pick(r, ["announcementarabic"])};
+  s.season = seasonKey(pick(r, ["seasontheme","season","theme"]));
   var pu = String(pick(r, ["discountcodeslink","discountlink","promolink"]) || "").trim();
   s.promoUrl = /^https:\/\/script\.google(usercontent)?\.com\//.test(pu) ? pu : "";
   if ("freedeliveryoveregp" in r || "freedeliveryover" in r) s.freeOver = num(pick(r, ["freedeliveryoveregp","freedeliveryover"]));
@@ -2124,6 +2453,12 @@ function finish(products, settings, hidden){
   if (WANT_ABOUT){ WANT_ABOUT = false; setTimeout(openAbout, 50); }
   setTimeout(openFromHash, 0);
   setTimeout(codeFromHash, 0);
+  setTimeout(trackFromHash, 0);
+  var sk = currentSeason();
+  if ((sk === "fitr" || sk === "adha") && !seasonCheered){
+    seasonCheered = true;
+    try { if (!sessionStorage.getItem("miswak-eid")){ sessionStorage.setItem("miswak-eid", "1"); setTimeout(confetti, 900); } } catch(e){}
+  }
   setTimeout(refreshMyCode, 1500);
   if (promoOn() && !promo.code){ var sp = loadJSON("miswak-promo", ""); if (sp) promo = {code: sp, pct: 0, ok: false, msg: ""}; }
   try {
