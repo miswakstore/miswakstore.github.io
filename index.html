@@ -310,6 +310,9 @@ footer .story p{margin:0}
 .benefits summary::-webkit-details-marker{display:none}
 .benefits summary .chev{width:18px;height:18px;flex:none;transition:transform .2s}
 .benefits[open] summary .chev{transform:rotate(180deg)}
+.benefits.closing summary .chev{transform:none}
+.benefits .ben-body{transition:opacity .25s ease}
+.benefits.closing .ben-body{opacity:0}
 .refs{margin:0;padding-inline-start:20px;display:grid;gap:10px}
 .refs li{padding-inline-start:4px}
 .refs a{color:var(--accent);font-weight:600;text-underline-offset:3px;display:inline}
@@ -968,7 +971,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "35";
+var BUILD = "36";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -2184,6 +2187,27 @@ function initFab(){
     var d = e.target; if (d && d.tagName === "DIALOG" && !CALM){ e.preventDefault(); d.close(); }
   }, true);
 })();
+/* dropdowns open AND close smoothly */
+document.addEventListener("click", function(e){
+  var sum = e.target.closest("details.benefits > summary"); if (!sum || CALM || !sum.parentNode.animate) return;
+  e.preventDefault(); slideDetails(sum.parentNode);
+});
+function slideDetails(d){
+  var sum = d.querySelector("summary"), from = d.offsetHeight, closing = d.open && !d.classList.contains("closing");
+  if (d._anim) d._anim.cancel();
+  d.style.overflow = "hidden";
+  function done(){ d._anim = null; d.style.overflow = ""; d.classList.remove("closing"); }
+  if (closing){
+    d.classList.add("closing");
+    d._anim = d.animate({height: [from + "px", sum.offsetHeight + "px"]}, {duration: 320, easing: "cubic-bezier(.4,0,.2,1)"});
+    d._anim.onfinish = function(){ d.open = false; done(); };
+  } else {
+    d.classList.remove("closing"); d.open = true;
+    var to = d.offsetHeight;
+    d._anim = d.animate({height: [from + "px", to + "px"]}, {duration: 380, easing: "cubic-bezier(.2,.8,.2,1)"});
+    d._anim.onfinish = done;
+  }
+}
 /* lets phones show the pressed state */
 document.addEventListener("touchstart", function(){}, {passive: true});
 /* ---------- start ---------- */
