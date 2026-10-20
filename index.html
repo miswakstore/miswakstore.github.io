@@ -707,6 +707,17 @@ button:disabled{transition:opacity .2s ease}
   input,textarea{cursor:text!important}
   .fab{cursor:grab!important}.fab.drag{cursor:grabbing!important}
 }
+/* ---- tap bursts + secret rain ---- */
+.burst{position:fixed;width:0;height:0;pointer-events:none;z-index:150}
+.burst b{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;border:2px solid var(--accent);animation:burstRing .5s ease-out forwards}
+.burst i{position:absolute;left:-1.5px;top:-5px;width:3px;height:10px;border-radius:3px;background:var(--c);opacity:0;animation:bristle .6s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes burstRing{from{transform:scale(.2);opacity:.7}to{transform:scale(1.5);opacity:0}}
+@keyframes bristle{0%{opacity:1;transform:rotate(var(--a)) translateY(-6px) scaleY(.3)}60%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateY(calc(-1 * var(--d))) scaleY(1)}}
+.logo-slot{cursor:default}
+.rain{position:fixed;inset:0;pointer-events:none;z-index:150;overflow:hidden}
+.rain span{position:absolute;top:-40px;width:30px;height:30px;color:var(--accent);animation:rainFall 2.4s cubic-bezier(.4,0,.8,.6) forwards}
+.rain span .ico{width:30px;height:30px}
+@keyframes rainFall{to{transform:translateY(calc(100vh + 80px)) rotate(var(--r))}}
 /* ---- dark mode polish ---- */
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .gt.off i{background:transparent!important;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--muted) 35%,transparent)!important;opacity:1;filter:none}
@@ -818,7 +829,7 @@ var T = {
        ["Can I return something?","Unopened, sealed items can be returned within 14 days. If something arrives damaged or wrong, tell us within 48 hours. Full details are in the store policies at the bottom of the page."],
        ["Do you do bulk or college-group orders?","Yes. Message us on WhatsApp with the products and quantities and we'll reply with a quote."],
        ["You don't have the product I need. Can you get it?","Often, yes. Search for it, then tap \u201cAsk us to get it\u201d, or message us on WhatsApp."]],
-  toTop:"Back to top", toBottom:"Go to bottom", fabMsg:"Hi Miswak! I have a question.", fabAria:"Chat with us on WhatsApp", fabTip:"Need help? Contact us",
+  secretRain:"🌿 You found the secret miswak rain!", toTop:"Back to top", toBottom:"Go to bottom", fabMsg:"Hi Miswak! I have a question.", fabAria:"Chat with us on WhatsApp", fabTip:"Need help? Contact us",
   noMatch:"No products match “{q}”. Try a shorter word, like “file” or “bur”.",
   view:"View {name}", add:"Add", choose:"Choose", soldOut:"Sold out",
   stockN:"{n} in stock", stockLow:"Only {n} left", stockOut:"Out of stock",
@@ -897,7 +908,7 @@ var T = {
        ["هل يمكنني إرجاع منتج؟","المنتجات غير المفتوحة والمغلقة يمكن إرجاعها خلال 14 يومًا. وإذا وصلك منتج تالف أو خاطئ أبلغنا خلال 48 ساعة. التفاصيل الكاملة في سياسات المتجر أسفل الصفحة."],
        ["هل توفرون طلبات بالجملة أو لدفعة كاملة في الكلية؟","نعم. راسلنا على واتساب بالمنتجات والكميات وسنرد عليك بعرض سعر."],
        ["المنتج الذي أحتاجه غير موجود، هل يمكنكم توفيره؟","غالبًا نعم. ابحث عنه ثم اضغط «اطلب منّا نوفّره لك»، أو راسلنا على واتساب."]],
-  toTop:"العودة للأعلى", toBottom:"الذهاب للأسفل", fabMsg:"أهلًا مسواك! عندي استفسار.", fabAria:"كلّمنا على واتساب", fabTip:"محتاج مساعدة؟ تواصل معنا",
+  secretRain:"🌿 اكتشفت مطر المساويك السري!", toTop:"العودة للأعلى", toBottom:"الذهاب للأسفل", fabMsg:"أهلًا مسواك! عندي استفسار.", fabAria:"كلّمنا على واتساب", fabTip:"محتاج مساعدة؟ تواصل معنا",
   noMatch:"لا توجد منتجات تطابق “{q}”. جرّب كلمة أقصر مثل “فايل” أو “بيرز”.",
   view:"عرض {name}", add:"أضف", choose:"اختر", soldOut:"نفدت",
   stockN:"متوفر {n}", stockLow:"متبقي {n} فقط", stockOut:"غير متوفر حاليًا",
@@ -971,7 +982,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "36";
+var BUILD = "37";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -2187,6 +2198,31 @@ function initFab(){
     var d = e.target; if (d && d.tagName === "DIALOG" && !CALM){ e.preventDefault(); d.close(); }
   }, true);
 })();
+/* every tap sends out a little burst of miswak bristles */
+document.addEventListener("click", function(e){
+  if (CALM || !e.detail || e.target.closest("input,textarea,select,.fab,label.agree")) return;
+  var b = document.createElement("div"); b.className = "burst"; b.setAttribute("aria-hidden", "true");
+  b.style.left = e.clientX + "px"; b.style.top = e.clientY + "px";
+  var html = "<b></b>", n = 8, off = Math.random() * 45;
+  for (var i = 0; i < n; i++) html += '<i style="--a:' + (off + i * 360 / n) + "deg;--c:var(" + (i % 2 ? "--wood" : "--accent") + ");--d:" + (18 + Math.random() * 10).toFixed(0) + 'px"></i>';
+  b.innerHTML = html; document.body.appendChild(b);
+  setTimeout(function(){ b.remove(); }, 700);
+}, true);
+/* secret: tap the big logo five times quickly */
+var logoTaps = [];
+document.addEventListener("click", function(e){
+  if (!e.target.closest(".logo-slot")) return;
+  var now = Date.now(); logoTaps = logoTaps.filter(function(x){ return now - x < 2500; }); logoTaps.push(now);
+  if (logoTaps.length >= 5){ logoTaps = []; miswakRain(); toast(t("secretRain")); }
+});
+function miswakRain(){
+  if (CALM) return;
+  var box = document.createElement("div"); box.className = "rain"; box.setAttribute("aria-hidden", "true");
+  var html = "";
+  for (var i = 0; i < 28; i++) html += '<span style="left:' + (Math.random() * 100).toFixed(1) + "%;animation-delay:" + (Math.random() * 1.2).toFixed(2) + "s;animation-duration:" + (1.8 + Math.random() * 1.4).toFixed(2) + "s;--r:" + (Math.random() * 720 - 360).toFixed(0) + 'deg">' + MARK + "</span>";
+  box.innerHTML = html; document.body.appendChild(box);
+  setTimeout(function(){ box.remove(); }, 4000);
+}
 /* dropdowns open AND close smoothly */
 document.addEventListener("click", function(e){
   var sum = e.target.closest("details.benefits > summary"); if (!sum || CALM || !sum.parentNode.animate) return;
