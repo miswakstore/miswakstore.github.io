@@ -921,7 +921,8 @@ var SHADE_VAR = {"A1":"--sh-A1","A2":"--sh-A2","A3":"--sh-A3","A3.5":"--sh-A35",
 var GUIDE = ["A1","A2","A3","A3.5","A4","B1","B2","B3","C1","C2","D2"];
 var ISO = ["15","20","25","30","35","40"];
 var LOW = 5;
-var POLICY_VERSION = "October 2026";
+var POLICY_VERSION = "October 2026", POLICY_VERSION_AR = "أكتوبر 2026";
+function policyVer(){ return lang === "ar" ? POLICY_VERSION_AR : POLICY_VERSION; }
 var POLICIES = {"en": [["Returns and exchanges", ["You can return or exchange an item within 14 days of delivery if it is unopened, unused and in its original sealed packaging.", "For hygiene and safety, opened or used materials can't be returned: syringes, capsules, files, burs, gloves, masks and other disposables.", "If an item arrives damaged, faulty, expired or isn't what you ordered, message us on WhatsApp within 48 hours of delivery with a photo. We'll replace it or refund you at no cost to you.", "For other returns, the customer pays the return delivery fee. Contact us on WhatsApp first so we can arrange it."]], ["Refunds", ["Once we receive and check a returned item, we refund you within 7 days by InstaPay or mobile wallet.", "The original delivery fee isn't refunded unless the problem was our mistake."]], ["Orders and cancellations", ["An order is confirmed only after we reply to it on WhatsApp.", "You can cancel for free any time before the order is shipped. Message us on WhatsApp.", "Prices and stock on the website can change. The price we confirm on WhatsApp is the one you pay."]], ["Delivery", ["We deliver to all 27 governorates. The delivery fee depends on your governorate and is shown before you order.", "Please check your package when it arrives, before paying the courier."]], ["Payment", ["Cash on delivery, InstaPay or mobile wallet. For InstaPay and wallets we send the details when we confirm your order."]], ["Your information", ["We use your name, phone number and address only to confirm and deliver your order. We don't share them with anyone except the delivery company."]]], "ar": [["الاسترجاع والاستبدال", ["يمكنك إرجاع أو استبدال أي منتج خلال 14 يومًا من الاستلام إذا كان مغلقًا وغير مستخدم وفي عبوته الأصلية المختومة.", "حفاظًا على النظافة والسلامة، لا يمكن إرجاع الخامات المفتوحة أو المستخدمة: السرنجات، الكبسولات، الفايلات، البيرز، الجوانتي، الماسكات وغيرها من المستهلكات.", "إذا وصلك منتج تالف أو معيب أو منتهي الصلاحية أو غير الذي طلبته، راسلنا على واتساب خلال 48 ساعة من الاستلام مع صورة، وسنستبدله أو نرد لك المبلغ بدون أي تكلفة عليك.", "في حالات الإرجاع الأخرى، يتحمل العميل تكلفة شحن الإرجاع. تواصل معنا على واتساب أولًا لترتيب ذلك."]], ["استرداد المبلغ", ["بعد استلام المنتج المرتجع وفحصه، نرد لك المبلغ خلال 7 أيام عن طريق إنستاباي أو المحفظة الإلكترونية.", "لا تُرد مصاريف الشحن الأصلية إلا إذا كانت المشكلة خطأ منا."]], ["الطلبات والإلغاء", ["لا يُعتبر الطلب مؤكدًا إلا بعد ردنا عليه على واتساب.", "يمكنك الإلغاء مجانًا في أي وقت قبل شحن الطلب، بمراسلتنا على واتساب.", "الأسعار والكميات على الموقع قابلة للتغيير، والسعر الذي نؤكده لك على واتساب هو السعر النهائي."]], ["التوصيل", ["نوصّل لكل المحافظات، وتختلف مصاريف الشحن حسب محافظتك وتظهر لك قبل تأكيد الطلب.", "برجاء فحص الطلب عند استلامه وقبل الدفع للمندوب."]], ["الدفع", ["الدفع عند الاستلام أو إنستاباي أو محفظة إلكترونية. في حالة إنستاباي والمحفظة نرسل لك البيانات عند تأكيد الطلب."]], ["بياناتك", ["نستخدم اسمك ورقم موبايلك وعنوانك فقط لتأكيد طلبك وتوصيله، ولا نشاركها مع أحد إلا شركة الشحن."]]]};
 var HADITHS = [{"ar": "«لولا أن أشقّ على أمتي لأمرتهم بالسواك عند كل صلاة»", "en": "“Were it not that I would overburden my nation, I would have commanded them to use the siwak before every prayer.”", "byAr": "عن أبي هريرة · رواه البخاري ومسلم", "byEn": "Narrated by Abu Hurayrah · Al-Bukhari and Muslim"}, {"ar": "«السواك مطهرة للفم، مرضاة للرب»", "en": "“The siwak purifies the mouth and pleases the Lord.”", "byAr": "عن عائشة · رواه النسائي", "byEn": "Narrated by Aisha · An-Nasa'i"}, {"ar": "كان النبي ﷺ إذا قام من الليل يشوص فاه بالسواك.", "en": "When the Prophet ﷺ got up at night, he would clean his mouth with the siwak.", "byAr": "عن حذيفة · رواه البخاري ومسلم", "byEn": "Narrated by Hudhayfah · Al-Bukhari and Muslim"}, {"ar": "سُئلت عائشة: بأي شيء كان يبدأ النبي ﷺ إذا دخل بيته؟ قالت: بالسواك.", "en": "Aisha was asked what the Prophet ﷺ did first when he entered his house. She said: “He used the siwak.”", "byAr": "رواه مسلم", "byEn": "Muslim"}, {"ar": "«أكثرتُ عليكم في السواك»", "en": "“I have urged you a great deal about the siwak.”", "byAr": "عن أنس · رواه البخاري", "byEn": "Narrated by Anas · Al-Bukhari"}, {"ar": "«عشرٌ من الفطرة: قصّ الشارب، وإعفاء اللحية، والسواك…»", "en": "“Ten things are part of the natural way (fitrah): trimming the moustache, letting the beard grow, the siwak…”", "byAr": "عن عائشة · رواه مسلم", "byEn": "Narrated by Aisha · Muslim"}];
 var OWNERS = [
@@ -1156,7 +1157,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "51";
+var BUILD = "54";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -1272,7 +1273,7 @@ function renderShell(){
       '<div class="foot-links">' + langPill("btn ghost sm") + '<button class="btn ghost sm" type="button" data-act="about">' + t("aboutLink") + '</button><button class="btn ghost sm" type="button" data-act="track">' + t("trackLinkFoot") + '</button><button class="btn ghost sm" type="button" data-act="quote">' + t("quoteLinkFoot") + '</button><button class="btn ghost sm" type="button" data-act="policies">' + t("policyLink") + "</button></div>" +
       "<span>" + t("copyright") + "</span><span>" + t("pricesIn") + "</span></div></footer>" +
     '<dialog id="productSheet" aria-labelledby="pTitle"><div class="sheet" id="productBody"></div></dialog>' +
-    '<dialog id="policySheet" class="side" aria-labelledby="polTitle"><div class="cart-head"><h2 id="polTitle">' + t("policyTitle") + '</h2><button class="x" type="button" data-act="closepolicies" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body policies">' + POLICIES[lang].map(function(sec){ return "<section><h3>" + sec[0] + "</h3><ul>" + sec[1].map(function(x){ return "<li>" + x + "</li>"; }).join("") + "</ul></section>"; }).join("") + '<p class="hint">' + t("policyUpdated") + ": " + POLICY_VERSION + "</p></div></dialog>" +
+    '<dialog id="policySheet" class="side" aria-labelledby="polTitle"><div class="cart-head"><h2 id="polTitle">' + t("policyTitle") + '</h2><button class="x" type="button" data-act="closepolicies" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body policies">' + POLICIES[lang].map(function(sec){ return "<section><h3>" + sec[0] + "</h3><ul>" + sec[1].map(function(x){ return "<li>" + x + "</li>"; }).join("") + "</ul></section>"; }).join("") + '<p class="hint">' + t("policyUpdated") + ": " + policyVer() + "</p></div></dialog>" +
     '<dialog id="hadithSheet" class="side" aria-labelledby="hadTitle"><div class="cart-head"><h2 id="hadTitle">' + t("hadithsTitle") + '</h2><button class="x" type="button" data-act="closehadiths" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body"><p>' + t("hadithsIntro") + "</p>" + HADITHS.map(function(h){ return '<figure class="hadith"><blockquote>' + (lang === "ar" ? h.ar : h.en) + "</blockquote><figcaption>" + (lang === "ar" ? h.byAr : h.byEn) + "</figcaption></figure>"; }).join("") + '</div></dialog>' +
     '<dialog id="trackSheet" class="side" aria-labelledby="trackTitle"><div class="cart-head"><h2 id="trackTitle">' + t("trackTitle") + '</h2><button class="x" type="button" data-act="closetrack" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="trackBody"></div></dialog>' +
     '<dialog id="quoteSheet" class="side" aria-labelledby="quoteTitle"><div class="cart-head"><h2 id="quoteTitle">' + t("quoteTitle") + '</h2><button class="x" type="button" data-act="closequote" aria-label="' + esc(t("close")) + '">' + icon(I_CLOSE) + '</button></div><div class="cart-body" id="quoteBody"></div><div class="cart-foot"><button class="btn wa" type="submit" form="quoteForm">' + icon(I_WA) + t("quoteSend") + "</button></div></dialog>" +
@@ -1540,6 +1541,8 @@ function renderGrid(){
   }
   $("#listTitle").textContent = query ? t("resultsFor", {q: query}) : L(catOf(cat));
   $("#listCount").textContent = list.length === 1 ? t("count1") : t("count", {n: list.length});
+  clearTimeout(missT);
+  if (query && !list.length){ var mq = query; missT = setTimeout(function(){ if (query === mq) stat("search-miss-" + mq.replace(/\s+/g, "-"), "Search with no results: " + mq); }, 1800); }
   $("#grid").innerHTML = (cat === "fav" && !query && list.length ? favTools(list) : "") + (list.length ? list.map(card).join("") + (query ? askBox(false) : "") : (askBox(true) || '<p class="empty-list">' + esc(t("noMatch", {q: query})) + "</p>"));
   if (ANIM) Array.prototype.forEach.call(document.querySelectorAll("#grid .card"), function(c, i){ c.classList.add("rv"); c.style.setProperty("--d", (i % 4) * 70 + "ms"); watch(c); });
 }
@@ -1658,7 +1661,7 @@ function addToCart(id, opt, qty){
   var n = Math.min(qty, room), key = id + "|" + (opt || "");
   var hit = cart.filter(function(i){ return i.key === key; })[0];
   if (hit) hit.qty += n; else cart.push({key: key, id: id, opt: opt || "", qty: n});
-  saveCart(); updateCount(true);
+  saveCart(); updateCount(true); stat("add-" + p.sku, "Added to cart: " + p.name.en);
   if (!wasFree && isFree(subtotal())){ toast(t("freeUnlocked"), true); confetti(); return; }
   toast(n < qty ? t("maxStock", {n: p.stock}) : t("added", {name: L(p.name) + (opt ? ", " + optText(p, opt) : "")}), true);
 }
@@ -1774,7 +1777,7 @@ function quest(id){
   questDone[id] = 1; saveJSON("miswak-quests", questDone);
   renderExplorer();
   var n = questCount();
-  if (n === QUESTS.length){ setTimeout(function(){ confetti(); toast(t("questAll")); }, 250); }
+  if (n === QUESTS.length){ stat("explorer-badge", "Earned the Explorer badge"); setTimeout(function(){ confetti(); toast(t("questAll")); }, 250); }
   else toast("🧭 " + n + "/" + QUESTS.length + " · " + t("q_" + id));
 }
 document.addEventListener("toggle", function(e){
@@ -1835,7 +1838,7 @@ document.addEventListener("click", function(e){
   if (v === "start"){ startQuiz(); return; }
   if (v === "next"){
     quizState.i++; quizState.picked = -1; renderQuiz();
-    if (quizState.i >= qs.length){ quest("quiz"); if (quizState.score === qs.length) confetti(); }
+    if (quizState.i >= qs.length){ stat("quiz-" + quizState.score, "Quiz finished: " + quizState.score + "/" + qs.length); quest("quiz"); if (quizState.score === qs.length) confetti(); }
     return;
   }
   if (quizState.picked > -1) return;
@@ -1892,6 +1895,29 @@ document.addEventListener("click", function(e){
     flashAdded(aa);
   }
 }, true);
+
+/* ---------- visitor stats (GoatCounter, privacy-friendly, no cookies) ---------- */
+var goatQ = [], goatOn = false;
+function startStats(){
+  var code = DATA && DATA.settings && DATA.settings.goat;
+  if (goatOn || !code || PREVIEW || location.protocol === "file:") return;
+  goatOn = true;
+  var sc = document.createElement("script");
+  sc.async = true; sc.src = "https://gc.zgo.at/count.js";
+  sc.setAttribute("data-goatcounter", "https://" + code + ".goatcounter.com/count");
+  document.head.appendChild(sc);
+  var tries = 0, tm = setInterval(function(){
+    if (window.goatcounter && window.goatcounter.count){ clearInterval(tm); goatQ.splice(0).forEach(sendStat); }
+    else if (++tries > 100) clearInterval(tm);
+  }, 200);
+}
+function sendStat(e){ try { window.goatcounter.count({path: e.path, title: e.title || e.path, event: true}); } catch(err){} }
+function stat(path, title){
+  if (!goatOn) return;
+  var e = {path: String(path).slice(0, 120), title: title ? String(title).slice(0, 120) : ""};
+  if (window.goatcounter && window.goatcounter.count) sendStat(e); else goatQ.push(e);
+}
+var missT = 0;
 
 /* ---------- seasonal themes ---------- */
 function seasonKey(v){
@@ -1951,7 +1977,7 @@ function reorderHtml(){
   var items = lastBuy.items.filter(function(i){ return byId(i.id); });
   if (!items.length) return "";
   var n = items.reduce(function(a, i){ return a + i.qty; }, 0);
-  var d = new Date(lastBuy.at || Date.now()).toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB", {day: "numeric", month: "short"});
+  var d = new Date(lastBuy.at || Date.now()).toLocaleDateString(lang === "ar" ? "ar-EG-u-nu-latn" : "en-GB", {day: "numeric", month: "short"});
   var names = items.slice(0, 3).map(function(i){ return L(byId(i.id).name); }).join(lang === "ar" ? "، " : ", ") + (items.length > 3 ? "…" : "");
   return '<div class="reorder">' + icon(I_REPEAT) + '<div><b>' + t("reorderTitle") + "</b><span>" + esc(t("reorderText", {n: n, d: d})) + "</span><small>" + esc(names) + '</small></div><button class="btn sm" type="button" data-act="reorder">' + t("reorderBtn") + "</button></div>";
 }
@@ -1993,7 +2019,7 @@ function checkTrack(){
   var inp = $("#trackNo"), out = $("#trackOut"); if (!inp || !out) return;
   var no = String(inp.value || "").toUpperCase().replace(/\s+/g, "").replace(/[^A-Z0-9-]/g, "");
   if (!no){ out.innerHTML = '<p class="track-msg bad">' + t("trackEmpty") + "</p>"; return; }
-  out.innerHTML = '<p class="track-msg">' + t("trackChecking") + "</p>";
+  out.innerHTML = '<p class="track-msg">' + t("trackChecking") + "</p>"; stat("track-check", "Checked an order status");
   getTab("Orders").then(function(rows){
     var r = rows.filter(function(x){ return String(pick(x, ["ordernumber","order","orderno"])).toUpperCase().replace(/\s+/g, "") === no; }).pop();
     if (!r){ out.innerHTML = '<p class="track-msg">' + t("trackNotFound") + "</p>"; return; }
@@ -2039,7 +2065,7 @@ function sendQuote(){
     .concat(v("q-notes") ? [t("fNotes") + ": " + v("q-notes")] : []);
   var url = "https://wa.me/" + (DATA.settings.whatsapp || "") + "?text=" + encodeURIComponent(lines.join("\n"));
   var w = window.open(url, "_blank", "noopener"); if (!w) location.href = url;
-  $("#quoteSheet").close(); toast(t("quoteSent"));
+  $("#quoteSheet").close(); toast(t("quoteSent")); stat("bulk-quote", "Bulk quote request sent");
 }
 
 /* ---------- free delivery goal ---------- */
@@ -2095,7 +2121,7 @@ window.addEventListener("hashchange", openFromHash);
 /* ---------- product sheet ---------- */
 function openProduct(id){
   var p = byId(id); if (!p) return;
-  quest("product");
+  quest("product"); stat("view-" + p.sku, "Viewed: " + p.name.en);
   var sheet = $("#productSheet"), body = $("#productBody");
   var hasOpt = !!(p.opt && p.opt.values && p.opt.values.length);
   var sel = hasOpt ? p.opt.values[Math.min(p.opt.def || 0, p.opt.values.length - 1)] : "";
@@ -2194,7 +2220,7 @@ function renderDetails(){
     '<div class="summary totals" id="sumBox"></div>' +
     '<div class="field agree-field"><label class="agree"><input type="checkbox" id="agree" name="agree" value="1"><span>' + t("agreeA") + '<button type="button" class="inline-link" data-act="policies">' + t("agreeLink") + "</button>" + t("agreeB") + '</span></label><p class="err" id="agree-err" hidden></p></div></form>';
   $("#cartFoot").innerHTML = '<button class="btn" type="submit" form="orderForm" id="placeBtn"></button>';
-  updateSummary();
+  updateSummary(); stat("checkout-started", "Opened delivery details");
   if (promoOn() && promo.code && !promo.ok && !promo.busy) checkPromo(promo.code); else paintPromo();
 }
 function readForm(){
@@ -2260,8 +2286,9 @@ function placeOrder(){
     t("mPay") + ": " + T[lang].pays[payIdx]
   ]));
   if (d.notes) text.push(t("mNotes") + ": " + d.notes);
-  text.push("", t("mAgreed") + " (" + POLICY_VERSION + ")");
+  text.push("", t("mAgreed") + " (" + policyVer() + ")");
   lastOrder = {no: no, text: text.join("\n"), pay: payIdx, total: tt.total, lang: lang};
+  stat("order-sent", "Order sent (" + Math.round(tt.total) + " EGP" + (tt.disc ? ", code " + promo.code : "") + ")");
   lastBuy = {no: no, at: Date.now(), items: cart.map(function(i){ return {id: i.id, opt: i.opt, qty: i.qty}; })};
   saveJSON("miswak-last", lastBuy);
   if (tt.disc && promoOn()){
@@ -2448,6 +2475,7 @@ function toSettings(rows){
   s.notice = yes(pick(r, ["showpreviewbanner"]));
   s.announce = {en: pick(r, ["announcementenglish","announcement"]), ar: pick(r, ["announcementarabic"])};
   s.season = seasonKey(pick(r, ["seasontheme","season","theme"]));
+  s.goat = String(pick(r, ["goatcountercode","goatcounter","statscode"]) || "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\.goatcounter\.com.*$/, "").replace(/[^a-z0-9-]/g, "");
   var pu = String(pick(r, ["discountcodeslink","discountlink","promolink"]) || "").trim();
   s.promoUrl = /^https:\/\/script\.google(usercontent)?\.com\//.test(pu) ? pu : "";
   if ("freedeliveryoveregp" in r || "freedeliveryover" in r) s.freeOver = num(pick(r, ["freedeliveryoveregp","freedeliveryover"]));
@@ -2473,6 +2501,7 @@ function finish(products, settings, hidden){
   setTimeout(openFromHash, 0);
   setTimeout(codeFromHash, 0);
   setTimeout(trackFromHash, 0);
+  startStats();
   var sk = currentSeason();
   if ((sk === "fitr" || sk === "adha") && !seasonCheered){
     seasonCheered = true;
@@ -2555,7 +2584,7 @@ function switchLang(){
     el.style.transform = "translateX(" + (dir * 56) + "px)"; el.style.opacity = "0";
   });
   setTimeout(function(){
-    apply(); renderShell(); window.scrollTo(0, y);
+    apply(); renderShell(); window.scrollTo(0, y); stat("language-" + lang, "Switched language to " + (lang === "ar" ? "Arabic" : "English"));
     var els = parts();
     els.forEach(function(el){ el.style.transition = "none"; el.style.transform = "translateX(" + (-dir * 56) + "px)"; el.style.opacity = "0"; });
     void document.body.offsetWidth;
