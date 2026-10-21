@@ -712,7 +712,11 @@ a{transition:opacity .2s ease,color .2s ease}
 button:active:not(:disabled),.chip:active,a.btn:active,label.agree:active{transform:scale(.95);transition-duration:.09s}
 summary:active,.tile:active:not(:disabled),.sheet-buy .btn:active:not(:disabled),.cart-foot .btn:active,.stabs button:active{transform:scale(.975);transition-duration:.09s}
 a:not(.btn):not(.cue):not(.fab):active{opacity:.55;transition-duration:.05s}
-.toast:active{transform:translateX(-50%) scale(.96)}
+.toast{opacity:0;transform:translate(-50%,18px) scale(.94);transition:opacity .3s ease,transform .38s cubic-bezier(.3,1.35,.5,1),bottom .3s ease!important}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.show:active{transform:translate(-50%,0) scale(.96)}
+.toast.bump-t{animation:toastBump .35s ease}
+@keyframes toastBump{40%{transform:translate(-50%,-4px) scale(1.03)}}
 button:disabled{transition:opacity .2s ease}
 
 /* ---- miswak mouse cursor (desktop only) ---- */
@@ -784,6 +788,7 @@ button:disabled{transition:opacity .2s ease}
 .reorder small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46ch}
 .reorder > div{min-width:0}
 .cart-body .reorder{margin:6px 0 0}
+.reorder.leaving{animation:none;transition:opacity .3s ease,transform .3s ease;opacity:0;transform:translateY(-8px) scale(.98)}
 @media (max-width:480px){.reorder{grid-template-columns:auto 1fr}.reorder .btn{grid-column:1/-1}}
 .quote-cta{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;margin-top:22px;padding:16px 18px;border-radius:var(--radius);background:color-mix(in srgb,var(--wood) 9%,var(--surface));border:1px dashed color-mix(in srgb,var(--wood) 55%,var(--line))}
 .quote-cta > .ico{width:30px;height:30px;color:var(--wood)}
@@ -1151,7 +1156,7 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function loadJSON(k, d){ try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch(e){ return d; } }
 function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 
-var BUILD = "50";
+var BUILD = "51";
 var IS_SAMSUNG = /SamsungBrowser/i.test(navigator.userAgent || "") ||
   !!(navigator.userAgentData && (navigator.userAgentData.brands || []).some(function(b){ return /samsung/i.test(b.brand); }));
 if (IS_SAMSUNG) document.documentElement.classList.add("samsung");
@@ -1626,7 +1631,13 @@ function updateCount(bump){
   $("#cartCount").textContent = n;
   b.setAttribute("aria-label", t("cartAria", {n: n}));
   if (bump){ b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
-  var rs = $("#reorderSlot"); if (rs) rs.innerHTML = LOAD === "ready" ? reorderHtml() : "";
+  var rs = $("#reorderSlot");
+  if (rs){
+    var nh = LOAD === "ready" ? reorderHtml() : "", card = rs.querySelector(".reorder");
+    if (!nh && card && !CALM){ card.classList.add("leaving"); setTimeout(function(){ if (!reorderHtml()) rs.innerHTML = ""; }, 320); }
+    else if (nh && !card) rs.innerHTML = nh;
+    else if (!nh) rs.innerHTML = "";
+  }
   var bar = $("#cartBar");
   if (bar && LOAD === "ready"){
     var on = n > 0;
@@ -1652,13 +1663,21 @@ function addToCart(id, opt, qty){
   toast(n < qty ? t("maxStock", {n: p.stock}) : t("added", {name: L(p.name) + (opt ? ", " + optText(p, opt) : "")}), true);
 }
 var toastTimer;
+function hideToast(){
+  var el = $("#toast"); if (!el || el.hidden) return;
+  clearTimeout(toastTimer);
+  el.classList.remove("show");
+  el._hideT = setTimeout(function(){ el.hidden = true; el.classList.remove("bump-t"); }, CALM ? 0 : 340);
+}
 function toast(msg, withCart){
   var el = $("#toast");
   el.innerHTML = esc(msg) + (withCart ? " · <u>" + esc(t("viewCart")) + "</u>" : "");
   el.dataset.cart = withCart ? "1" : "";
   el.hidden = false;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ el.hidden = true; }, 3200);
+  clearTimeout(toastTimer); clearTimeout(el._hideT);
+  if (!el.classList.contains("show")){ void el.offsetWidth; el.classList.add("show"); }
+  else { el.classList.remove("bump-t"); void el.offsetWidth; el.classList.add("bump-t"); }
+  toastTimer = setTimeout(hideToast, 3200);
 }
 
 /* =================== DISCOUNT CODES (via the owners' Google Apps Script) =================== */
@@ -2309,7 +2328,7 @@ document.addEventListener("click", function(e){
     if (act === "brand"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "goshop"){ e.preventDefault(); smoothTo($("#products")); return; }
     if (act === "cart"){ openCart(); return; }
-    if (act === "toast"){ a.hidden = true; if (a.dataset.cart) openCart("cart"); return; }
+    if (act === "toast"){ hideToast(); if (a.dataset.cart) openCart("cart"); return; }
     if (act === "retry"){ load(); return; }
     if (act === "closecart"){ $("#cartSheet").close(); return; }
     if (act === "backcart"){ view = "cart"; renderSheet(); return; }
@@ -2551,7 +2570,7 @@ function switchLang(){
 var fabGone = false;
 function fabTip(){
   var f = $("#fab"), tt = $("#toast"); if (!f || f.classList.contains("drag")) return;
-  if (tt && !tt.hidden){ setTimeout(fabTip, 4000); return; }
+  if (tt && tt.classList.contains("show")){ setTimeout(fabTip, 4000); return; }
   f.classList.remove("tip"); void f.offsetWidth; f.classList.add("tip");
 }
 setTimeout(fabTip, 2200);
